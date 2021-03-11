@@ -33,7 +33,6 @@ export class Filters extends React.Component  {
   getDataSetPrice = (e) => {
     const tagsList = [...this.state.tags];
     const value = e.target.dataset.price.toString();
-    console.log(this.state)
     tagsList.includes(value)
     ? this.setState({ tags: (tagsList.filter(element => element !== value)) })
       : this.setState({ tags: [...tagsList, value] })
@@ -76,7 +75,6 @@ export class Filters extends React.Component  {
     const posts = this.props.posts
     const levels = this.props.levels
     const tags = this.props.tags
-    console.log(posts, levels, tags);
     const oldEvents = this.checkSort(posts.filter(post => dayjs(post.startDate).unix() < dayjs().unix()), true)
     const onGoingEvents = this.checkSort(posts.filter(post => dayjs(post.startDate).unix() > dayjs().unix()), false)
 
