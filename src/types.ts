@@ -1,5 +1,5 @@
 export type Workshop = {
-  tags: string[];
+  tags: Tag[];
   skill: string;
   title: string;
   speaker: string;
@@ -11,3 +11,9 @@ export type Workshop = {
   spots: number;
   duration: string;
 };
+
+type Tag = {
+  fields: {
+    name: string;
+  }
+} 
