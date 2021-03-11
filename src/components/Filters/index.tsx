@@ -76,6 +76,7 @@ export class Filters extends React.Component  {
     const posts = this.props.posts
     const levels = this.props.levels
     const tags = this.props.tags
+    console.log(posts, levels, tags);
     const oldEvents = this.checkSort(posts.filter(post => dayjs(post.startDate).unix() < dayjs().unix()), true)
     const onGoingEvents = this.checkSort(posts.filter(post => dayjs(post.startDate).unix() > dayjs().unix()), false)
 

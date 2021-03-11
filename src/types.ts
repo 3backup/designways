@@ -1,13 +1,40 @@
+export enum WorkshopSortType {
+  ByPrice,
+  ByDate,
+}
+
 export type Workshop = {
-  tags: string[];
-  skill: string;
-  title: string;
-  speaker: string;
-  date: string;
-  location: string;
-  type: string;
-  cost: number;
-  url: string;
-  spots: number;
+  certificate: boolean;
   duration: string;
+  endDate: string;
+  startDate: string;
+  image: FileSys;
+  level: ExtendObject<WorkshopLevel>;
+  location: string;
+  price: number;
+  speaker: string;
+  spots: number;
+  tags: ExtendObject<WorkshopTag>[];
+  title: string;
+  type: string;
+  url: string;
+};
+
+export type WorkshopLevel = {
+  name: string;
+};
+
+export type WorkshopTag = {
+  name: string;
+};
+
+export type FileSys = {
+  file: {
+    url: string;
+  };
+  title: string;
+};
+
+export type ExtendObject<T> = {
+  fields: T;
 };

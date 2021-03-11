@@ -1,48 +1,43 @@
-import React from "react"
+import React from "react";
 import { Head } from "../components/Head";
 import { Footer } from "../components/Footer";
 import { AuthChecker } from "../components/AuthChecker";
 import { HeaderFilter } from "../components/HeaderFilter";
-import { Filters } from "../components/Filters";
-import { getEvents, getTags, getLevel } from '../util/contentfulPosts'
+import { Workshops } from "../components/Workshops";
+import { getEvents, getTags, getLevels } from "../util/contentfulPosts";
+import { Workshop, WorkshopLevel, WorkshopTag } from "../types";
 
+type Props = {
+  events: Workshop[];
+  tags: WorkshopTag[];
+  levels: WorkshopLevel[];
+};
 
-
-
-export default function Filter({posts, tags, levels}) {
+export default function Filter({ events, tags, levels }: Props) {
   return (
     <AuthChecker>
       <Head />
       <HeaderFilter />
-      <Filters posts={posts} tags={tags} levels={levels}/>
-      
+      <Workshops events={events} tags={tags} levels={levels} />
+
       <Footer />
     </AuthChecker>
   );
 }
 
-
 export async function getStaticProps() {
-  const res = await getEvents()
-  const resTag = await getTags()
-  const resLvl = await getLevel()
-  const posts = await res.map((p) => {
-    return p.fields
-  })
-  const tags = await resTag.map((p) => {
-    return p.fields
-  })
-  const levels = await resLvl.map((p) => {
-    return p.fields
-  })
-
+  const [events, tags, levels] = await Promise.all([
+    getEvents(),
+    getTags(),
+    getLevels(),
+  ]);
 
   return {
     props: {
       tags,
-      posts,
+      events,
       levels,
     },
     revalidate: 1,
-  }
+  };
 }
