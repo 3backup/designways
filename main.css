@@ -186,6 +186,44 @@ input {
   width: 17rem;
 }
 
+.nav__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nav__titleButton {
+  margin-left: 10px;
+}
+
+.nav__addEvent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  cursor: pointer;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 9px 15px 9px 15px;
+  background: #2C2856;
+  -webkit-box-shadow: 0px 20px 32px -4px rgba(0, 0, 0, 0.23);
+          box-shadow: 0px 20px 32px -4px rgba(0, 0, 0, 0.23);
+  border-radius: 8px;
+  ont-family: Manrope;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #FFFFFF;
+}
+
 .nav__main {
   width: 100%;
   -webkit-box-pack: justify;
@@ -213,7 +251,7 @@ input {
   font-family: Manrope;
   font-style: normal;
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   line-height: 2.5rem;
   height: 4.2rem;
   display: -webkit-box;
@@ -227,6 +265,10 @@ input {
           align-items: center;
   margin-left: 4rem;
   color: #FFFFFF;
+}
+
+.nav__element:first-of-type {
+  margin-left: 4rem;
 }
 
 @media (max-width: 576px) {
@@ -481,6 +523,8 @@ input {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }

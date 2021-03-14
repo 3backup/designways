@@ -1,16 +1,9 @@
 import React from "react";
 
-type TagButtonProps = {
-  toggleTag: (tagName: string) => void,
-  tagName: string,
-  selected: boolean
+export const TagButton = (props) => {
+     return (
+         <button className="tag__single tagsFilter" onClick={(e) => props.getDataSetTag(e)} data-tags={props.tagName} data-price={props.priceName} data-level={props.levelName}> {props.levelName} {props.tagName} {props.priceName}
+        </button>
+     )
 }
 
-export const TagButton: React.FC<TagButtonProps> = ({ toggleTag, tagName, selected }) => {
-  return (
-    <button className={`tag__single tagsFilter ${selected && "tag__single--active"}`} onClick={() => toggleTag(tagName)}>
-      {tagName}
-    </button>
-  )
-
-}

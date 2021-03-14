@@ -148,11 +148,11 @@
 
 .lecture--nonActive {
   opacity: 30%;
-  -webkit-transform: 0.5s ease;
-          transform: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 
-.lecture--nonActive::hover {
+.lecture--nonActive:hover {
   opacity: 100%;
 }
 

@@ -33,7 +33,6 @@ export class Filters extends React.Component  {
   getDataSetPrice = (e) => {
     const tagsList = [...this.state.tags];
     const value = e.target.dataset.price.toString();
-    console.log(this.state)
     tagsList.includes(value)
     ? this.setState({ tags: (tagsList.filter(element => element !== value)) })
       : this.setState({ tags: [...tagsList, value] })
