@@ -1,17 +1,18 @@
-import React from "react";
-import { Head } from "../components/Head";
-import { Footer } from "../components/Footer";
-import { AuthChecker } from "../components/AuthChecker";
-import { HeaderFilter } from "../components/HeaderFilter";
-import { Workshops } from "../components/Workshops";
-import { getEvents, getTags, getLevels } from "../util/contentfulPosts";
-import { Workshop, WorkshopLevel, WorkshopTag } from "../types";
+/* eslint-disable prettier/prettier */
+import React from "react"
+import { Head } from "../components/Head"
+import { Footer } from "../components/Footer"
+import { AuthChecker } from "../components/AuthChecker"
+import { HeaderFilter } from "../components/HeaderFilter"
+import { Workshops } from "../components/Workshops"
+import { getEvents, getTags, getLevels } from "../util/contentfulPosts"
+import { Workshop, WorkshopLevel, WorkshopTag } from "../types"
 
 type Props = {
-  events: Workshop[];
-  tags: WorkshopTag[];
-  levels: WorkshopLevel[];
-};
+  events: Workshop[]
+  tags: WorkshopTag[]
+  levels: WorkshopLevel[]
+}
 
 export default function Filter({ events, tags, levels }: Props) {
   return (
@@ -22,7 +23,7 @@ export default function Filter({ events, tags, levels }: Props) {
 
       <Footer />
     </AuthChecker>
-  );
+  )
 }
 
 export async function getStaticProps() {
@@ -30,7 +31,7 @@ export async function getStaticProps() {
     getEvents(),
     getTags(),
     getLevels(),
-  ]);
+  ])
 
   return {
     props: {
@@ -38,6 +39,6 @@ export async function getStaticProps() {
       events,
       levels,
     },
-    revalidate: 1,
-  };
+    revalidate: 60,
+  }
 }

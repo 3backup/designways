@@ -1,12 +1,13 @@
-import dayjs from "dayjs";
-import React from "react";
-import { Workshop } from "../../types";
-import { formatDuration, formatPriceWithCurrency } from "./helpers";
+/* eslint-disable prettier/prettier */
+import dayjs from "dayjs"
+import React from "react"
+import { Workshop } from "../../types"
+import { formatDuration, formatPriceWithCurrency } from "./helpers"
 
 type Props = {
-  workshop: Workshop;
-  customClass: string;
-};
+  workshop: Workshop
+  customClass: string
+}
 
 export const WorkshopItem = (props) => {
   return (
@@ -72,5 +73,5 @@ export const WorkshopItem = (props) => {
         </a>
       </div>
     </div>
-  );
-};
+  )
+}
