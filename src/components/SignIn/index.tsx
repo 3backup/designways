@@ -1,27 +1,28 @@
-import React, { useState, FormEvent } from "react";
-import { Magic } from "magic-sdk";
-
-import { MAGIC_TOKEN } from "../../constants";
-
-import CheckActive from "../../images/check-active.svg";
-import CheckNotActive from "../../images/check.svg";
-import LogoHorizontal from "../../images/Logo_horizontal_white.svg";
+import React, { useState, FormEvent } from "react"
+import { Magic } from "magic-sdk"
+import { useRouter } from "next/router"
+import { MAGIC_TOKEN } from "../../constants"
+import Redirect from "../Redirect"
+import CheckActive from "../../images/check-active.svg"
+import CheckNotActive from "../../images/check.svg"
+import LogoHorizontal from "../../images/Logo_horizontal_white.svg"
 
 export const SignIn = () => {
   // form fields
-  const [email, setEmail] = useState("");
-  const [rodo, setRodo] = useState(false);
-
+  const [email, setEmail] = useState("")
+  const [rodo, setRodo] = useState(false)
+  const router = useRouter()
   const [magicClient] = useState(
     process.browser ? new Magic(MAGIC_TOKEN) : null,
-  );
+  )
 
   const handleLogin = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault()
     if (magicClient) {
-      await magicClient.auth.loginWithMagicLink({ email });
+      await magicClient.auth.loginWithMagicLink({ email })
+      router.push("/filters")
     }
-  };
+  }
 
   return (
     <main className='page'>
@@ -61,7 +62,7 @@ export const SignIn = () => {
             />
             <label className='text__paragraph text__paragraph--checkbox'>
               Wyrażam zgodę na otrzymywanie drogą elektroniczną na wskazany
-              przeze mnie adres e-mail treści zgodnie z{" "}
+              przeze mnie adres e-mail treści zgodnie z
               <a href='https://www.designways.io/polityka-prywatnosci.html'>
                 polityka prywatności.
               </a>
@@ -95,5 +96,5 @@ export const SignIn = () => {
         </div>
       </div>
     </main>
-  );
-};
+  )
+}

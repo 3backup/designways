@@ -9,6 +9,6 @@ export const Redirect = ({ to }: Props) => {
   const router = useRouter();
   useEffect(() => {
     router.push(to);
-  }, [to]);
+  }, [router, to]);
   return null;
 };
