@@ -41,7 +41,7 @@ export const SignIn = () => {
               name='email'
               onChange={(event) => setEmail(event.target.value)}
               value={email}
-              required={true}
+              required
               placeholder='Enter your email'
             />
             <button
