@@ -26,32 +26,32 @@ type Props = {
 export const Workshops = ({ events, tags, levels }: Props) => {
   // aktualne sortowanie i aktualnie wybrane wydarzenia
   const [sortType, setSortType] = useState<WorkshopSortType>(
-    WorkshopSortType.ByDate
+    WorkshopSortType.ByDate,
   );
   const [currentTags, setCurrentTags] = useState<WorkshopTag[]>([]);
   const [currentLevels, setCurrentLevels] = useState<WorkshopLevel[]>([]);
   const [currentPriceFilters, setCurrentPriceFilters] = useState<PriceFilter[]>(
-    []
+    [],
   );
 
   const toggleTag = (tag: WorkshopTag) =>
     setCurrentTags(
       currentTags.includes(tag)
         ? currentTags.filter((current) => current.name !== tag.name)
-        : [...currentTags, tag]
+        : [...currentTags, tag],
     );
   const toggleLevel = (level: WorkshopLevel) =>
     setCurrentLevels(
       currentLevels.includes(level)
         ? currentLevels.filter((current) => current.name !== level.name)
-        : [...currentLevels, level]
+        : [...currentLevels, level],
     );
 
   const togglePrice = (filter: PriceFilter) =>
     setCurrentPriceFilters(
       currentPriceFilters.includes(filter)
         ? currentPriceFilters.filter((current) => current !== filter)
-        : [...currentPriceFilters, filter]
+        : [...currentPriceFilters, filter],
     );
 
   const filteredEventsCalculated = useMemo(
@@ -60,7 +60,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         if (currentTags.length) {
           const tagsNames = currentTags.map((filter) => filter.name);
           const tagsMatched = event.tags.filter((eventTag) =>
-            tagsNames.includes(eventTag.fields.name)
+            tagsNames.includes(eventTag.fields.name),
           );
           if (!tagsMatched.length) {
             return false;
@@ -79,7 +79,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
           const eventPriceType =
             event.price > 0 ? PriceFilter.Paid : PriceFilter.Free;
           const currentPriceFiltersMatched = currentPriceFilters.includes(
-            eventPriceType
+            eventPriceType,
           );
           if (!currentPriceFiltersMatched) {
             return false;
@@ -88,42 +88,43 @@ export const Workshops = ({ events, tags, levels }: Props) => {
 
         return true;
       }),
-    [events, currentLevels, currentTags, currentPriceFilters]
+    [events, currentLevels, currentTags, currentPriceFilters],
   );
 
   const oldEvents = useMemo(
     () =>
       sortEvents(
         filteredEventsCalculated.filter(
-          (event) => dayjs(event.startDate).unix() < dayjs().unix()
+          (event) => dayjs(event.startDate).unix() < dayjs().unix(),
         ),
         sortType,
-        true
+        true,
       ),
-    [filteredEventsCalculated, sortType]
+    [filteredEventsCalculated, sortType],
   );
 
   const onGoingEvents = useMemo(
     () =>
       sortEvents(
         filteredEventsCalculated.filter(
-          (event) => dayjs(event.startDate).unix() > dayjs().unix()
+          (event) => dayjs(event.startDate).unix() > dayjs().unix(),
         ),
         sortType,
-        false
+        false,
       ),
-    [filteredEventsCalculated, sortType]
+    [filteredEventsCalculated, sortType],
   );
 
   return (
     <>
-      <div className="container container--xl filter__main">
-        <div className="tag__container">
-          <h6 className="text__h6">Wybierz tematyke</h6>
-          <div className="tag__tags">
+      <div className='container container--xl filter__main'>
+        <div className='tag__container'>
+          <h6 className='text__h6'>Wybierz tematyke</h6>
+          <div className='tag__tags'>
             {tags.map((tag) => (
               <WorkshopTagButton
                 isActive={currentTags.includes(tag)}
+                isHuge={false}
                 key={tag.name}
                 name={tag.name}
                 onClick={() => toggleTag(tag)}
@@ -131,55 +132,58 @@ export const Workshops = ({ events, tags, levels }: Props) => {
             ))}
           </div>
         </div>
-        <div className="tag__container">
-          <h6 className="text__h6">Stopień zaawansowania:</h6>
-          <div className="tag__tags">
+        <div className='tag__container'>
+          <h6 className='text__h6'>Stopień zaawansowania:</h6>
+          <div className='tag__tags'>
             {levels.map((level) => (
               <WorkshopTagButton
                 isActive={currentLevels.includes(level)}
                 key={level.name}
+                isHuge={false}
                 onClick={() => toggleLevel(level)}
                 name={level.name}
               />
             ))}
           </div>
         </div>
-        <div className="tag__container">
-          <h6 className="text__h6">Cena:</h6>
-          <div className="tag__tags">
+        <div className='tag__container'>
+          <h6 className='text__h6'>Cena:</h6>
+          <div className='tag__tags'>
             <WorkshopTagButton
+              isHuge={false}
               isActive={currentPriceFilters.includes(PriceFilter.Free)}
               onClick={() => togglePrice(PriceFilter.Free)}
-              name="Darmowe"
+              name='Darmowe'
             />
             <WorkshopTagButton
+              isHuge={false}
               isActive={currentPriceFilters.includes(PriceFilter.Paid)}
               onClick={() => togglePrice(PriceFilter.Paid)}
-              name="Płatne"
+              name='Płatne'
             />
           </div>
         </div>
       </div>
 
-      <div className="container container--big sortElement">
-        <div className="sortElement__countEvents text__h6">
+      <div className='container container--big sortElement'>
+        <div className='sortElement__countEvents text__h6'>
           Liczba znalezionych wydarzeń:
-          <span id="eventNumber">{filteredEventsCalculated.length}</span>
+          <span id='eventNumber'>{filteredEventsCalculated.length}</span>
         </div>
-        <div className="sortElement__sortButtonContainer">
+        <div className='sortElement__sortButtonContainer'>
           <SortButton
             active={sortType === WorkshopSortType.ByDate}
-            title="Cena: Rosnąco"
+            title='Cena: Rosnąco'
             onClick={() => setSortType(WorkshopSortType.ByPrice)}
           />
           <SortButton
             active={sortType === WorkshopSortType.ByPrice}
-            title="Data: Najbliższa"
+            title='Data: Najbliższa'
             onClick={() => setSortType(WorkshopSortType.ByDate)}
           />
         </div>
       </div>
-      <div className="container container--big" id="lecture">
+      <div className='container container--big' id='lecture'>
         {onGoingEvents.map((event) => (
           <WorkshopItem
             key={`${event.title}${dayjs(event.startDate).unix()}`}
@@ -187,7 +191,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
           />
         ))}
         {!!oldEvents.length && (
-          <div className="pastEvent text__h6"> Ubiegłe wydarzenia</div>
+          <div className='pastEvent text__h6'> Ubiegłe wydarzenia</div>
         )}
 
         {oldEvents.map((event) => (

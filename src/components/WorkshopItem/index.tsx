@@ -19,9 +19,8 @@ export const WorkshopItem = (props) => {
         />
         <div className='lecture__description'>
           <div className='lecture__tags'>
-            {" "}
             {props.post.tags.map((singleTag) => (
-              <div class='tag__single tag__single--small'>
+              <div className='tag__single tag__single--small'>
                 {singleTag.fields.name}
               </div>
             ))}
