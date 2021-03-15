@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState, useMemo, useEffect } from "react";
 import dayjs from "dayjs";
 import {
@@ -53,64 +54,45 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         : [...currentPriceFilters, filter],
     );
 
-  const filteredEvents = useMemo(
+  const filteredEvents = (
+    eventsFiltered,
+    levelsFiltered,
+    tagsFiltered,
+    pricesFiltered,
+  ) => {
+    if (tagsFiltered.length) {
+      console.log("tsest");
+    }
+    return eventsFiltered;
+  };
+  const filteredEventsCalculated = useMemo(
     () =>
-      events.filter((event) => {
-        console.log(event);
-        let tags = null;
-        let levels = null;
-        let price = null;
-        const { name: eventLevel } = event.level.fields;
-        if (
-          currentLevels.length == 0 &&
-          currentPriceFilters.length == 0 &&
-          currentTags.length == 0
-        ) {
-          tags = true;
-          levels = true;
-          price = true;
-        }
-        currentLevels.forEach((element) => {
-          for (const singleLevel of Object.values(element)) {
-            if (singleLevel == eventLevel) {
-              exampleArray.push(event);
-              console.log(exampleArray);
-
-              levels = true;
-            }
-          }
-        });
-        tags === null ? true : tags;
-        levels === null ? true : levels;
-        price === null ? true : price;
-        console.log(tags, levels, price);
-        return tags && levels && price;
-      }),
-    [events],
+      filteredEvents(events, currentLevels, currentTags, currentPriceFilters),
+    [events, currentLevels, currentTags, currentPriceFilters],
   );
 
   const oldEvents = useMemo(
     () =>
       sortEvents(
-        filteredEvents.filter(
+        filteredEventsCalculated.filter(
           (event) => dayjs(event.startDate).unix() < dayjs().unix(),
         ),
         sortType,
         true,
       ),
-    [filteredEvents, sortType],
+    [filteredEventsCalculated, sortType],
   );
 
   const onGoingEvents = useMemo(
     () =>
       sortEvents(
-        filteredEvents.filter(
+        filteredEventsCalculated.filter(
           (event) => dayjs(event.startDate).unix() > dayjs().unix(),
         ),
         sortType,
         false,
       ),
-    [filteredEvents, sortType],
+    [filteredEventsCalculated, sortType],
   );
 
   return (
@@ -161,8 +143,8 @@ export const Workshops = ({ events, tags, levels }: Props) => {
 
       <div className='container container--big sortElement'>
         <div className='sortElement__countEvents text__h6'>
-          Liczba znalezionych wydarzeń:{" "}
-          <span id='eventNumber'>{filteredEvents.length}</span>
+          Liczba znalezionych wydarzeń:
+          <span id='eventNumber'>{filteredEventsCalculated.length}</span>
         </div>
         <div className='sortElement__sortButtonContainer'>
           <SortButton

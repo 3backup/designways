@@ -1,14 +1,14 @@
 import React from "react";
-import { contetful } from "contentful-management";
+// import { contentful } from "contentful-management";
 import { Head } from "../components/Head";
 import { AuthChecker } from "../components/AuthChecker";
 import { Footer } from "../components/Footer";
 import { ContentAddEvent } from "../components/ContentAddEvent";
 import { HeaderAddEvent } from "../components/HeaderAddEvent";
 
-const client = contentful.createClient({
-  accessToken: "CFPAT-8SGURhp-zdnRpl92sLGqDFiaZYnnDX3_39QegoIgBlA",
-});
+// const client = contentful.createClient({
+//   accessToken: "CFPAT-8SGURhp-zdnRpl92sLGqDFiaZYnnDX3_39QegoIgBlA",
+// });
 
 export default function suggest({ events, tags, levels }: Props) {
   return (
