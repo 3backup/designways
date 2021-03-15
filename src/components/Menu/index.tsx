@@ -1,5 +1,5 @@
-import React from "react";
-import Image from "next/image";
+import React from "react"
+import Image from "next/image"
 
 export const Menu = () => {
   return (
@@ -11,16 +11,6 @@ export const Menu = () => {
         height={48}
       />
       <nav className='nav__container display__flex disp'>
-        <button className='nav__addEvent'>
-          <Image
-            src='/images/plus.svg'
-            alt='plus in the button'
-            width={18}
-            height={18}
-            className='nav__imageButton'
-          />
-          <span className='nav__titleButton'>Dodaj wydarzenie</span>
-        </button>
         <ul className='nav__list display__row'>
           <li className='nav__element'>
             <a className='nav__element' href='mailto:hello@designways.io'>
@@ -57,5 +47,5 @@ export const Menu = () => {
         </ul>
       </nav>
     </div>
-  );
-};
+  )
+}
