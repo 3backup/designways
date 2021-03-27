@@ -237,6 +237,7 @@ export const SignupForm = (props) => {
           <ul>{files}</ul>
         </aside>
       </div>
+
       <label htmlFor="email">
         Email Address
         <input
