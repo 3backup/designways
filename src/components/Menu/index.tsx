@@ -12,7 +12,7 @@ export const Menu = () => {
         height={48}
       />
       <nav className="nav__container display__flex disp">
-        <Link href="/suggest-an-event/">
+        <Link href="/suggest/">
           <button type="button" className="nav__addEvent">
             <Image
               src="/images/plus.svg"

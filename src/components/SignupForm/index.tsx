@@ -5,12 +5,17 @@ import checkWhite from "../../images/check-white.svg";
 
 const validate = (values) => {
   type Errors = {
-    title: string;
-    speaker: string;
-    url: string;
-    spots: string;
+    title: any;
+    speaker: any;
+    url: any;
+    spots: any;
   };
-  const errors: Errors = { title: "", speaker: "", url: "", spots: "" };
+  const errors: Errors = {
+    title: "" || undefined,
+    speaker: "" || undefined,
+    url: "" || undefined,
+    spots: 0,
+  };
 
   if (!values.title) {
     errors.title = "Tytuł jest wymagany";
