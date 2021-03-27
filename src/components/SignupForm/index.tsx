@@ -4,7 +4,13 @@ import checkWhite from "../../images/check-white.svg";
 import { useDropzone } from "react-dropzone";
 
 const validate = (values) => {
-  const errors = {};
+  type Errors = {
+    title: string;
+    speaker: string;
+    url: string;
+    spots: number;
+  };
+  const errors: Errors = {};
 
   if (!values.title) {
     errors.title = "Tytuł jest wymagany";
