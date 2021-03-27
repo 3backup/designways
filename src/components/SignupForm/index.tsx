@@ -8,9 +8,9 @@ const validate = (values) => {
     title: string;
     speaker: string;
     url: string;
-    spots: number;
+    spots: string;
   };
-  const errors: Errors = {};
+  const errors: Errors = { title, speaker, url, spots };
 
   if (!values.title) {
     errors.title = "Tytuł jest wymagany";
