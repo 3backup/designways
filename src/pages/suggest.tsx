@@ -10,13 +10,7 @@ import { HeaderAddEvent } from "../components/HeaderAddEvent";
 //   accessToken: "CFPAT-8SGURhp-zdnRpl92sLGqDFiaZYnnDX3_39QegoIgBlA",
 // });
 
-type Props = {
-  events: Workshop[];
-  tags: WorkshopTag[];
-  levels: WorkshopLevel[];
-};
-
-export default function suggest({ events, tags, levels }: Props) {
+export default function suggest() {
   return (
     <AuthChecker>
       <Head />
