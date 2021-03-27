@@ -1,16 +1,13 @@
 import React from "react";
 import Image from "next/image";
-import { WorkshopTagButton } from "../WorkshopTagButton";
 import { types } from "util";
+import { WorkshopTagButton } from "../WorkshopTagButton";
 
 export const ContentAddEvent = () => {
   const hanldeClick = (event) => {
     event.preventDefault();
-    console.log("click");
   };
-  const setEmail = (value) => {
-    console.log(value);
-  };
+  const setEmail = (value) => {};
 
   return (
     <div className="container container__addEvent form__container">
@@ -196,7 +193,9 @@ export const ContentAddEvent = () => {
             </div>
           </div>
         </div>
-        <button className="form__buttonSuggest">Wyślij do weryfikacji </button>
+        <button type="button" className="form__buttonSuggest">
+          Wyślij do weryfikacji{" "}
+        </button>
       </form>
     </div>
   );

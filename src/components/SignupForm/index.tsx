@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { useFormik } from "formik";
+import { FileWithPath, useDropzone } from "react-dropzone";
 import checkWhite from "../../images/check-white.svg";
-import { useDropzone } from "react-dropzone";
 
 const validate = (values) => {
   type Errors = {
@@ -37,6 +37,9 @@ const validate = (values) => {
 };
 
 export const SignupForm = (props) => {
+  type File = {
+    path: string;
+  };
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -52,11 +55,12 @@ export const SignupForm = (props) => {
   });
   const { acceptedFiles, getRootProps, getInputProps } = useDropzone();
 
-  const files = acceptedFiles.map((file) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ));
+  const fileList = (files: FileWithPath[]): ReactNode =>
+    files.map((file) => (
+      <li key={file.path}>
+        {file.path} - {file.size} bytes
+      </li>
+    ));
   const titleTouched =
     formik.touched.title && formik.errors.title === undefined;
   const speakerTouched =
@@ -98,9 +102,11 @@ export const SignupForm = (props) => {
             onBlur={formik.handleBlur}
             value={formik.values.title}
           />
-          <div class="form__errorHandler">
+          <div className="form__errorHandler">
             {formik.touched.title && formik.errors.title ? (
-              <div class="form__errorHandlerInside">{formik.errors.title}</div>
+              <div className="form__errorHandlerInside">
+                {formik.errors.title}
+              </div>
             ) : null}
           </div>
         </div>
@@ -236,11 +242,13 @@ export const SignupForm = (props) => {
       <div className="container">
         <div {...getRootProps({ className: "dropzone" })}>
           <input {...getInputProps()} />
-          <p>Drag 'n' drop some files here, or click to select files</p>
+          <p>
+            Drag &apos; n &apos; drop some files here, or click to select files
+          </p>
         </div>
         <aside>
           <h4>Files</h4>
-          <ul>{files}</ul>
+          <ul>{fileList}</ul>
         </aside>
       </div>
 
