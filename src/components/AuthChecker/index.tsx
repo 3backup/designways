@@ -6,7 +6,7 @@ import { SignIn } from "../SignIn";
 import { LoaderScreen } from "../LoaderScreen";
 
 type Props = {
-  withLoader?: boolean
+  withLoader?: boolean;
 };
 
 export const AuthChecker: FC<Props> = ({ withLoader, children }) => {
@@ -28,10 +28,8 @@ export const AuthChecker: FC<Props> = ({ withLoader, children }) => {
   }
 
   if (isLogged) {
-    return <>
-      {children}
-    </>;
+    return <>{children}</>;
   }
-  
-  return <SignIn /> 
-}
+
+  return <SignIn />;
+};

@@ -106,6 +106,10 @@
   }
 }
 
+.tag__single--huge {
+  height: 4.6rem;
+}
+
 .lecture {
   width: 100%;
   min-height: 50px;

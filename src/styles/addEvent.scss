@@ -38,9 +38,44 @@ $shorterWidth: 8rem;
   &__inputContainer {
     display: grid;
     grid-template-columns: 8rem auto;
-    margin: 20px 0;
+    margin: 12px 0;
+  }
+  &__errorHandler {
+    height: 32px;
+    margin-top: 8px;
+    width: max-content;
+  }
+  &__errorHandlerInside {
+    border-radius: 6px;
+    color: #fff;
+    padding: 6px 12px;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    background-color: #ff4242;
   }
   &__number {
+    border-radius: 42px;
+    border: 2px solid #7d4ce6;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 20px;
+    width: 3.4rem;
+    height: 3.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+  &__numberCheck {
+    width: 16px;
+    display: none;
+  }
+  &__number--active {
     background: linear-gradient(0deg, #7d4ce6, #7d4ce6),
       linear-gradient(0deg, #f89500, #f89500),
       linear-gradient(0deg, #806bff, #806bff),
@@ -56,19 +91,11 @@ $shorterWidth: 8rem;
         #001aff 359.54deg,
         #001aff 429.24deg
       );
-    border-radius: 42px;
-    font-family: Manrope;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 15px;
-    line-height: 20px;
-    width: 3.4rem;
-    height: 3.4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
     color: #fff;
+  }
+  &__number--hide {
+    display: block;
+    width: 16px;
   }
   &__label {
     font-family: Manrope;
@@ -82,7 +109,7 @@ $shorterWidth: 8rem;
       margin-bottom: 0;
     }
   }
-  &__button {
+  &__buttonSuggest {
     background: linear-gradient(0deg, #7d4ce6, #7d4ce6),
       linear-gradient(0deg, #f89500, #f89500),
       linear-gradient(0deg, #806bff, #806bff),
@@ -136,7 +163,11 @@ $shorterWidth: 8rem;
     &--shorter {
       width: $shorterWidth;
     }
+    &--error {
+      border: 2px solid #ff4242;
+    }
   }
+
   &__title {
     font-family: Manrope;
     font-style: normal;
