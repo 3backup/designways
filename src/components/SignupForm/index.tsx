@@ -10,7 +10,7 @@ const validate = (values) => {
     url: string;
     spots: string;
   };
-  const errors: Errors = { title, speaker, url, spots };
+  const errors: Errors = { title: "", speaker: "", url: "", spots: "" };
 
   if (!values.title) {
     errors.title = "Tytuł jest wymagany";
