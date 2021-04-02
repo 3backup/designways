@@ -20,6 +20,18 @@ $shorterWidth: 8rem;
       width: 100%;
     }
   }
+  &__tag {
+    background: rgba(232, 230, 243, 0.6);
+    border-radius: 6px;
+    padding: 10px;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+  }
   &__form {
     display: flex;
     width: 1fr;
@@ -28,7 +40,7 @@ $shorterWidth: 8rem;
   &__singleInputWithLabel--elements {
     display: grid;
     grid-template-columns: auto auto auto;
-    gap: 4rem;
+    gap: 0 3.6rem;
   }
   &__twoInputs {
     display: grid;
@@ -41,13 +53,15 @@ $shorterWidth: 8rem;
     margin: 12px 0;
   }
   &__errorHandler {
-    height: 32px;
-    margin-top: 8px;
+    height: auto;
+    min-height: 40px;
     width: max-content;
   }
   &__errorHandlerInside {
     border-radius: 6px;
+    margin-top: 8px;
     color: #fff;
+
     padding: 6px 12px;
     font-family: Manrope;
     font-style: normal;
@@ -109,6 +123,55 @@ $shorterWidth: 8rem;
       margin-bottom: 0;
     }
   }
+  &__dropzoneArea {
+    background: rgba(239, 238, 244, 0.6);
+    border-radius: 6px;
+    border: 1px solid #e0e1ed;
+    padding: 2rem;
+    margin-bottom: 3.2rem;
+    min-height: 26rem;
+    &--thumbnail {
+      width: 190px;
+      height: 190px;
+    }
+    &--thumbnailImage {
+      width: 100%;
+      height: 100%;
+    }
+    &--clickable {
+      background: #e0e1ed;
+      border-radius: 7px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 35rem;
+      height: 15rem;
+      font-family: Manrope;
+      font-style: normal;
+      cursor: pointer;
+      color: #8a8cb9;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 150%;
+      em {
+        font-size: 12px;
+      }
+    }
+    &--smaller {
+      min-height: 6rem;
+      max-height: 6rem;
+      margin-bottom: 1rem;
+    }
+
+    &--fileList {
+      margin-top: 1rem;
+      color: #8a8cb9;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 150%;
+    }
+  }
   &__buttonSuggest {
     background: linear-gradient(0deg, #7d4ce6, #7d4ce6),
       linear-gradient(0deg, #f89500, #f89500),
@@ -125,13 +188,18 @@ $shorterWidth: 8rem;
         #001aff 359.54deg,
         #001aff 429.24deg
       );
+    cursor: pointer;
     box-shadow: 0px 11px 32px -5px rgba(153, 126, 211, 0.33);
     border-radius: 10px;
     font-family: Manrope;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
+    border: none;
+    text-align: center;
+    justify-content: center;
     line-height: 25px;
+    width: 100%;
     display: flex;
     align-items: center;
     color: #ffffff;

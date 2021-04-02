@@ -5,14 +5,6 @@ import { WorkshopTagButton } from "../WorkshopTagButton";
 import { types } from "util";
 
 export const ContentAddEvent = () => {
-  const hanldeClick = (event) => {
-    event.preventDefault();
-    console.log("click");
-  };
-  const setEmail = (value) => {
-    console.log(value);
-  };
-
   return (
     <div className="container container__addEvent form__container">
       <div className="form__backButtonContainer">

@@ -131,6 +131,69 @@
   margin-bottom: 0;
 }
 
+.form__dropzoneArea {
+  background: rgba(239, 238, 244, 0.6);
+  border-radius: 6px;
+  border: 1px solid #e0e1ed;
+  padding: 2rem;
+  min-height: 26rem;
+}
+
+.form__dropzoneArea--thumbnail {
+  width: 190px;
+  height: 190px;
+}
+
+.form__dropzoneArea--thumbnailImage {
+  width: 100%;
+  height: 100%;
+}
+
+.form__dropzoneArea--clickable {
+  background: #e0e1ed;
+  border-radius: 7px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 35rem;
+  height: 15rem;
+  font-family: Manrope;
+  font-style: normal;
+  cursor: pointer;
+  color: #8a8cb9;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.form__dropzoneArea--clickable em {
+  font-size: 12px;
+}
+
+.form__dropzoneArea--smaller {
+  min-height: 6rem;
+  max-height: 6rem;
+  margin-bottom: 1rem;
+}
+
+.form__dropzoneArea--fileList {
+  margin-top: 1rem;
+  color: #8a8cb9;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+}
+
 .form__buttonSuggest {
   background: -webkit-gradient(linear, left bottom, left top, from(#7d4ce6), to(#7d4ce6)), -webkit-gradient(linear, left bottom, left top, from(#f89500), to(#f89500)), -webkit-gradient(linear, left bottom, left top, from(#806bff), to(#806bff)), conic-gradient(from 31.85deg at 8.6% 26.83%, #001aff -0.46deg, #001aff 69.24deg, #2400ff 134.1deg, rgba(0, 7, 181, 0.42) 197.02deg, #2973ff 241.88deg, #3fa3ff 276.49deg, #99daff 358.81deg, #001aff 359.54deg, #001aff 429.24deg);
   background: linear-gradient(0deg, #7d4ce6, #7d4ce6), linear-gradient(0deg, #f89500, #f89500), linear-gradient(0deg, #806bff, #806bff), conic-gradient(from 31.85deg at 8.6% 26.83%, #001aff -0.46deg, #001aff 69.24deg, #2400ff 134.1deg, rgba(0, 7, 181, 0.42) 197.02deg, #2973ff 241.88deg, #3fa3ff 276.49deg, #99daff 358.81deg, #001aff 359.54deg, #001aff 429.24deg);

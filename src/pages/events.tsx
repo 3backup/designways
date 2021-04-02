@@ -18,6 +18,7 @@ export default function Filter({ events, tags, levels }: Props) {
     <AuthChecker>
       <Head />
       <HeaderFilter />
+
       <Workshops events={events} tags={tags} levels={levels} />
 
       <Footer />
