@@ -67,12 +67,20 @@ export const WorkshopItem = (props) => {
         </div>
         <div className="lecture__rightGrid__price">
           <div>{formatPriceWithCurrency(props.post.price)}</div>
-          <div className="certificate">
-            <img src={CertificateImage} className="certificate__image" alt="" />
-            <span className="certificate__tooltipText">
-              Uczestnik otrzyma certyfikat uczestnictwa
-            </span>
-          </div>
+          {props.post.certificate ? (
+            <div className="certificate">
+              <img
+                src={CertificateImage}
+                className="certificate__image"
+                alt=""
+              />
+              <span className="certificate__tooltipText">
+                Uczestnik otrzyma certyfikat uczestnictwa
+              </span>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
       <div className="lecture__half buttonMobile">
