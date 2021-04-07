@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import React from "react";
 import { Workshop } from "../../types";
 import { formatDuration, formatPriceWithCurrency } from "./helpers";
+import CertificateImage from "../../images/np_certificate_1117192_000000 1.svg";
 
 type Props = {
   workshop: Workshop;
@@ -65,7 +66,13 @@ export const WorkshopItem = (props) => {
           {props.post.spots}
         </div>
         <div className="lecture__rightGrid__price">
-          {formatPriceWithCurrency(props.post.price)}
+          <div>{formatPriceWithCurrency(props.post.price)}</div>
+          <div className="certificate">
+            <img src={CertificateImage} className="certificate__image" alt="" />
+            <span className="certificate__tooltipText">
+              Uczestnik otrzyma certyfikat uczestnictwa
+            </span>
+          </div>
         </div>
       </div>
       <div className="lecture__half buttonMobile">
