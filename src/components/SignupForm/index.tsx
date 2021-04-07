@@ -151,7 +151,7 @@ export const SignupForm = (props) => {
       endDate: "",
       endDateTime: "",
       duration: "",
-      pickedLevel: "",
+      pickedLevel: null,
     },
     validate,
     onSubmit: (values) => {
@@ -271,6 +271,7 @@ export const SignupForm = (props) => {
   const urlTouched = formik.touched.url && formik.errors.url === undefined;
   const spotsTouched =
     formik.touched.spots && formik.errors.spots === undefined;
+  let levelTouched = false;
   const datesTouched =
     formik.touched.startDate &&
     formik.errors.startDate === undefined &&
@@ -546,7 +547,7 @@ export const SignupForm = (props) => {
                 placeholder="RRRR-MM-DD"
                 pattern="\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])*"
                 type="text"
-                maxlength="10"
+                maxLength="10"
                 id="endDate"
                 name="endDate"
                 onChange={formik.handleChange}
@@ -621,65 +622,72 @@ export const SignupForm = (props) => {
       <div className="form__inputContainer">
         <div
           className={`form__number ${
-            spotsTouched ? "form__number--active" : ""
+            formik.values.pickedLevel ? "form__number--active" : ""
           }`}>
-          {`${spotsTouched ? "" : "7"}`}
+          {`${formik.values.pickedLevel ? "" : "7"}`}
 
           <img
             src={checkWhite}
             className={`form__numberCheck ${
-              spotsTouched ? "form__number--hide" : ""
+              formik.values.pickedLevel ? "form__number--hide" : ""
             }`}
             alt=""
           />
         </div>
         <div className="form__singleInputWithLabel">
           <div className="form__label">Stopień zaawansowania</div>
-          <div>
-            <label htmlFor="pickedLevel1">
+          <div className="form__containerLevel">
+            <label
+              className="form__containerLevel--singletag"
+              htmlFor="pickedLevel1">
               <input
+                className="form__radiobutton"
                 type="radio"
                 id="pickedLevel1"
                 name="pickedLevel"
                 onChange={(e) => {
+                  formik.handleChange(e);
                   formik.values.pickedLevel = "ffff";
-                  console.log("fff");
-                  formik.handleChange;
+                  levelTouched = true;
                 }}
                 onBlur={formik.handleBlur}
                 value="Początkujący"
               />
-              Początkujący
+              <span className="form__tag">Początkujący</span>
             </label>
-            <label htmlFor="pickedLevel2" className="form__tag">
+            <label
+              className="form__containerLevel--singletag"
+              htmlFor="pickedLevel2">
               <input
                 type="radio"
                 id="pickedLevel2"
                 name="pickedLevel"
+                className="form__radiobutton"
                 onChange={(e) => {
-                  formik.values.pickedLevel = "two";
-                  console.log("picked");
-                  formik.handleChange;
+                  formik.handleChange(e);
+                  formik.values.pickedLevel = "one";
                 }}
                 onBlur={formik.handleBlur}
                 value="Średniozaawansowany"
               />
-              Średniozaawansownay
+              <span className="form__tag">Średniozaawansowany</span>
             </label>
-            <label htmlFor="pickedLevel3">
+            <label
+              className="form__containerLevel--singletag"
+              htmlFor="pickedLevel3">
               <input
                 type="radio"
                 id="pickedLevel3"
                 name="pickedLevel"
+                className="form__radiobutton"
                 onChange={(e) => {
+                  formik.handleChange(e);
                   formik.values.pickedLevel = "two";
-                  console.log("picked");
-                  formik.handleChange;
                 }}
                 onBlur={formik.handleBlur}
                 value="Zaawansowany"
               />
-              Średniozaawansownay
+              <span className="form__tag">Zaawansowany</span>
             </label>
           </div>
           <div className="form__errorHandler">

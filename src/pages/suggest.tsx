@@ -7,11 +7,11 @@ import { HeaderAddEvent } from "../components/HeaderAddEvent";
 
 export default function suggest() {
   return (
-    <AuthChecker>
+    <>
       <Head />
       <HeaderAddEvent />
       <ContentAddEvent />
       <Footer />
-    </AuthChecker>
+    </>
   );
 }
