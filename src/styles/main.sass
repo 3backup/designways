@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap')
 
 *, *:before, *:after
@@ -40,11 +39,9 @@ table
     border-spacing: 0
 
 input
-    -webkit-appearance: none
     border-radius: 0
 
 //  PLAIN KOD
-
 .page
     min-width: 100vw
     min-height: 100vh
@@ -125,6 +122,8 @@ input
         align-items: center
         text-align: center
         color: #FFFFFF
+        @media (max-width: 768px)
+            display: none
 
     &__main
         width: 100%
@@ -324,7 +323,6 @@ input
             // height: auto
             // margin: 3rem 0
             // height: 26px
-
     &__image
         margin-right: 20px
     &__span
@@ -338,4 +336,4 @@ input
         color: #FFFFFF
         background: #8A8CB9
         opacity: 0.8
-        border-radius: 4pxnp
+        border-radius: 4px

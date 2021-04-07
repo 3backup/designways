@@ -14,7 +14,11 @@ const AddEvent = () => {
       <h3 className="AddToDatabase__h3">
         Zaproponuj nowe wydarzenie do naszej bazy.
       </h3>
-      <a href="#" className="AddToDatabase__button">
+      <a
+        href="https://airtable.com/shrAwlFIeLbevMEa6"
+        target="_blank"
+        rel="noreferrer"
+        className="AddToDatabase__button">
         <img
           src="images/send.svg"
           alt=""
