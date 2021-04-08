@@ -2,7 +2,6 @@
 import React from "react";
 import { Head } from "../components/Head";
 import { Footer } from "../components/Footer";
-import { AuthChecker } from "../components/AuthChecker";
 import { HeaderFilter } from "../components/HeaderFilter";
 import AddEvent from "../components/AddEvent";
 import { Workshops } from "../components/Workshops";
