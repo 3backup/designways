@@ -52,7 +52,6 @@ table {
 }
 
 input {
-  -webkit-appearance: none;
   border-radius: 0;
 }
 
@@ -213,15 +212,23 @@ input {
   -webkit-box-shadow: 0px 20px 32px -4px rgba(0, 0, 0, 0.23);
           box-shadow: 0px 20px 32px -4px rgba(0, 0, 0, 0.23);
   border-radius: 8px;
-  ont-family: Manrope;
+  font-family: Manrope;
   font-style: normal;
   font-weight: bold;
+  border: none;
+  margin-top: 0.25rem;
   font-size: 14px;
   line-height: 19px;
   display: flex;
   align-items: center;
   text-align: center;
   color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .nav__addEvent {
+    display: none;
+  }
 }
 
 .nav__main {
@@ -586,6 +593,6 @@ input {
   color: #FFFFFF;
   background: #8A8CB9;
   opacity: 0.8;
-  border-radius: 4pxnp;
+  border-radius: 4px;
 }
 /*# sourceMappingURL=main.css.map */

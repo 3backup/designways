@@ -117,10 +117,10 @@ export const Workshops = ({ events, tags, levels }: Props) => {
 
   return (
     <>
-      <div className='container container--xl filter__main'>
-        <div className='tag__container'>
-          <h6 className='text__h6'>Wybierz tematyke</h6>
-          <div className='tag__tags'>
+      <div className="container container--xl filter__main">
+        <div className="tag__container">
+          <h6 className="text__h6">Wybierz tematyke</h6>
+          <div className="tag__tags">
             {tags.map((tag) => (
               <WorkshopTagButton
                 isActive={currentTags.includes(tag)}
@@ -132,9 +132,9 @@ export const Workshops = ({ events, tags, levels }: Props) => {
             ))}
           </div>
         </div>
-        <div className='tag__container'>
-          <h6 className='text__h6'>Stopień zaawansowania:</h6>
-          <div className='tag__tags'>
+        <div className="tag__container">
+          <h6 className="text__h6">Stopień zaawansowania:</h6>
+          <div className="tag__tags">
             {levels.map((level) => (
               <WorkshopTagButton
                 isActive={currentLevels.includes(level)}
@@ -146,53 +146,52 @@ export const Workshops = ({ events, tags, levels }: Props) => {
             ))}
           </div>
         </div>
-        <div className='tag__container'>
-          <h6 className='text__h6'>Cena:</h6>
-          <div className='tag__tags'>
+        <div className="tag__container">
+          <h6 className="text__h6">Cena:</h6>
+          <div className="tag__tags">
             <WorkshopTagButton
               isHuge={false}
               isActive={currentPriceFilters.includes(PriceFilter.Free)}
               onClick={() => togglePrice(PriceFilter.Free)}
-              name='Darmowe'
+              name="Darmowe"
             />
             <WorkshopTagButton
               isHuge={false}
               isActive={currentPriceFilters.includes(PriceFilter.Paid)}
               onClick={() => togglePrice(PriceFilter.Paid)}
-              name='Płatne'
+              name="Płatne"
             />
           </div>
         </div>
       </div>
 
-      <div className='container container--big sortElement'>
-        <div className='sortElement__countEvents text__h6'>
+      <div className="container container--big sortElement">
+        <div className="sortElement__countEvents text__h6">
           Liczba znalezionych wydarzeń:
-          <span id='eventNumber'>{filteredEventsCalculated.length}</span>
+          <span id="eventNumber">{filteredEventsCalculated.length}</span>
         </div>
-        <div className='sortElement__sortButtonContainer'>
+        <div className="sortElement__sortButtonContainer">
           <SortButton
             active={sortType === WorkshopSortType.ByDate}
-            title='Cena: Rosnąco'
+            title="Cena: Rosnąco"
             onClick={() => setSortType(WorkshopSortType.ByPrice)}
           />
           <SortButton
             active={sortType === WorkshopSortType.ByPrice}
-            title='Data: Najbliższa'
+            title="Data: Najbliższa"
             onClick={() => setSortType(WorkshopSortType.ByDate)}
           />
         </div>
       </div>
-      <div className='container container--big' id='lecture'>
+      <div className="container container--big" id="lecture">
         {onGoingEvents.map((event) => (
           <WorkshopItem
             key={`${event.title}${dayjs(event.startDate).unix()}`}
             post={event}
           />
         ))}
-        {!!oldEvents.length && (
-          <div className='pastEvent text__h6'> Ubiegłe wydarzenia</div>
-        )}
+
+        <div className="pastEvent text__h6"> Ubiegłe wydarzenia</div>
 
         {oldEvents.map((event) => (
           <WorkshopItem
