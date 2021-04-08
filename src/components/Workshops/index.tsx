@@ -191,9 +191,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
           />
         ))}
 
-        {/* {!!oldEvents.length && (
-          <div className='pastEvent text__h6'> Ubiegłe wydarzenia</div>
-        )} */}
+        <div className="pastEvent text__h6"> Ubiegłe wydarzenia</div>
 
         {oldEvents.map((event) => (
           <WorkshopItem
