@@ -1,0 +1,110 @@
+.organiserHeader {
+  width: 100vw;
+  min-height: 59.5rem;
+  background: #211c51;
+  &__menu {
+    display: flex;
+    min-height: 7.2rem;
+    padding: 0 4.4rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__organiserTitle {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    opacity: 0.5;
+  }
+  &__ul {
+    display: flex;
+  }
+  &__li {
+    margin-left: 3rem;
+    color: #ffffff;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 0.5rem;
+    font-size: 14px;
+    line-height: 4rem;
+    display: block;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.3s;
+    border-bottom: 1px solid transparent;
+    &:hover {
+      opacity: 1;
+      border-bottom: 1px solid #fff;
+    }
+  }
+  &__button {
+    display: flex;
+    cursor: pointer;
+    border: none;
+    opacity: 0.7;
+    background: transparent;
+    transition: 0.3s;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &__buttonSpan {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 600;
+    margin-left: 2rem;
+    font-size: 14px;
+    line-height: 150%;
+    color: #ffffff;
+  }
+  &__oneThird {
+    width: 33%;
+  }
+  &__nav {
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__basicInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__imageHero {
+    width: 16rem;
+  }
+  &__h2 {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 68px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+  }
+  &__p {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    opacity: 0.8;
+  }
+}
+.organiserContainer {
+  width: 103rem;
+  margin: 0 auto;
+}
