@@ -40,7 +40,7 @@ export const OrganiserHeader = () => {
         />
         <h2 className="organiserHeader__h2">Buduj Lepsze Produkty, Szybciej</h2>
         <p className="organiserHeader__p">
-          Pomagamy budować produkty, które pokochają Twoi klienci.{" "}
+          Pomagamy budować produkty, które pokochają Twoi klienci.
         </p>
       </div>
     </div>

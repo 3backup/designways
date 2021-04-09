@@ -78,6 +78,7 @@
     justify-content: center;
   }
   &__imageHero {
+    margin: 5rem 0;
     width: 16rem;
   }
   &__h2 {
@@ -87,6 +88,7 @@
     font-size: 50px;
     line-height: 68px;
     display: flex;
+    margin-bottom: 1.8rem;
     align-items: center;
     text-align: center;
     color: #ffffff;
