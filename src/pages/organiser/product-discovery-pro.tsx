@@ -1,16 +1,15 @@
 import React from "react";
 import { Head } from "../../components/Head";
 import { OrganiserHeader } from "../../components/OrganiserHeader";
+import { OrganiserEvent } from "../../components/OrganiserEvent";
 import { Footer } from "../../components/Footer";
-import { HeaderFilter } from "../../components/HeaderFilter";
-import AddEvent from "../../components/AddEvent";
-import { Workshops } from "../../components/Workshops";
 
-export default function Home() {
+export default function organiser() {
   return (
     <>
       <Head />
       <OrganiserHeader />
+      <OrganiserEvent />
       <Footer />
     </>
   );
