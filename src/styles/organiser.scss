@@ -1,5 +1,5 @@
 .organiserHeader {
-  width: 100vw;
+  width: 100%;
   min-height: 59.5rem;
   background: #211c51;
   &__menu {
@@ -351,5 +351,130 @@
     display: flex;
     align-items: center;
     color: #2b2251;
+  }
+}
+.OrganiserDescription {
+  display: flex;
+  flex-direction: row;
+  width: 118rem;
+  margin: 14rem auto 8rem auto;
+  &__title {
+    width: 25%;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 140%;
+    display: flex;
+    text-align: right;
+    color: #2a2d50;
+  }
+  &__text {
+    width: 75%;
+    padding-left: 6rem;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 160%;
+    color: #3a3c60;
+    opacity: 0.8;
+    &--ul {
+      margin-left: 2rem;
+      color: #7d4ce5;
+    }
+    &--li {
+      font-family: Manrope;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 160%;
+      margin: 2.4rem;
+      color: #3a3c60;
+      opacity: 0.8;
+      &::before {
+        content: "\2022";
+        color: #7d4ce5;
+        font-weight: bold;
+        display: inline-block;
+        width: 2em;
+        margin-left: -2em;
+      }
+    }
+  }
+}
+.OrganiserSpeaker {
+  width: 100%;
+  background: #f4f4f5;
+  &__content {
+    width: 118rem;
+    padding: 7rem 0;
+    margin: 0 auto;
+  }
+  &__title {
+    width: 25%;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    margin-bottom: 3rem;
+    font-size: 24px;
+    line-height: 140%;
+    color: #2a2d50;
+    opacity: 0.8;
+  }
+}
+
+.SingleSpeaker {
+  max-width: 107rem;
+  background: #ffffff;
+  padding: 5rem;
+  display: flex;
+  flex-direction: row;
+  border-radius: 12px;
+  margin: 1.2rem auto;
+  &__image {
+    display: flex;
+    width: 28.5%;
+    &--single {
+      border-radius: 1rem;
+      width: 21rem;
+      height: 21rem;
+    }
+  }
+  &__aboutSpeaker {
+    width: 71.5%;
+  }
+  &__names {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+  }
+  &__desc {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 160%;
+    display: flex;
+    margin-top: 1.6rem;
+    align-items: center;
+    color: #3a3c60;
+    opacity: 0.8;
+    &--second {
+      margin-top: 2.4rem;
+    }
+  }
+  &__socials {
+    margin-top: 4rem;
+    &--single {
+      margin-right: 1.6rem;
+    }
   }
 }

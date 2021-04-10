@@ -46,14 +46,14 @@ export const OrganiserHeader = () => {
         </p>
         <div className="organiserHeader__links">
           <div className="organiserHeader__socialMedia">
-            <a href="#">
+            <a href="https://www.linkedin.com/company/productdiscovery-pro/">
               <img
                 className="organiserHeader__socialMediaIcon"
                 src={linkedIn}
                 alt=""
               />
             </a>
-            <a href="#">
+            <a href="https://www.facebook.com/productdiscoverypro">
               <img
                 className="organiserHeader__socialMediaIcon"
                 src={facebook}
@@ -61,7 +61,9 @@ export const OrganiserHeader = () => {
               />
             </a>
           </div>
-          <a href="#" className="organiserHeader__externalLink">
+          <a
+            href="https://productdiscovery.pro/"
+            className="organiserHeader__externalLink">
             Strona organizatora
           </a>
         </div>
