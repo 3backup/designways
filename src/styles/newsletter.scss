@@ -1,0 +1,22 @@
+.Newsletter {
+  &__Contianer {
+    width: 100%;
+    padding: 8rem 0;
+    background-color: #7d4ce5;
+    background-image: url("../images/newsletter=bg-image.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: right;
+  }
+  &__content {
+    width: 103rem;
+    margin: 0 auto;
+  }
+  &__form {
+    width: 47rem;
+  }
+}
+.fff {
+  position: absolute;
+  left: -5000px;
+}
