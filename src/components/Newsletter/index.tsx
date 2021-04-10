@@ -1,10 +1,4 @@
 import React from "react";
-import MailchimpSubscribe from "react-mailchimp-subscribe";
-
-const url =
-  "https://designways.us7.list-manage.com/subscribe/post?u=4cfaa6a48ce77c6979d19881a&amp;id=6ca63a52d1";
-
-const SimpleForm = () => <MailchimpSubscribe url={url} />;
 
 const Newsletter = (props) => {
   return (
@@ -19,9 +13,9 @@ const Newsletter = (props) => {
               name="mc-embedded-subscribe-form"
               className="validate"
               target="_blank"
-              novalidate>
+              noValidate>
               <div id="mc_embed_signup_scroll">
-                <label for="mce-EMAIL">Subscribe</label>
+                <label htmlFor="mce-EMAIL">Subscribe</label>
                 <input
                   type="email"
                   name="EMAIL"
@@ -34,7 +28,6 @@ const Newsletter = (props) => {
                   id="mergeRow-gdpr"
                   className="mergeRow gdpr-mergeRow content__gdprBlock mc-field-group">
                   <div className="content__gdpr">
-                    <label>Marketing Permissions</label>
                     <p>
                       Please select all the ways you would like to hear from
                       DesignWays Hub:
@@ -42,7 +35,7 @@ const Newsletter = (props) => {
                     <fieldset
                       className="mc_fieldset gdprRequired mc-field-group"
                       name="interestgroup_field">
-                      <label className="checkbox subfield" for="gdpr_60219">
+                      <label className="checkbox subfield" htmlFor="gdpr_60219">
                         <input
                           type="checkbox"
                           id="gdpr_60219"
