@@ -1,5 +1,6 @@
 import React from "react";
 
+const tab = -1;
 const Newsletter = (props) => {
   return (
     <div className="Newsletter__Contianer">
@@ -69,7 +70,7 @@ const Newsletter = (props) => {
                     className="fff"
                     type="text"
                     name="b_4cfaa6a48ce77c6979d19881a_6ca63a52d1"
-                    tabIndex="-1"
+                    tabIndex={tab}
                     value=""
                   />
                 </div>
