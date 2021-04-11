@@ -5,7 +5,9 @@ import { OrganiserEvent } from "../../components/OrganiserEvent";
 import { OrganiserDescription } from "../../components/OrganiserDescription";
 import { OrganiserSpeaker } from "../../components/OrganiserSpeaker";
 import Newsletter from "../../components/Newsletter";
+import Testimonial from "../../components/Testimonial";
 import { Footer } from "../../components/Footer";
+import styles from "../../styles/Newsletter.module.scss";
 
 export default function organiser() {
   return (
@@ -15,6 +17,7 @@ export default function organiser() {
       <OrganiserEvent />
       <OrganiserDescription />
       <OrganiserSpeaker />
+      <Testimonial />
       <Newsletter />
       <Footer />
     </>
