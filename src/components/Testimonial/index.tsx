@@ -8,6 +8,8 @@ import left from "./Left.svg";
 import right from "./Right.svg";
 
 export default class Testimonial extends Component {
+  slider: any;
+
   constructor(props) {
     super(props);
     this.next = this.next.bind(this);
