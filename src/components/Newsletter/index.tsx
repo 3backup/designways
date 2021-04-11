@@ -11,7 +11,7 @@ const newsletterValidation = (e) => {
         "mc-embedded-subscribe",
       ) as HTMLButtonElement).disabled = true);
 };
-const Newsletter = (props) => {
+const Newsletter = () => {
   return (
     <div className={styles.Newsletter__Contianer}>
       <div className={styles.Newsletter__content}>
@@ -39,7 +39,6 @@ const Newsletter = (props) => {
                   name="EMAIL"
                   className={`${styles.Newsletter__email} email`}
                   id="mce-EMAIL"
-                  Ō
                   placeholder="Twój adres email"
                   required
                 />
@@ -58,7 +57,6 @@ const Newsletter = (props) => {
                           id="gdpr_60219"
                           onChange={(e) => newsletterValidation(e)}
                           name="gdpr[60219]"
-                          ąąąą
                           defaultValue="Y"
                           className={`av-checkbox ${styles.Newsletter__checkbox}`}
                         />
