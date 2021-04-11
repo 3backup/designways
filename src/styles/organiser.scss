@@ -39,6 +39,9 @@
     opacity: 0.7;
     transition: 0.3s;
     border-bottom: 1px solid transparent;
+    @media only screen and (max-width: 1200px) {
+      margin-left: 1.5rem;
+    }
     &:hover {
       opacity: 1;
       border-bottom: 1px solid #fff;
@@ -150,8 +153,11 @@
   }
 }
 .organiserContainer {
-  width: 103rem;
+  max-width: 103rem;
   margin: 0 auto;
+  @media only screen and (max-width: 1200px) {
+    max-width: 992px;
+  }
 }
 
 .mainEvent {
@@ -165,6 +171,10 @@
   display: flex;
   flex-direction: row;
   height: 100%;
+  @media only screen and (max-width: 1200px) {
+    width: 992px;
+  }
+
   &__logo {
     background: #f3f9f9;
     width: 34rem;
@@ -254,6 +264,9 @@
       font-size: 32px;
       line-height: 140%;
       color: #000000;
+      @media only screen and (max-width: 1200px) {
+        font-size: 26px;
+      }
     }
   }
   &__readMore {
@@ -276,6 +289,9 @@
       line-height: 150%;
       color: #ffffff;
       transition: ease 0.3s;
+      @media only screen and (max-width: 1200px) {
+        padding: 1.3rem 1.8rem;
+      }
       &:hover {
         color: #2c2856;
         background: #fff;
@@ -358,6 +374,9 @@
   flex-direction: row;
   width: 118rem;
   margin: 14rem auto 8rem auto;
+  @media only screen and (max-width: 1200px) {
+    width: 992px;
+  }
   &__title {
     width: 25%;
     font-family: Manrope;
@@ -407,7 +426,7 @@
   width: 100%;
   background: #f4f4f5;
   &__content {
-    width: 118rem;
+    max-width: 118rem;
     padding: 7rem 0;
     margin: 0 auto;
   }
@@ -433,6 +452,9 @@
   flex-direction: row;
   border-radius: 12px;
   margin: 1.2rem auto;
+  @media only screen and (max-width: 1200px) {
+    max-width: 992px;
+  }
   &__image {
     display: flex;
     width: 28.5%;

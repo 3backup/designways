@@ -1,16 +1,24 @@
 .Newsletter {
   &__Contianer {
     width: 100%;
-    padding: 8rem 0;
+    padding: 8rem 4%;
     background-color: #7d4ce5;
     background-image: url("../images/newsletter=bg-image.svg");
     background-repeat: no-repeat;
-    background-size: 80%;
+    background-size: cover;
+
     background-position: right;
+    @media only screen and (max-width: 1200px) {
+      background-size: cover;
+      background-position: center;
+    }
   }
   &__content {
     width: 103rem;
     margin: 0 auto;
+    @media only screen and (max-width: 1200px) {
+      max-width: 980px;
+    }
   }
   &__form {
     width: 47rem;
