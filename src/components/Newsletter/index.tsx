@@ -31,7 +31,6 @@ const Newsletter = (props) => {
               id="mc-embedded-subscribe-form"
               name="mc-embedded-subscribe-form"
               className="validate"
-              ąą
               target="_blank"
               noValidate>
               <div id="mc_embed_signup_scroll">

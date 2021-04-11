@@ -94,10 +94,16 @@ export default class Testimonial extends Component {
           </div>
         </Slider>
         <div style={{ textAlign: "center" }}>
-          <button className={styles.Carousel__previous} onClick={this.previous}>
+          <button
+            className={styles.Carousel__previous}
+            onClick={this.previous}
+            type="button">
             <img src={left} alt="" />
           </button>
-          <button className={styles.Carousel__next} onClick={this.next}>
+          <button
+            className={styles.Carousel__next}
+            onClick={this.next}
+            type="button">
             <img src={right} alt="" />
           </button>
         </div>

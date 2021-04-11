@@ -1,10 +1,14 @@
 import React from "react";
-import Slider from "react-slick";
 import styles from "./singleTestimonial.module.scss";
 import quotes from "./quotes.svg";
 
-const SingleTestimonial = (props) => {
-  const { text, author, company } = props;
+type Props = {
+  text: string;
+  author: string;
+  company: string;
+};
+
+const SingleTestimonial = ({ text, author, company }: Props) => {
   return (
     <div className={styles.singleTestimonial__container}>
       <div className={styles.signleTestimonial__quotes}>

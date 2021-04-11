@@ -7,7 +7,6 @@ import { OrganiserSpeaker } from "../../components/OrganiserSpeaker";
 import Newsletter from "../../components/Newsletter";
 import Testimonial from "../../components/Testimonial";
 import { Footer } from "../../components/Footer";
-import styles from "../../styles/Newsletter.module.scss";
 
 export default function organiser() {
   return (
