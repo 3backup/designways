@@ -8,7 +8,7 @@ const newsletterValidation = (e) => {
       ) as HTMLButtonElement).disabled = false)
     : ((document.getElementById(
         "mc-embedded-subscribe",
-      ) as HTMLButtonElement).disabled = "true");
+      ) as HTMLButtonElement).disabled = true);
 };
 const Newsletter = (props) => {
   return (
