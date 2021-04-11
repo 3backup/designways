@@ -1,11 +1,23 @@
 import React from "react";
 
 const tab = -1;
+const newsletterValidation = (e) => {
+  const button = document.getElementById("mc-embedded-subscribe");
+  e.target.checked ? (button.disabled = false) : (button.disabled = "true");
+};
 const Newsletter = (props) => {
   return (
     <div className="Newsletter__Contianer">
       <div className="Newsletter__content">
         <div className="Newsletter__form">
+          <p className="Newsletter__subheader">Newsletter</p>
+          <h3 className="Newsletter__header">
+            Comiesięczna lista wydarzeń w Twojej skrzynce mailowej!
+          </h3>
+          <p className="Newsletter__paragraph">
+            Zostaw swój adres email i poznaj wydarzenia, które pomogą Ci w
+            rozwoju!
+          </p>
           <div id="mc_embed_signup">
             <form
               action="https://designways.us7.list-manage.com/subscribe/post?u=4cfaa6a48ce77c6979d19881a&amp;id=6ca63a52d1"
@@ -16,52 +28,39 @@ const Newsletter = (props) => {
               target="_blank"
               noValidate>
               <div id="mc_embed_signup_scroll">
-                <label htmlFor="mce-EMAIL">Subscribe</label>
                 <input
                   type="email"
                   name="EMAIL"
-                  className="email"
+                  className="email  Newsletter__email"
                   id="mce-EMAIL"
-                  placeholder="email address"
+                  placeholder="Twój adres email"
                   required
                 />
                 <div
                   id="mergeRow-gdpr"
                   className="mergeRow gdpr-mergeRow content__gdprBlock mc-field-group">
-                  <div className="content__gdpr">
-                    <p>
-                      Please select all the ways you would like to hear from
-                      DesignWays Hub:
-                    </p>
+                  <div className="content__gdpr ">
                     <fieldset
                       className="mc_fieldset gdprRequired mc-field-group"
                       name="interestgroup_field">
-                      <label className="checkbox subfield" htmlFor="gdpr_60219">
+                      <label
+                        className="checkbox subfield Newsletter__contentGdpr"
+                        htmlFor="gdpr_60219">
                         <input
                           type="checkbox"
                           id="gdpr_60219"
+                          onChange={(e) => newsletterValidation(e)}
                           name="gdpr[60219]"
-                          value="Y"
-                          className="av-checkbox "
+                          defaultValue="Y"
+                          className="av-checkbox Newsletter__checkbox"
                         />
-                        <span>Email</span>{" "}
+                        <span className="Newsletter__gdpr">
+                          Wyrażam zgodę na otrzymywanie drogą elektroniczną na
+                          wskazany przeze mnie adres e-mail treści zgodnie z
+                          polityka prywatności.
+                        </span>
                       </label>
                     </fieldset>
-                    <p>
-                      You can unsubscribe at any time by clicking the link in
-                      the footer of our emails. For information about our
-                      privacy practices, please visit our website.
-                    </p>
-                  </div>
-                  <div className="content__gdprLegal">
-                    <p>
-                      We use Mailchimp as our marketing platform. By clicking
-                      below to subscribe, you acknowledge that your information
-                      will be transferred to Mailchimp for processing.{" "}
-                      <a href="https://mailchimp.com/legal/" target="_blank">
-                        Learn more about Mailchimp's privacy practices here.
-                      </a>
-                    </p>
                   </div>
                 </div>
 
@@ -79,8 +78,9 @@ const Newsletter = (props) => {
                     type="submit"
                     value="Subscribe"
                     name="subscribe"
+                    disabled
                     id="mc-embedded-subscribe"
-                    className="button"
+                    className="Newsletter__button button"
                   />
                 </div>
               </div>
