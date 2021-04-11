@@ -2,8 +2,13 @@ import React from "react";
 
 const tab = -1;
 const newsletterValidation = (e) => {
-  const button = document.getElementById("mc-embedded-subscribe");
-  e.target.checked ? (button.disabled = false) : (button.disabled = "true");
+  e.target.checked
+    ? ((document.getElementById(
+        "mc-embedded-subscribe",
+      ) as HTMLButtonElement).disabled = false)
+    : ((document.getElementById(
+        "mc-embedded-subscribe",
+      ) as HTMLButtonElement).disabled = "true");
 };
 const Newsletter = (props) => {
   return (
