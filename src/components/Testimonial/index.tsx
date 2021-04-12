@@ -32,6 +32,14 @@ export default class Testimonial extends Component {
       infinite: true,
       slidesToShow: 2.3,
       speed: 1000,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 1,
+          },
+        },
+      ],
     };
     return (
       <div className={styles.Carousel}>
