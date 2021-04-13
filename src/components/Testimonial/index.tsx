@@ -42,7 +42,7 @@ export default class Testimonial extends Component {
       ],
     };
     return (
-      <div className={styles.Carousel}>
+      <div className={styles.Carousel} id="testimonial">
         <h3 className={styles.Carousel__header}>Opinie o organizatorze</h3>
         <Slider ref={(c) => (this.slider = c)} {...settings}>
           <div key={1}>

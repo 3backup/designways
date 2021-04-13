@@ -30,9 +30,15 @@ export const OrganiserHeader = () => {
         </h1>
         <nav className="organiserHeader__nav organiserHeader__oneThird">
           <ul className="organiserHeader__ul">
-            <li className="organiserHeader__li">Opinie</li>
-            <li className="organiserHeader__li">O Organizatorze</li>
-            <li className="organiserHeader__li">Prowadzący</li>
+            <a href="#about" className="organiserHeader__li">
+              O Organizatorze
+            </a>
+            <a href="#speaker" className="organiserHeader__li">
+              Prowadzący
+            </a>
+            <a href="#testimonial" className="organiserHeader__li">
+              Opinie
+            </a>
           </ul>
         </nav>
       </div>

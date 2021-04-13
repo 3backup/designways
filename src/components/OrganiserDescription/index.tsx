@@ -5,7 +5,7 @@ import Logo from "../../images/logo-product-discovery.png";
 
 export const OrganiserDescription = () => {
   return (
-    <div className="OrganiserDescription">
+    <div className="OrganiserDescription" id="about">
       <div className="OrganiserDescription__title">
         Więcej o Product Discovery Pro
       </div>

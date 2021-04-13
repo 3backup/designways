@@ -42,12 +42,12 @@ export const OrganiserEvent = () => {
               Online
             </div>
             <div className="mainEvent__details--singleDetail">
-              <span className="mainEvent__details--span">Data</span>
-              22.04.2021 - 09:00
+              <span className="mainEvent__details--span">Czas Trwania</span>
+              3dni po 7h <br></br> 9:00 - 16:00
             </div>
             <div className="mainEvent__details--singleDetail">
-              <span className="mainEvent__details--span">Czas Tewania</span>
-              15 h 00 min
+              <span className="mainEvent__details--span">Data</span>
+              22-24.04.2021
             </div>
             <div className="mainEvent__details--singleDetail">
               <span className="mainEvent__details--span">Typ</span>

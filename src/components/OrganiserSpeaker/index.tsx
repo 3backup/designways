@@ -8,7 +8,7 @@ import Bartek from "../../images/bartosz-narzelski-prowadzacy-prodcut-discovery-
 
 export const OrganiserSpeaker = () => {
   return (
-    <div className="OrganiserSpeaker">
+    <div className="OrganiserSpeaker" id="speaker">
       <div className="OrganiserSpeaker__content">
         <p className="OrganiserSpeaker__title">Prowadzący</p>
         <SingleSpeaker

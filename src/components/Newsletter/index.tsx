@@ -13,7 +13,7 @@ const newsletterValidation = (e) => {
 };
 const Newsletter = () => {
   return (
-    <div className={styles.Newsletter__Contianer}>
+    <div className={styles.Newsletter__Contianer} id="#newsletter">
       <div className={styles.Newsletter__content}>
         <div className={styles.Newsletter__form}>
           <p className={styles.Newsletter__subheader}>Newsletter</p>
@@ -82,7 +82,7 @@ const Newsletter = () => {
                 <div className="clear">
                   <input
                     type="submit"
-                    value="Subscribe"
+                    value="Subskrybuj"
                     name="subscribe"
                     disabled
                     id="mc-embedded-subscribe"
