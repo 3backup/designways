@@ -295,7 +295,7 @@
       display: none;
     }
     &--price {
-      margin-right: 2rem;
+      margin-top: 1.6rem;
       font-family: Manrope;
       font-style: normal;
       font-weight: 600;
@@ -304,6 +304,13 @@
       display: flex;
       align-items: center;
       color: #806bff;
+      @media only screen and (max-width: 1024px) {
+        display: flex;
+        flex-direction: row;
+      }
+      @media only screen and (min-width: 1025px) {
+        display: none;
+      }
     }
     &--button {
       background-color: #2c2856;
@@ -355,6 +362,7 @@
     grid-template-rows: 1fr 2fr 2fr;
     @media only screen and (max-width: 1024px) {
       grid-template-columns: 1fr;
+      padding: 3rem;
     }
   }
   &__price {

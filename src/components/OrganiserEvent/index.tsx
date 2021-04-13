@@ -26,6 +26,7 @@ export const OrganiserEvent = () => {
             <div className="mainEvent__title--event">
               Certyfikowane Warsztaty Product Discovery Practitioner
             </div>
+            <div className="mainEvent__buttonMobile--price">2460,60 zł</div>
           </div>
           <div className="mainEvent__details">
             <div className="mainEvent__details--singleDetail">
@@ -54,20 +55,27 @@ export const OrganiserEvent = () => {
             </div>
           </div>
           <div className="mainEvent__readMore">
-            <a href="#" className="mainEvent__readMore--link">
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://productdiscovery.pro/warsztaty/"
+              className="mainEvent__readMore--link">
               Dowiedz się więcej
             </a>
           </div>
         </div>
         <div className="mainEvent__buttonMobile">
-          <div className="mainEvent__buttonMobile--price">1999 zł</div>
-          <a className="mainEvent__buttonMobile--button" href="">
+          <a
+            className="mainEvent__buttonMobile--button"
+            target="_blank"
+            rel="noreferrer"
+            href="https://productdiscovery.pro/warsztaty/">
             Dowiedz się więcej
           </a>
         </div>
       </div>
       <div className="mainEvent__discount">
-        KOD RABATOWY <p className="mainEvent__discount--single">W5554REDA</p>
+        KOD RABATOWY <p className="mainEvent__discount--single">designhub</p>
       </div>
     </div>
   );

@@ -10,16 +10,20 @@ export const OrganiserHeader = () => {
     <header className="organiserHeader">
       <div className="organiserHeader__menu">
         <div className="organiserHeader__oneThird">
-          <button type="button" className="organiserHeader__button">
-            <Image
-              src={backArrow}
-              alt="back arrow"
-              width={20}
-              height={20}
-              className="nav__imageButton"
-            />
-            <span className="organiserHeader__buttonSpan">Wróć do głównej</span>
-          </button>
+          <Link href="/">
+            <button type="button" className="organiserHeader__button">
+              <Image
+                src={backArrow}
+                alt="back arrow"
+                width={20}
+                height={20}
+                className="nav__imageButton"
+              />
+              <span className="organiserHeader__buttonSpan">
+                Wróć do głównej
+              </span>
+            </button>
+          </Link>
         </div>
         <h1 className="organiserHeader__organiserTitle organiserHeader__oneThird">
           Product Discovery Pro
