@@ -8,6 +8,9 @@
     padding: 0 4.4rem;
     justify-content: space-between;
     align-items: center;
+    @media only screen and (max-width: 768px) {
+      padding: 0 1rem;
+    }
   }
   &__organiserTitle {
     font-family: Manrope;
@@ -103,6 +106,7 @@
     color: #ffffff;
     @media only screen and (max-width: 1024px) {
       font-size: 26px;
+      line-height: 140%;
     }
   }
   &__p {
@@ -460,6 +464,9 @@
     font-size: 14px;
     line-height: 19px;
     color: #3a3c60;
+    @media only screen and (max-width: 768px) {
+      margin-top: 4rem;
+    }
     &--singleDetail {
       display: flex;
       flex-direction: column;
@@ -497,7 +504,6 @@
   flex-wrap: wrap;
   grid-column: 1;
   grid-row: 1;
-  gap: 0.6rem;
   &__singleTag {
     width: max-content;
     height: max-content;
@@ -506,6 +512,8 @@
     border-radius: 6px;
     font-family: Manrope;
     font-style: normal;
+    margin-right: 0.6rem;
+    margin-top: 0.6rem;
     font-weight: bold;
     font-size: 12px;
     line-height: 16px;
