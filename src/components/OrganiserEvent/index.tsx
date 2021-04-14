@@ -47,7 +47,7 @@ export const OrganiserEvent = () => {
             </div>
             <div className="mainEvent__details--singleDetail">
               <span className="mainEvent__details--span">Data</span>
-              22-24.04.2021
+              22-23.04.2021
             </div>
             <div className="mainEvent__details--singleDetail">
               <span className="mainEvent__details--span">Typ</span>
