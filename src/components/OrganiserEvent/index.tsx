@@ -43,7 +43,7 @@ export const OrganiserEvent = () => {
             </div>
             <div className="mainEvent__details--singleDetail">
               <span className="mainEvent__details--span">Czas Trwania</span>
-              3dni po 7h <br></br> 9:00 - 16:00
+              2dni po 7h <br></br> 9:00 - 16:00
             </div>
             <div className="mainEvent__details--singleDetail">
               <span className="mainEvent__details--span">Data</span>
@@ -75,7 +75,8 @@ export const OrganiserEvent = () => {
         </div>
       </div>
       <div className="mainEvent__discount">
-        KOD RABATOWY <p className="mainEvent__discount--single">designhub</p>
+        KOD RABATOWY -300zł
+        <p className="mainEvent__discount--single">designhub300</p>
       </div>
     </div>
   );

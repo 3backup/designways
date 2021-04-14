@@ -13,7 +13,7 @@ const newsletterValidation = (e) => {
 };
 const Newsletter = () => {
   return (
-    <div className={styles.Newsletter__Contianer} id="#newsletter">
+    <div className={styles.Newsletter__Contianer} id="newsletter">
       <div className={styles.Newsletter__content}>
         <div className={styles.Newsletter__form}>
           <p className={styles.Newsletter__subheader}>Newsletter</p>

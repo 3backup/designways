@@ -19,7 +19,7 @@ export const OrganiserNew = () => {
         </div>
 
         <div className={styles.oragniserNew__discount}>
-          Kod rabatowy -100zł <span>designhub</span>
+          Kod rabatowy -300zł <span>designhub300</span>
         </div>
       </div>
       <p className={styles.container__contact}>
