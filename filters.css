@@ -614,7 +614,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  margin-top: 6rem;
   border-top: 1px solid rgba(206, 211, 224, 0.4);
   padding: 6rem 0 6rem 0;
 }

@@ -2,12 +2,12 @@
 import React from "react";
 import { Head } from "../components/Head";
 import { Footer } from "../components/Footer";
-import { AuthChecker } from "../components/AuthChecker";
 import { HeaderFilter } from "../components/HeaderFilter";
 import AddEvent from "../components/AddEvent";
 import { Workshops } from "../components/Workshops";
 import { getEvents, getTags, getLevels } from "../util/contentfulPosts";
 import { Workshop, WorkshopLevel, WorkshopTag } from "../types";
+import Newsletter from "../components/Newsletter";
 
 type Props = {
   events: Workshop[];
@@ -21,7 +21,7 @@ export default function Filter({ events, tags, levels }: Props) {
       <Head />
       <HeaderFilter />
       <Workshops events={events} tags={tags} levels={levels} />
-      <AddEvent />
+      <Newsletter />
       <Footer />
     </>
   );

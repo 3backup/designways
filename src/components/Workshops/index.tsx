@@ -9,6 +9,7 @@ import {
 } from "../../types";
 import { WorkshopTagButton } from "../WorkshopTagButton";
 import { SortButton } from "./components/SortButton";
+import { OrganiserNew } from "../OrganiserNew";
 import { sortEvents } from "./helpers";
 import { WorkshopItem } from "../WorkshopItem";
 
@@ -165,6 +166,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         </div>
       </div>
 
+      <OrganiserNew />
       <div className="container container--big sortElement">
         <div className="sortElement__countEvents text__h6">
           Liczba znalezionych wydarzeń:
@@ -184,18 +186,19 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         </div>
       </div>
       <div className="container container--big" id="lecture">
-        {onGoingEvents.map((event) => (
+        {console.log(events)}
+
+        {onGoingEvents.map((event, index) => (
           <WorkshopItem
-            key={`${event.title}${dayjs(event.startDate).unix()}`}
+            key={`${event.title}${dayjs(event.startDate).unix()}${index}`}
             post={event}
           />
         ))}
 
         <div className="pastEvent text__h6"> Ubiegłe wydarzenia</div>
-
-        {oldEvents.map((event) => (
+        {oldEvents.map((event, index) => (
           <WorkshopItem
-            key={`${event.title}${dayjs(event.startDate).unix()}`}
+            key={`${event.title}${dayjs(event.startDate).unix()}${index}`}
             oldEvent
             post={event}
           />
