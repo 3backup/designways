@@ -23,10 +23,13 @@ $shorterWidth: 8rem;
   }
   &__containerLevel {
     display: flex;
+    flex-wrap: wrap;
+
     flex-direction: row;
     &--singletag {
       display: flex;
       margin-right: 1.6rem;
+      margin-bottom: 0.8rem;
     }
   }
   &__tag {

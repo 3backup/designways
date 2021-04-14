@@ -152,10 +152,10 @@ export const SignupForm = (props) => {
       endDateTime: "",
       duration: "",
       pickedLevel: null,
+      pickedTags: [],
     },
     validate,
     onSubmit: (values) => {
-      console.log(values.pickedLevel);
       const formData = files[0];
       //   const handleSubmit = async () => {
 
@@ -647,7 +647,7 @@ export const SignupForm = (props) => {
                 name="pickedLevel"
                 onChange={(e) => {
                   formik.handleChange(e);
-                  formik.values.pickedLevel = "ffff";
+                  formik.values.pickedLevel = "59AM7gZUTBkQyob0MfaTjt";
                   levelTouched = true;
                 }}
                 onBlur={formik.handleBlur}
@@ -665,7 +665,7 @@ export const SignupForm = (props) => {
                 className="form__radiobutton"
                 onChange={(e) => {
                   formik.handleChange(e);
-                  formik.values.pickedLevel = "one";
+                  formik.values.pickedLevel = "2P6lZZ5SHBZgngU6yU6b8c";
                 }}
                 onBlur={formik.handleBlur}
                 value="Średniozaawansowany"
@@ -682,7 +682,7 @@ export const SignupForm = (props) => {
                 className="form__radiobutton"
                 onChange={(e) => {
                   formik.handleChange(e);
-                  formik.values.pickedLevel = "two";
+                  formik.values.pickedLevel = "6nPuAbaB5PTYdwq19QAk12";
                 }}
                 onBlur={formik.handleBlur}
                 value="Zaawansowany"
@@ -699,6 +699,195 @@ export const SignupForm = (props) => {
           </div>
         </div>
       </div>
+      {/* Tags  */}
+
+      <div className="form__inputContainer">
+        <div
+          className={`form__number ${
+            formik.values.pickedLevel ? "form__number--active" : ""
+          }`}>
+          {`${formik.values.pickedLevel ? "" : "8"}`}
+
+          <img
+            src={checkWhite}
+            className={`form__numberCheck ${
+              formik.values.pickedLevel ? "form__number--hide" : ""
+            }`}
+            alt=""
+          />
+        </div>
+        <div className="form__singleInputWithLabel">
+          <div className="form__label">Określ tematykę (maks 4 tagi)</div>
+          <div className="form__containerLevel">
+            <label
+              className="form__containerLevel--singletag"
+              htmlFor="ProdcutManagement">
+              <input
+                className="form__radiobutton"
+                type="checkbox"
+                id="ProdcutManagement"
+                name="ProdcutManagement"
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  formik.values.pickedTags.includes("41R5fXzAKXi4Gc0ypkgDVI")
+                    ? formik.values.pickedTags.splice(
+                        formik.values.pickedTags.indexOf(
+                          "41R5fXzAKXi4Gc0ypkgDVI",
+                        ),
+                        1,
+                      )
+                    : formik.values.pickedTags.push("41R5fXzAKXi4Gc0ypkgDVI");
+                  levelTouched = true;
+                }}
+                onBlur={formik.handleBlur}
+                value="Prodcut Management"
+              />
+              <span className="form__tag">Prodcut Management</span>
+            </label>
+            <label
+              className="form__containerLevel--singletag"
+              htmlFor="Analityka">
+              <input
+                type="checkbox"
+                id="Analityka"
+                name="Analityka"
+                className="form__radiobutton"
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  formik.values.pickedLevel = "one";
+                }}
+                onBlur={formik.handleBlur}
+                value="Analityka"
+              />
+              <span className="form__tag">Analityka</span>
+            </label>
+            <label
+              className="form__containerLevel--singletag"
+              htmlFor="Branding">
+              <input
+                type="checkbox"
+                id="Branding"
+                name="Branding"
+                className="form__radiobutton"
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  formik.values.pickedTags.includes("41R5fXzAKXi4Gc0ypkgDVI")
+                    ? formik.values.pickedTags.splice(
+                        formik.values.pickedTags.indexOf(
+                          "41R5fXzAKXi4Gc0ypkgDVI",
+                        ),
+                        1,
+                      )
+                    : formik.values.pickedTags.push("41R5fXzAKXi4Gc0ypkgDVI");
+                }}
+                onBlur={formik.handleBlur}
+                value="Branding"
+              />
+              <span className="form__tag">Branding</span>
+            </label>
+            <label
+              className="form__containerLevel--singletag"
+              htmlFor="ProductDesign">
+              <input
+                type="checkbox"
+                id="ProductDesign"
+                name="pickedLevel"
+                className="form__radiobutton"
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  formik.values.pickedTags.includes("41R5fXzAKXi4Gc0ypkgDVI")
+                    ? formik.values.pickedTags.splice(
+                        formik.values.pickedTags.indexOf(
+                          "41R5fXzAKXi4Gc0ypkgDVI",
+                        ),
+                        1,
+                      )
+                    : formik.values.pickedTags.push("41R5fXzAKXi4Gc0ypkgDVI");
+                }}
+                onBlur={formik.handleBlur}
+                value="Product Design"
+              />
+              <span className="form__tag">Product Design</span>
+            </label>
+            <label
+              className="form__containerLevel--singletag"
+              htmlFor="ServiceDesign">
+              <input
+                type="checkbox"
+                id="ServiceDesign"
+                name="ServiceDesign"
+                className="form__radiobutton"
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  formik.values.pickedTags.includes("41R5fXzAKXi4Gc0ypkgDVI")
+                    ? formik.values.pickedTags.splice(
+                        formik.values.pickedTags.indexOf(
+                          "41R5fXzAKXi4Gc0ypkgDVI",
+                        ),
+                        1,
+                      )
+                    : formik.values.pickedTags.push("41R5fXzAKXi4Gc0ypkgDVI");
+                }}
+                onBlur={formik.handleBlur}
+                value="Service design"
+              />
+              <span className="form__tag">Service design</span>
+            </label>
+            <label className="form__containerLevel--singletag" htmlFor="UX">
+              <input
+                type="checkbox"
+                id="UX"
+                name="UX"
+                className="form__radiobutton"
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  formik.values.pickedTags.includes("41R5fXzAKXi4Gc0ypkgDVI")
+                    ? formik.values.pickedTags.splice(
+                        formik.values.pickedTags.indexOf(
+                          "41R5fXzAKXi4Gc0ypkgDVI",
+                        ),
+                        1,
+                      )
+                    : formik.values.pickedTags.push("41R5fXzAKXi4Gc0ypkgDVI");
+                }}
+                onBlur={formik.handleBlur}
+                value="UX"
+              />
+              <span className="form__tag">UX</span>
+            </label>
+            <label className="form__containerLevel--singletag" htmlFor="UI">
+              <input
+                type="checkbox"
+                id="UI"
+                name="UI"
+                className="form__radiobutton"
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  formik.values.pickedTags.includes("41R5fXzAKXi4Gc0ypkgDVI")
+                    ? formik.values.pickedTags.splice(
+                        formik.values.pickedTags.indexOf(
+                          "41R5fXzAKXi4Gc0ypkgDVI",
+                        ),
+                        1,
+                      )
+                    : formik.values.pickedTags.push("41R5fXzAKXi4Gc0ypkgDVI");
+                }}
+                onBlur={formik.handleBlur}
+                value="UI"
+              />
+              <span className="form__tag">UI</span>
+            </label>
+          </div>
+          <div className="form__errorHandler">
+            {formik.touched.spots && formik.errors.spots ? (
+              <div className="form__errorHandlerInside">
+                {formik.errors.spots}
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+
       <button type="submit" className="form__buttonSuggest">
         Wyślij do weryfikacji
       </button>
