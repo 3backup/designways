@@ -16,10 +16,13 @@ type Props = {
 };
 
 export default function Filter({ events, tags, levels }: Props) {
+  console.log(events);
+
   return (
     <>
       <Head />
       <HeaderFilter />
+      <pre>{JSON.stringify(events)}</pre>
       <Workshops events={events} tags={tags} levels={levels} />
       <Newsletter />
       <Footer />
