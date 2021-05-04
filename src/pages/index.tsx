@@ -16,8 +16,6 @@ type Props = {
 };
 
 export default function Filter({ events, tags, levels }: Props) {
-  console.log(events);
-
   return (
     <>
       <Head />
