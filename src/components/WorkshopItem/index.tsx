@@ -35,7 +35,8 @@ export const WorkshopItem = (props) => {
             href={props.post.url}
             target="_blank"
             rel="noreferrer"
-            className="lecture__join buttonDesktop">
+            className="lecture__join buttonDesktop"
+          >
             Dowiedz się więcej
           </a>
         </div>

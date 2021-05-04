@@ -43,6 +43,6 @@ export async function getStaticProps() {
       events,
       levels,
     },
-    revalidate: 60,
+    revalidate: 2,
   };
 }
