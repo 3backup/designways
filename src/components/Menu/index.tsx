@@ -29,6 +29,11 @@ export const Menu = () => {
         </a>
         <ul className="nav__list display__row">
           <li className="nav__element">
+            <a className="nav__element" href="#newsletter">
+              Newsletter
+            </a>
+          </li>
+          <li className="nav__element">
             <a className="nav__element" href="mailto:hello@designways.io">
               hello@designways.io
             </a>
