@@ -120,7 +120,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
     <>
       <div className="container container--xl filter__main">
         <div className="tag__container">
-          <h6 className="text__h6">Wybierz tagi:</h6>
+          <h6 className="text__h6">Tagi:</h6>
           <div className="tag__tags">
             {tags.map((tag) => (
               <WorkshopTagButton
