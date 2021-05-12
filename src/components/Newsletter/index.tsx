@@ -17,12 +17,11 @@ const Newsletter = () => {
       <div className={styles.Newsletter__content}>
         <div className={styles.Newsletter__form}>
           <p className={styles.Newsletter__subheader}>Newsletter</p>
-          <h3 className={styles.Newsletter__header}>
-            Comiesięczna lista wydarzeń w Twojej skrzynce mailowej!
-          </h3>
+          <h3 className={styles.Newsletter__header}>Chcesz być na bieżąco?</h3>
           <p className={styles.Newsletter__paragraph}>
-            Zostaw swój adres email i poznaj wydarzenia, które pomogą Ci w
-            rozwoju!
+            Pierwsza_y dowiaduj się o najciekawszych wydarzeniach, zgarniaj kody
+            rabatowe czy poznawaj nowe możliwości rozwojowe, dopisując się do
+            naszego newslettera.
           </p>
           <div id="mc_embed_signup">
             <form
