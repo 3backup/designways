@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "../../styles/Newsletter.module.scss";
 
 const tab = -1;
-const newsletterValidation = (e) => {
-  e.target.checked
-    ? ((document.getElementById(
-        "mc-embedded-subscribe",
-      ) as HTMLButtonElement).disabled = false)
-    : ((document.getElementById(
-        "mc-embedded-subscribe",
-      ) as HTMLButtonElement).disabled = true);
-};
+
 const Newsletter = () => {
+  const subscribeBtnRef = useRef<HTMLButtonElement>();
+
+  const newsletterValidation = ({
+    target,
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    if (subscribeBtnRef.current) {
+      subscribeBtnRef.current.disabled = target.checked ? true : false
+    }
+  };
+
   return (
     <div className={styles.Newsletter__Contianer} id="newsletter">
       <div className={styles.Newsletter__content}>
@@ -31,7 +33,8 @@ const Newsletter = () => {
               name="mc-embedded-subscribe-form"
               className="validate"
               target="_blank"
-              noValidate>
+              noValidate
+            >
               <div id="mc_embed_signup_scroll">
                 <input
                   type="email"
@@ -43,18 +46,21 @@ const Newsletter = () => {
                 />
                 <div
                   id="mergeRow-gdpr"
-                  className="ąmergeRow gdpr-mergeRow content__gdprBlock mc-field-group">
+                  className="ąmergeRow gdpr-mergeRow content__gdprBlock mc-field-group"
+                >
                   <div className="content__gdpr ">
                     <fieldset
                       className="mc_fieldset gdprRequired mc-field-group"
-                      name="interestgroup_field">
+                      name="interestgroup_field"
+                    >
                       <label
                         className={`checkbox subfield ${styles.Newsletter__contentGdpr}`}
-                        htmlFor="gdpr_60219">
+                        htmlFor="gdpr_60219"
+                      >
                         <input
                           type="checkbox"
                           id="gdpr_60219"
-                          onChange={(e) => newsletterValidation(e)}
+                          onChange={newsletterValidation}
                           name="gdpr[60219]"
                           defaultValue="Y"
                           className={`av-checkbox ${styles.Newsletter__checkbox}`}
@@ -70,11 +76,9 @@ const Newsletter = () => {
                 </div>
                 <div aria-hidden="true">
                   <input
-                    className={styles.fff}
                     type="text"
                     name="b_4cfaa6a48ce77c6979d19881a_6ca63a52d1"
                     tabIndex={tab}
-                    value=""
                   />
                 </div>
 
@@ -85,6 +89,7 @@ const Newsletter = () => {
                     name="subscribe"
                     disabled
                     id="mc-embedded-subscribe"
+                    ref={subscribeBtnRef}
                     className={`${styles.Newsletter__button} button`}
                   />
                 </div>

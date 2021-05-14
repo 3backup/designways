@@ -20,6 +20,11 @@ export type Workshop = {
   url: string;
 };
 
+export type FormattedWorkshop = Workshop & {
+  normalizedDateStart: number,
+  normalizedDateEnd: number
+}
+
 export type WorkshopLevel = {
   name: string;
 };
@@ -29,9 +34,11 @@ export type WorkshopTag = {
 };
 
 export type FileSys = {
-  file: {
-    url: string;
-  };
+  fields : {
+    file: {
+      url: string;
+    };
+  },
   title: string;
 };
 

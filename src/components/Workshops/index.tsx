@@ -1,7 +1,8 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import dayjs from "dayjs";
 import {
+  FormattedWorkshop,
   Workshop,
   WorkshopLevel,
   WorkshopSortType,
@@ -27,41 +28,53 @@ type Props = {
 export const Workshops = ({ events, tags, levels }: Props) => {
   // aktualne sortowanie i aktualnie wybrane wydarzenia
   const [sortType, setSortType] = useState<WorkshopSortType>(
-    WorkshopSortType.ByDate,
+    WorkshopSortType.ByDate
   );
+
+  const formattedWorkshops: FormattedWorkshop[] = useMemo(
+    () =>
+      events.map((event) => ({
+        ...event,
+        normalizedDateStart: dayjs(event.startDate).unix(),
+        normalizedDateEnd: dayjs(event.endDate).unix(),
+      })),
+    [events]
+  );
+
   const [currentTags, setCurrentTags] = useState<WorkshopTag[]>([]);
   const [currentLevels, setCurrentLevels] = useState<WorkshopLevel[]>([]);
   const [currentPriceFilters, setCurrentPriceFilters] = useState<PriceFilter[]>(
-    [],
+    []
   );
+  const dateNow = dayjs().unix();
 
   const toggleTag = (tag: WorkshopTag) =>
     setCurrentTags(
       currentTags.includes(tag)
         ? currentTags.filter((current) => current.name !== tag.name)
-        : [...currentTags, tag],
+        : [...currentTags, tag]
     );
   const toggleLevel = (level: WorkshopLevel) =>
     setCurrentLevels(
       currentLevels.includes(level)
         ? currentLevels.filter((current) => current.name !== level.name)
-        : [...currentLevels, level],
+        : [...currentLevels, level]
     );
 
   const togglePrice = (filter: PriceFilter) =>
     setCurrentPriceFilters(
       currentPriceFilters.includes(filter)
         ? currentPriceFilters.filter((current) => current !== filter)
-        : [...currentPriceFilters, filter],
+        : [...currentPriceFilters, filter]
     );
 
   const filteredEventsCalculated = useMemo(
     () =>
-      events.filter((event) => {
+      formattedWorkshops.filter((event) => {
         if (currentTags.length) {
           const tagsNames = currentTags.map((filter) => filter.name);
           const tagsMatched = event.tags.filter((eventTag) =>
-            tagsNames.includes(eventTag.fields.name),
+            tagsNames.includes(eventTag.fields.name)
           );
           if (!tagsMatched.length) {
             return false;
@@ -80,7 +93,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
           const eventPriceType =
             event.price > 0 ? PriceFilter.Paid : PriceFilter.Free;
           const currentPriceFiltersMatched = currentPriceFilters.includes(
-            eventPriceType,
+            eventPriceType
           );
           if (!currentPriceFiltersMatched) {
             return false;
@@ -89,32 +102,35 @@ export const Workshops = ({ events, tags, levels }: Props) => {
 
         return true;
       }),
-    [events, currentLevels, currentTags, currentPriceFilters],
+    [formattedWorkshops, currentLevels, currentTags, currentPriceFilters]
   );
 
   const oldEvents = useMemo(
     () =>
       sortEvents(
         filteredEventsCalculated.filter(
-          (event) => dayjs(event.startDate).unix() < dayjs().unix(),
+          (event) => event.normalizedDateStart < dateNow
         ),
         sortType,
-        true,
+        true
       ),
-    [filteredEventsCalculated, sortType],
+    [filteredEventsCalculated, sortType]
   );
 
   const onGoingEvents = useMemo(
     () =>
       sortEvents(
         filteredEventsCalculated.filter(
-          (event) => dayjs(event.startDate).unix() > dayjs().unix(),
+          (event) => event.normalizedDateStart > dateNow
         ),
         sortType,
-        false,
+        false
       ),
-    [filteredEventsCalculated, sortType],
+    [filteredEventsCalculated, sortType]
   );
+
+  console.log('Old', oldEvents)
+  console.log('New', onGoingEvents)
 
   return (
     <>
@@ -189,8 +205,9 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         <div>
           {onGoingEvents.map((event, index) => (
             <WorkshopItem
-              key={`${event.title}${dayjs(event.startDate).unix()}${index}`}
-              post={event}
+              key={`${event.title}-${index}`}
+              workshop={event}
+              isActive
             />
           ))}
         </div>
@@ -198,9 +215,8 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         <div>
           {oldEvents.map((event, index) => (
             <WorkshopItem
-              key={`${event.title}${dayjs(event.startDate).unix()}${index}`}
-              oldEvent
-              post={event}
+              key={`${event.title}-${index}`}
+              workshop={event}
             />
           ))}
         </div>

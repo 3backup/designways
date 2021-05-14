@@ -1,41 +1,40 @@
 /* eslint-disable prettier/prettier */
 import dayjs from "dayjs";
 import React from "react";
-import { Workshop } from "../../types";
+import { FormattedWorkshop, Workshop } from "../../types";
 import { formatDuration, formatPriceWithCurrency } from "./helpers";
 import CertificateImage from "../../images/np_certificate_1117192_000000 1.svg";
 
 type Props = {
-  workshop: Workshop;
-  customClass: string;
+  workshop: FormattedWorkshop;
+  isActive?: Boolean;
 };
 
-export const WorkshopItem = (props) => {
+export const WorkshopItem = ({ workshop, isActive = false }: Props) => {
   return (
-    <div className={props.oldEvent ? "lecture lecture--nonActive" : "lecture"}>
+    <div className={isActive ? "lecture" : "lecture lecture--nonActive"}>
       <div className="lecture__half">
         <img
           className="lecture__image"
-          src={props.post.image.fields.file.url}
-          alt={props.post.title}
+          src={workshop.image.fields.file.url}
+          alt={workshop.title}
         />
         <div className="lecture__description">
           <div className="lecture__tags">
-            {props.post.tags.map((singleTag) => (
+            {workshop.tags.map((singleTag) => (
               <div className="tag__single tag__single--small">
                 {singleTag.fields.name}
               </div>
             ))}
           </div>
-          <div className="level level__basic">
-            {props.post.level.fields.name}
-          </div>
-          <div className="lecture__title">{props.post.title} </div>
+          <div className="level level__basic">{workshop.level.fields.name}</div>
+          <div className="lecture__title">{workshop.title} </div>
           <a
-            href={props.post.url}
+            href={workshop.url}
             target="_blank"
             rel="noreferrer"
-            className="lecture__join buttonDesktop">
+            className="lecture__join buttonDesktop"
+          >
             Dowiedz się więcej
           </a>
         </div>
@@ -43,31 +42,31 @@ export const WorkshopItem = (props) => {
       <div className="lecture__half lecture__rightGrid">
         <div className="lecture__rightGrid__borderAndSpacing">
           <span className="lecture__rightGrid--span">Prowadzący</span>
-          {props.post.speaker}
+          {workshop.speaker}
         </div>
         <div className="lecture__rightGrid__borderAndSpacing">
           <span className="lecture__rightGrid--span">Data</span>
-          {dayjs(props.post.startDate).format("DD.MM.YYYY - HH:mm")}
+          {dayjs(workshop.startDate).format("DD.MM.YYYY - HH:mm")}
         </div>
         <div>
           <span className="lecture__rightGrid--span">Czas Trwania</span>
-          {formatDuration(props.post.duration)}
+          {formatDuration(workshop.duration)}
         </div>
         <div className="lecture__rightGrid__borderAndSpacing">
           <span className="lecture__rightGrid--span">Lokalizacja</span>
-          {props.post.location}
+          {workshop.location}
         </div>
         <div className="lecture__rightGrid__borderAndSpacing">
           <span className="lecture__rightGrid--span">Typ</span>
-          {props.post.type}
+          {workshop.type}
         </div>
         <div>
           <span className="lecture__rightGrid--span">Liczba Miejsc</span>
-          {props.post.spots}
+          {workshop.spots}
         </div>
         <div className="lecture__rightGrid__price">
-          <div>{formatPriceWithCurrency(props.post.price)}</div>
-          {props.post.certificate ? (
+          <div>{formatPriceWithCurrency(workshop.price)}</div>
+          {workshop.certificate ? (
             <div className="certificate">
               <img
                 src={CertificateImage}
@@ -84,7 +83,7 @@ export const WorkshopItem = (props) => {
         </div>
       </div>
       <div className="lecture__half buttonMobile">
-        <a className="lecture__join buttonMobile__cta" href={props.post.url}>
+        <a className="lecture__join buttonMobile__cta" href={workshop.url}>
           Dowiedz się więcej
         </a>
       </div>
