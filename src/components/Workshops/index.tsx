@@ -221,6 +221,11 @@ export const Workshops = ({ events, tags, levels }: Props) => {
           ))}
         </div>
       </div>
+      <pre>
+        {JSON.stringify(formattedWorkshops)}
+        {JSON.stringify(oldEvents)}
+        {JSON.stringify(onGoingEvents)}
+      </pre>
     </>
   );
 };
