@@ -4,7 +4,7 @@ import styles from "../../styles/Newsletter.module.scss";
 const tab = -1;
 
 const Newsletter = () => {
-  const subscribeBtnRef = useRef<HTMLButtonElement>();
+  const subscribeBtnRef = useRef<HTMLInputElement>();
 
   const newsletterValidation = ({
     target,
