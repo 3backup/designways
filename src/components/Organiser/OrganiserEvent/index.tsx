@@ -3,6 +3,7 @@ import React from "react";
 import Logo from "images/logo-product-discovery.png";
 
 export const OrganiserEvent = () => {
+  
   return (
     <div className="mainEvent__withDiscount">
       <div className="mainEvent">

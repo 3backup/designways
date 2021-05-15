@@ -1,6 +1,4 @@
-import dayjs from "dayjs";
-
-import { FormattedWorkshop, Workshop, WorkshopSortType } from "../../types";
+import { FormattedWorkshop, WorkshopSortType } from "../../types";
 
 export const sortEvents = (
   events: FormattedWorkshop[],

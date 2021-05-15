@@ -3,7 +3,6 @@ import React from "react";
 import { Head } from "../components/Head";
 import { Footer } from "../components/Footer";
 import { HeaderFilter } from "../components/HeaderFilter";
-import AddEvent from "../components/AddEvent";
 import { Workshops } from "../components/Workshops";
 import { getEvents, getTags, getLevels } from "../util/contentfulPosts";
 import { Workshop, WorkshopLevel, WorkshopTag } from "../types";

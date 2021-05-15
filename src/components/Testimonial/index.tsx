@@ -8,44 +8,39 @@ import SingleTestimonial from "./SingleTestimoial/SingleTestimonial";
 import left from "./Left.svg";
 import right from "./Right.svg";
 
+const sliderSettings = {
+  className: "center",
+  centerMode: true,
+  autoplay: false,
+  infinite: true,
+  slidesToShow: 2.3,
+  speed: 1000,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+};
 export class Testimonial extends Component {
   slider: any;
 
-  constructor(props) {
-    super(props);
-    this.next = this.next.bind(this);
-    this.previous = this.previous.bind(this);
-  }
-
-  next() {
+  next = () => {
     this.slider.slickNext();
-  }
+  };
 
-  previous() {
+  previous = () => {
     this.slider.slickPrev();
-  }
+  };
 
   render() {
-    const settings = {
-      className: "center",
-      centerMode: true,
-      autoplay: false,
-      infinite: true,
-      slidesToShow: 2.3,
-      speed: 1000,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 1,
-          },
-        },
-      ],
-    };
+   
     return (
       <div className={styles.Carousel} id="testimonial">
         <h3 className={styles.Carousel__header}>Opinie o organizatorze</h3>
-        <Slider ref={(c) => (this.slider = c)} {...settings}>
+        <Slider ref={(c) => (this.slider = c)} {...sliderSettings}>
           <div key={1}>
             <SingleTestimonial
               text="Warsztaty z Product Management 3.0. toolbox, które odbyliśmy z Michałem to dobrze zainwestowany czas! Dynamiczna formuła pracy w formie prezentacji, rozmowy i wielu ćwiczeń warsztatowych pomogła nam zrozumieć i „doświadczyć” korzyści płynących z określonych metod i procesu. Zdecydowanie najbardziej wartościowa część to wspólna praca z zespołem z zastosowaniem Evidence Based Management, ćwiczenie technik i testów walidacyjnych (z użyciem MVP) oraz projektowanie propozycji wartości. Zdecydowanie polecam!"
@@ -108,13 +103,15 @@ export class Testimonial extends Component {
           <button
             className={styles.Carousel__previous}
             onClick={this.previous}
-            type="button">
+            type="button"
+          >
             <img src={left} alt="" />
           </button>
           <button
             className={styles.Carousel__next}
             onClick={this.next}
-            type="button">
+            type="button"
+          >
             <img src={right} alt="" />
           </button>
         </div>

@@ -45,3 +45,12 @@ export type FileSys = {
 export type ExtendObject<T> = {
   fields: T;
 };
+
+export type Speaker = {
+  name: string;
+  image: string;
+  firstParagraph: string;
+  secondParagraph: string;
+  facebook: string;
+  linkedin: string;
+}
