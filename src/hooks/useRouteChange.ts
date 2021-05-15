@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { pageview } from "../util/analytics";
 
 export const useRouteChange = () => {
-    const router = useRouter();
+  const router = useRouter();
 
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
@@ -15,4 +15,4 @@ export const useRouteChange = () => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
-}
+};

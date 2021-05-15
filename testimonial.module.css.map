@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,SAAS,CAAC;EACR,KAAK,EAAE,IAAI;EACX,QAAQ,EAAE,MAAM;CACjB;;AACD,AAAA,aAAa,CAAC;EACZ,MAAM,EAAE,MAAM;CACf;;AAID,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,0BAA0B;CACpC;;AACD,AACE,cADY,CACZ,sDAAsD,CAAC;EACrD,OAAO,EAAE,YAAY;CACtB",
-    "sources": [
-        "src/components/Testimonial/testimonial.module.scss"
-    ],
-    "names": [],
-    "file": "testimonial.module.css"
-}

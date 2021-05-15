@@ -2,15 +2,16 @@ import React from "react";
 import Facebook from "images/Facebook_purple.svg";
 import LinkedIn from "images/LinkedIN_purple.svg";
 
-const SignleSpeaker = (props) => {
-  const {
-    name,
-    image,
-    firstParagraph,
-    secondParagraph,
-    facebook,
-    linkedin,
-  } = props;
+import { Speaker } from "../../../../types";
+
+export const SingleSpeaker = ({
+  name,
+  image,
+  firstParagraph,
+  secondParagraph,
+  facebook,
+  linkedin,
+}: Speaker) => {
   return (
     <div className="SingleSpeaker">
       <div className="SingleSpeaker__image">
@@ -27,7 +28,8 @@ const SignleSpeaker = (props) => {
             className="SingleSpeaker__socials--single"
             target="_blank"
             rel="noreferrer"
-            href={linkedin}>
+            href={linkedin}
+          >
             <img src={LinkedIn} alt="" />
           </a>
           <a href={facebook} target="_blank" rel="noreferrer">
@@ -38,5 +40,3 @@ const SignleSpeaker = (props) => {
     </div>
   );
 };
-
-export default SignleSpeaker;

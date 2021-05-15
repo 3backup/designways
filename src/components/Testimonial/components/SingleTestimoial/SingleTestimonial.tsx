@@ -8,7 +8,7 @@ type Props = {
   company: string;
 };
 
-const SingleTestimonial = ({ text, author, company }: Props) => {
+export const SingleTestimonial = ({ text, author, company }: Props) => {
   return (
     <div className={styles.singleTestimonial__container}>
       <div className={styles.signleTestimonial__quotes}>
@@ -20,4 +20,3 @@ const SingleTestimonial = ({ text, author, company }: Props) => {
     </div>
   );
 };
-export default SingleTestimonial;
