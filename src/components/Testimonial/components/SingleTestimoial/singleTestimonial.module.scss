@@ -1,0 +1,63 @@
+.singleTestimonial {
+  &__container {
+    padding: 4rem 6.5rem;
+    max-width: 805px;
+    margin: 0 auto;
+    position: relative;
+    opacity: 0.3;
+    @media only screen and (max-width: 1200px) {
+      padding: 3rem;
+    }
+    &:after {
+      content: "";
+      background: #dfe0e4;
+      position: absolute;
+      top: 55px;
+      right: 0;
+      opacity: 1;
+      height: 330px;
+      width: 1px;
+    }
+    &:before {
+      content: "";
+      background: #dfe0e4;
+      position: absolute;
+      top: 55px;
+      left: 0;
+      opacity: 1;
+      height: 330px;
+      width: 1px;
+    }
+  }
+  &__text {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 180%;
+    color: #000000;
+    margin: 23px 0px;
+  }
+  &__author {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 140%;
+    /* or 22px */
+    display: flex;
+    align-items: center;
+    color: #000000;
+    margin: 4px 0px;
+  }
+  &__company {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    margin: 4px 0px;
+
+    color: #9d9ebe;
+  }
+}

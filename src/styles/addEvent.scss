@@ -1,0 +1,173 @@
+$shortWidth: 12rem;
+$shorterWidth: 8rem;
+.container {
+  &__addEvent {
+    width: 110.5rem;
+  }
+}
+.form {
+  &__container {
+    background: #ffffff;
+    border: 1px solid #f3f3f3;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.01),
+      0px 15px 60px -28px rgba(23, 23, 28, 0.17);
+    border-radius: 13px;
+    padding: 5rem 15rem;
+    margin-top: -34rem;
+    display: flex;
+    justify-content: flex-start;
+    & > * {
+      width: 100%;
+    }
+  }
+  &__form {
+    display: flex;
+    width: 1fr;
+    flex-direction: column;
+  }
+  &__singleInputWithLabel--elements {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 4rem;
+  }
+  &__twoInputs {
+    display: grid;
+    grid-template-columns: $shortWidth $shorterWidth;
+    column-gap: 1.8rem;
+  }
+  &__inputContainer {
+    display: grid;
+    grid-template-columns: 8rem auto;
+    margin: 20px 0;
+  }
+  &__number {
+    background: linear-gradient(0deg, #7d4ce6, #7d4ce6),
+      linear-gradient(0deg, #f89500, #f89500),
+      linear-gradient(0deg, #806bff, #806bff),
+      conic-gradient(
+        from 31.85deg at 8.6% 26.83%,
+        #001aff -0.46deg,
+        #001aff 69.24deg,
+        #2400ff 134.1deg,
+        rgba(0, 7, 181, 0.42) 197.02deg,
+        #2973ff 241.88deg,
+        #3fa3ff 276.49deg,
+        #99daff 358.81deg,
+        #001aff 359.54deg,
+        #001aff 429.24deg
+      );
+    border-radius: 42px;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 20px;
+    width: 3.4rem;
+    height: 3.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    color: #fff;
+  }
+  &__label {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 150%;
+    margin-bottom: 1.2rem;
+    color: #8a8cb9;
+    &--diff {
+      margin-bottom: 0;
+    }
+  }
+  &__buttonSuggest {
+    background: linear-gradient(0deg, #7d4ce6, #7d4ce6),
+      linear-gradient(0deg, #f89500, #f89500),
+      linear-gradient(0deg, #806bff, #806bff),
+      conic-gradient(
+        from 31.85deg at 8.6% 26.83%,
+        #001aff -0.46deg,
+        #001aff 69.24deg,
+        #2400ff 134.1deg,
+        rgba(0, 7, 181, 0.42) 197.02deg,
+        #2973ff 241.88deg,
+        #3fa3ff 276.49deg,
+        #99daff 358.81deg,
+        #001aff 359.54deg,
+        #001aff 429.24deg
+      );
+    box-shadow: 0px 11px 32px -5px rgba(153, 126, 211, 0.33);
+    border-radius: 10px;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 25px;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    height: 5.9rem;
+    margin: 1rem 0;
+  }
+  &__input {
+    width: 100%;
+    background: rgba(239, 238, 244, 0.6);
+    border: 1px solid #e0e1ed;
+    box-sizing: border-box;
+    padding: 8px 18px;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    color: #575983;
+    border-radius: 6px;
+    height: 42px;
+    &::placeholder {
+      color: hsla(237, 20%, 43%, 0.5);
+    }
+    &--short {
+      width: $shortWidth;
+    }
+    &--shorter {
+      width: $shorterWidth;
+    }
+  }
+  &__title {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 38px;
+    line-height: 52px;
+    display: flex;
+    align-items: center;
+    color: #2c2856;
+    margin: 4rem 0 8rem 0;
+  }
+  &__backButtonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    height: 22px;
+  }
+  &__backButton {
+    border: none;
+    background-color: transparent;
+    color: #8a8cb9;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 600;
+    display: flex;
+    align-content: cetner;
+    height: 22px;
+    font-size: 13px;
+    line-height: 150%;
+    &__text {
+      margin-left: 1rem;
+    }
+  }
+}

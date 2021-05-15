@@ -1,0 +1,45 @@
+.Carousel {
+  width: 100%;
+  overflow: hidden;
+  padding: 8rem 0;
+  &__previous {
+    background: #ffffff;
+    width: 11rem;
+    height: 5.5rem;
+    opacity: 1;
+    cursor: pointer;
+    border: 1.18605px solid #000000;
+    box-sizing: border-box;
+    border-radius: 84.1855px 0px 0px 84.1855px;
+    img {
+      margin-top: 4px;
+    }
+  }
+  &__next {
+    background: #ffffff;
+    opacity: 1;
+    width: 11rem;
+    height: 5.5rem;
+    cursor: pointer;
+    border: 1.18605px solid #000000;
+    box-sizing: border-box;
+    border-radius: 0px 84.1855px 84.1855px 0;
+    img {
+      margin-top: 4px;
+    }
+  }
+  &__header {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    text-align: cetner;
+    font-size: 24px;
+    line-height: 140%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    margin-bottom: 4rem;
+    color: #2a2d50;
+  }
+}
