@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./testimonial.module.scss";
 
-import SingleTestimonial from "./SingleTestimoial/SingleTestimonial";
+import { SingleTestimonial } from "./components/SingleTestimoial/SingleTestimonial";
 import left from "./Left.svg";
 import right from "./Right.svg";
 
