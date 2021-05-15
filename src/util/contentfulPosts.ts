@@ -9,6 +9,13 @@ const client = createClient({
   accessToken,
 });
 
+type ContentfulElement<T> = {
+  sys: {
+    id: string;
+  };
+  fields: T;
+};
+
 const getResource = async <T>(resourceName: string, orderField: string) => {
   const entries = await client.getEntries({
     content_type: resourceName,
@@ -17,7 +24,10 @@ const getResource = async <T>(resourceName: string, orderField: string) => {
   if (!entries.items) {
     console.warn(`Error getting Entries for ${resourceName}.`);
   }
-  return (entries.items.map((element) => element.fields) as unknown) as T[];
+  return (entries.items.map((element: ContentfulElement<T>) => ({
+    ...element.fields,
+    id: element.sys.id,
+  })) as unknown) as T[];
 };
 
 export const getEvents = () => getResource<Workshop>("event", "startDate");

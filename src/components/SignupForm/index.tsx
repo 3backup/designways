@@ -1,150 +1,56 @@
 import React, { useEffect, useState } from "react";
 import dayjs from "dayjs";
-import { FileWithPath, useDropzone } from "react-dropzone";
-import { useFormik, Field } from "formik";
-import { createClient } from "contentful-management";
-import checkWhite from "../../images/check-white.svg";
-import Dropzone from "../Dropzone";
+import { useDropzone } from "react-dropzone";
+import { useFormik } from "formik";
 
-const validate = (values) => {
-  type Errors = {
-    title: any;
-    speaker: any;
-    url: any;
-    spots: any;
-    startDate: any;
-    startDateTime: any;
-    endDate: any;
-    endDateTime: any;
-  };
-  const errors = {};
-  if (values.startDate) {
-    for (const value of values.startDate) {
-      if (value.length === 1 && value.match(/[a-z]/i)) {
-        errors.startDate =
-          "Data rozpoczęcia musi być zapisana w formacie DD-MM-RRRR np. 16-01-2021";
-      }
-    }
-  } else if (!values.startDate) {
-    errors.startDate = "Data rozpoczęcia jest wymagana";
-  }
-  if (values.startDateTime) {
-    for (const value of values.startDateTime) {
-      if (value.length === 1 && value.match(/[a-z]/i)) {
-        errors.startDateTime =
-          "Godzna rozpoczęcia musi być zapisana w formacie HH:MM np 19:45";
-      }
-    }
-  } else if (!values.startDateTime) {
-    errors.startDateTime = "Godzina rozpoczęcia jest wymagana";
-  }
-  if (values.endDate) {
-    for (const value of values.endDate) {
-      if (value.length === 1 && value.match(/[a-z]/i)) {
-        errors.endDate =
-          "Data rozpoczęcia musi być zapisana w formacie DD-MM-RRRR np. 16-01-2021";
-      }
-    }
-  } else if (!values.endDate) {
-    errors.endDate = "Data zakończenia jest wymagana";
-  }
-  if (values.endDateTime) {
-    for (const value of values.endDateTime) {
-      if (value.length === 1 && value.match(/[a-z]/i)) {
-        errors.endDateTime =
-          "Godzna rozpoczęcia musi być zapisana w formacie HH:MM np 19:45";
-      }
-    }
-  } else if (!values.endDateTime) {
-    errors.endDateTime = "Godzina zakończenia jest wymagana";
-  }
-  if (values.duration) {
-    for (const value of values.duration) {
-      if (value.length === 1 && value.match(/[a-z]/i)) {
-        errors.duration =
-          "Czas trwania musi w formacie HH:MM np 40:30 co oznacza 40 h 30 min";
-      }
-    }
-  } else if (!values.duration) {
-    errors.duration = "Czas trwania jest wymagany";
-  }
-  if (!values.title) {
-    errors.title = "Tytuł jest wymagany";
-  } else if (values.title.length < 10) {
-    errors.title = "Tytuł musi mieć przynajmniej 10 znaków";
-  }
-  if (!values.speaker) {
-    errors.speaker = "Prowadzący jest wymagany";
-  } else if (values.speaker.length < 10) {
-    errors.speaker = "Tytuł musi mieć przynajmniej 10 znaków";
-  }
-  if (!values.url) {
-    errors.url = "Link jest wymagany";
-  } else if (!values.url.includes("http")) {
-    errors.url = "Link musi posiadać 'https' lub 'http' ";
-  }
-  if (!values.spots) {
-    errors.spots = "Liczba miejsc jest wymagana";
-  } else if (values.spots === "0") {
-    errors.spots = "Wartość musi być większa od 0";
-  }
+import { validate, generateEntry } from "./helpers";
+import { formClient } from "./constants";
+import { WorkshopLevel, WorkshopTag } from "../../types";
+import { Radio, Thumb, FormNumber, DateInput, Input } from "./components";
 
-  return errors;
+type Props = {
+  tags: WorkshopTag[];
+  levels: WorkshopLevel[];
 };
 
-export const SignupForm = (props) => {
-  type File = {
-    path: string;
-  };
-  const client = createClient({
-    accessToken: "CFPAT-8SGURhp-zdnRpl92sLGqDFiaZYnnDX3_39QegoIgBlA",
-  });
-  const {
-    acceptedFiles,
-    fileRejections,
-    getRootProps,
-    getInputProps,
-  } = useDropzone({
+const TOUCH_DATE_ERROR_FIELDS = [
+  "startDate",
+  "startDateTime",
+  "endDateTime",
+  "endDate",
+  "duration",
+];
+
+export const SignupForm = ({ tags = [], levels = [] }: Props) => {
+  const [files, setFiles] = useState([]);
+  const { getRootProps, getInputProps } = useDropzone({
     accept: "image/*",
     maxFiles: 1,
     minSize: 0,
     maxSize: 10485760,
     onDrop: (acceptedFiles) => {
       setFiles(
-        acceptedFiles.map((file) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          }),
-        ),
+        acceptedFiles.map((file) => ({
+          ...files,
+          preview: URL.createObjectURL(file),
+        }))
       );
     },
   });
-
-  const [files, setFiles] = useState([]);
-
-  const thumbs = files.map((file) => (
-    <div className="form__dropzoneArea--thumbnail" key={file.name}>
-      <img
-        src={file.preview}
-        className="form__dropzoneArea--thumbnailImage"
-        alt={file.preview}
-      />
-    </div>
-  ));
 
   useEffect(
     () => () => {
       // Make sure to revoke the data uris to avoid memory leaks
       files.forEach((file) => URL.revokeObjectURL(file.preview));
     },
-    [files],
+    [files]
   );
   const formik = useFormik({
     initialValues: {
       title: "",
       speaker: "",
       url: "",
-      spots: 0,
+      spots: "0",
       image: files,
       startDate: "",
       startDateTime: "",
@@ -206,225 +112,86 @@ export const SignupForm = (props) => {
       //   .then((entry) => console.log(entry))
       //   .catch(console.error);
       const currentTime = dayjs().unix();
-      client
+      formClient
         .getSpace("vjm3j88sc8ek")
         .then((space) => space.getEnvironment("master"))
         .then((environment) =>
-          environment.createEntryWithId("event", currentTime.toString(), {
-            // create
-            fields: {
-              title: {
-                "en-US": values.title,
-              },
-              speaker: {
-                "en-US": values.speaker,
-              },
-              url: {
-                "en-US": values.url,
-              },
-              spots: {
-                "en-US": values.spots,
-              },
-              startDate: {
-                "en-US": dayjs(
-                  `${values.startDate}, ${values.startDateTime}`,
-                ).add(2, "hour"),
-              },
-              endDate: {
-                "en-US": dayjs(`${values.endDate}, ${values.endDateTime}`).add(
-                  2,
-                  "hour",
-                ),
-              },
-              // to jest tak złe ale później to naprawie
-
-              level: {
-                "en-US": {
-                  sys: {
-                    type: "Link",
-                    linkType: "Entry",
-                    id: "59AM7gZUTBkQyob0MfaTjt",
-                  },
-                },
-              },
-            },
-          }),
+          environment.createEntryWithId(
+            "event",
+            currentTime.toString(),
+            generateEntry(values)
+          )
         )
-
         .then((entry) => console.log(entry))
         .catch(console.error);
     },
   });
 
-  const hanldeClick = (event) => {
-    event.preventDefault();
-    console.log("click");
-  };
-  const isLetter = (str) => {
-    return str.length === 1 && str.match(/[a-z]/i);
-  };
-
-  const titleTouched =
-    formik.touched.title && formik.errors.title === undefined;
-  const speakerTouched =
-    formik.touched.speaker && formik.errors.speaker === undefined;
-  const urlTouched = formik.touched.url && formik.errors.url === undefined;
-  const spotsTouched =
-    formik.touched.spots && formik.errors.spots === undefined;
-  let levelTouched = false;
-  const datesTouched =
-    formik.touched.startDate &&
-    formik.errors.startDate === undefined &&
-    formik.touched.startDateTime &&
-    formik.errors.startDateTime === undefined &&
-    formik.touched.endDate &&
-    formik.errors.endDateTime === undefined &&
-    formik.touched.endDateTime &&
-    formik.errors.endDateTime === undefined &&
-    formik.touched.duration &&
-    formik.errors.duration === undefined;
-
   return (
     <form onSubmit={formik.handleSubmit} method="post">
       {/* Nazwa wydarzenia */}
       <div className="form__inputContainer">
-        <div
-          className={`form__number ${
-            titleTouched ? "form__number--active" : ""
-          }`}>
-          {`${titleTouched ? "" : "1"}`}
-
-          <img
-            src={checkWhite}
-            className={`form__numberCheck ${
-              titleTouched ? "form__number--hide" : ""
-            }`}
-            alt=""
-          />
-        </div>
+        <FormNumber
+          isEnabled={formik.touched.title && !formik.errors.title}
+          label="1"
+        />
         <div className="form__singleInputWithLabel">
-          <div className="form__label">Nazwa</div>
-          <input
-            id="title"
-            name="title"
-            className={`form__input ${
-              formik.touched.title && formik.errors.title
-                ? "form__input--error"
-                : ""
-            }`}
+          <Input
+            label="Nazwa"
+            error={formik.errors.title}
+            field="title"
             placeholder="np. Testy użyteczności: od koncepcji do scenariusza "
             type="text"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.title}
+            isValid={Boolean(formik.touched.title && formik.errors.title)}
           />
-          <div className="form__errorHandler">
-            {formik.touched.title && formik.errors.title ? (
-              <div className="form__errorHandlerInside">
-                {formik.errors.title}
-              </div>
-            ) : null}
-          </div>
         </div>
       </div>
       {/* Prowadzący */}
       <div className="form__inputContainer">
-        <div
-          className={`form__number ${
-            speakerTouched ? "form__number--active" : ""
-          }`}>
-          {`${speakerTouched ? "" : "2"}`}
-
-          <img
-            src={checkWhite}
-            className={`form__numberCheck ${
-              speakerTouched ? "form__number--hide" : ""
-            }`}
-            alt=""
-          />
-        </div>
+        <FormNumber
+          isEnabled={formik.touched.speaker && !formik.errors.speaker}
+          label="2"
+        />
         <div className="form__singleInputWithLabel">
-          <div className="form__label">Prowadzący</div>
-          <input
-            id="speaker"
-            name="speaker"
-            className={`form__input ${
-              formik.touched.speaker && formik.errors.speaker
-                ? "form__input--error"
-                : ""
-            }`}
-            placeholder="np. Joanna Ostafin "
+          <Input
+            label="Prowadzący"
+            error={formik.errors.speaker}
+            field="speaker"
+            placeholder="np. https://"
             type="text"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.speaker}
+            isValid={Boolean(formik.touched.speaker && formik.errors.speaker)}
           />
-          <div className="form__errorHandler">
-            {formik.touched.speaker && formik.errors.speaker ? (
-              <div className="form__errorHandlerInside">
-                {formik.errors.speaker}
-              </div>
-            ) : null}
-          </div>
         </div>
       </div>
       {/* Link do wydarzenia */}
       <div className="form__inputContainer">
-        <div
-          className={`form__number ${
-            urlTouched ? "form__number--active" : ""
-          }`}>
-          {`${urlTouched ? "" : "3"}`}
-
-          <img
-            src={checkWhite}
-            className={`form__numberCheck ${
-              urlTouched ? "form__number--hide" : ""
-            }`}
-            alt=""
-          />
-        </div>
+        <FormNumber
+          isEnabled={formik.touched.url && !formik.errors.url}
+          label="3"
+        />
         <div className="form__singleInputWithLabel">
-          <div className="form__label">Link do wydarzenia</div>
-          <input
-            id="url"
-            name="url"
-            className={`form__input ${
-              formik.touched.url && formik.errors.url
-                ? "form__input--error"
-                : ""
-            }`}
+          <Input
+            label="Link do wydarzenia"
+            error={formik.errors.url}
+            field="url"
             placeholder="np. https://"
             type="url"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            value={formik.values.url}
+            isValid={Boolean(formik.touched.url && formik.errors.url)}
           />
-          <div className="form__errorHandler">
-            {formik.touched.url && formik.errors.url ? (
-              <div className="form__errorHandlerInside">
-                {formik.errors.url}
-              </div>
-            ) : null}
-          </div>
         </div>
       </div>
       {/* Spots */}
       <div className="form__inputContainer">
-        <div
-          className={`form__number ${
-            spotsTouched ? "form__number--active" : ""
-          }`}>
-          {`${spotsTouched ? "" : "4"}`}
-
-          <img
-            src={checkWhite}
-            className={`form__numberCheck ${
-              spotsTouched ? "form__number--hide" : ""
-            }`}
-            alt=""
-          />
-        </div>
+        <FormNumber
+          isEnabled={formik.touched.spots && !formik.errors.spots}
+          label="4"
+        />
         <div className="form__singleInputWithLabel">
           <div className="form__label">
             Ilość miejsc uczestników (tylko liczba)
@@ -454,121 +221,69 @@ export const SignupForm = (props) => {
       </div>
       {/* images */}
       <div className="form__inputContainer">
-        <div
-          className={`form__number ${
-            files.length > 0 ? "form__number--active" : ""
-          }`}>
-          {`${files.length > 0 ? "" : "6"}`}
-
-          <img
-            src={checkWhite}
-            className={`form__numberCheck ${
-              files.length > 0 ? "form__number--hide" : ""
-            }`}
-            alt=""
-          />
-        </div>
+        <FormNumber isEnabled={files.length > 0} label="5" />
         <div className="form__singleInputWithLabel">
           <section className="container form__dropzoneArea">
             <div
               className={`dropzone form__dropzoneArea--clickable ${
                 files.length > 0 ? "form__dropzoneArea--smaller" : ""
               }`}
-              {...getRootProps({})}>
+              {...getRootProps({})}
+            >
               <input {...getInputProps()} />
               {files.length > 0 ? <p>Zmień grafikę</p> : <p>Dodaj grafikę</p>}
 
               <em>(Tylko jpg & png, Max 5mb, Ratio 1:1)</em>
             </div>
-            <aside>{thumbs}</aside>
+            <aside>
+              {files.map((file) => (
+                <Thumb {...file} />
+              ))}
+            </aside>
           </section>
         </div>
       </div>
       {/* dates */}
-      <div className="form__inputContainer">
-        <div
-          className={`form__number ${
-            datesTouched ? "form__number--active" : ""
-          }`}>
-          {`${datesTouched ? "" : "6"}`}
 
-          <img
-            src={checkWhite}
-            className={`form__numberCheck ${
-              datesTouched ? "form__number--hide" : ""
-            }`}
-            alt=""
-          />
-        </div>
+      <div className="form__inputContainer">
+        <FormNumber
+          isEnabled={TOUCH_DATE_ERROR_FIELDS.every(
+            (value) => formik.touched[value] && !formik.errors[value]
+          )}
+          label="6"
+        />
         <div className="form__singleInputWithLabel--elements ">
           <div className="form__singleinputWithLabelContainer">
-            <div className="form__label">Data rozpoczęcia</div>
-            <div className="form__twoInputs">
-              <input
-                id="startDate"
-                name="startDate"
-                className={`form__input form__input--short  ${
-                  formik.touched.startDate && formik.errors.startDate
-                    ? "form__input--error"
-                    : ""
-                }`}
-                placeholder="RRRR-MM-DD"
-                type="text"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.startDate}
-              />
-
-              <input
-                className={`form__input form__input--shorter  ${
-                  formik.touched.startDateTime && formik.errors.startDateTime
-                    ? "form__input--error"
-                    : ""
-                }`}
-                placeholder="00:00 h"
-                type="text"
-                id="startDateTime"
-                name="startDateTime"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.startDateTime}
-              />
-            </div>
+            <DateInput
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              label="Data rozpoczęcia"
+              field="startDate"
+              date={formik.values.startDate}
+              time={formik.values.startDateTime}
+              isValidDate={Boolean(
+                formik.touched.startDate && formik.errors.startDate
+              )}
+              isValidTime={Boolean(
+                formik.touched.startDateTime && formik.errors.startDateTime
+              )}
+            />
           </div>
           <div className="form__singleinputWithLabelContainer">
-            <div className="form__label">Data zakończenia</div>
-            <div className="form__twoInputs">
-              <input
-                className={`form__input form__input--short  ${
-                  formik.touched.endDate && formik.errors.endDate
-                    ? "form__input--error"
-                    : ""
-                }`}
-                placeholder="RRRR-MM-DD"
-                pattern="\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])*"
-                type="text"
-                maxLength="10"
-                id="endDate"
-                name="endDate"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.endDate}
-              />
-              <input
-                className={`form__input form__input--shorter  ${
-                  formik.touched.endDateTime && formik.errors.endDateTime
-                    ? "form__input--error"
-                    : ""
-                }`}
-                placeholder="00:00 h"
-                type="text"
-                id="endDateTime"
-                name="endDateTime"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.endtDateTime}
-              />
-            </div>
+            <DateInput
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              label="Data zakończenia"
+              field="endDate"
+              date={formik.values.endDate}
+              time={formik.values.endDateTime}
+              isValidDate={Boolean(
+                formik.touched.endDate && formik.errors.endDate
+              )}
+              isValidTime={Boolean(
+                formik.touched.endDateTime && formik.errors.endDateTime
+              )}
+            />
           </div>
           <div className="form__singleinputWithLabelContainer">
             <div className="form__label">Czas trwania</div>
@@ -585,110 +300,42 @@ export const SignupForm = (props) => {
                 name="duration"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.endtDateTime}
+                value={formik.values.endDateTime}
               />
             </div>
           </div>
           <div className="form__errorHandler">
-            {formik.touched.startDate && formik.errors.startDate ? (
-              <div className="form__errorHandlerInside">
-                {formik.errors.startDate}
-              </div>
-            ) : null}
-            {formik.touched.startDateTime && formik.errors.startDateTime ? (
-              <div className="form__errorHandlerInside">
-                {formik.errors.startDateTime}
-              </div>
-            ) : null}
-            {formik.touched.endDate && formik.errors.endDate ? (
-              <div className="form__errorHandlerInside">
-                {formik.errors.endDate}
-              </div>
-            ) : null}
-            {formik.touched.endDateTime && formik.errors.endDateTime ? (
-              <div className="form__errorHandlerInside">
-                {formik.errors.endDateTime}
-              </div>
-            ) : null}
-            {formik.touched.duration && formik.errors.duration ? (
-              <div className="form__errorHandlerInside">
-                {formik.errors.duration}
-              </div>
-            ) : null}
+            {TOUCH_DATE_ERROR_FIELDS.map((field) => {
+              return (
+                formik.touched[field] &&
+                formik.errors[field] && (
+                  <div className="form__errorHandlerInside">
+                    {formik.errors[field]}
+                  </div>
+                )
+              );
+            })}
           </div>
         </div>
       </div>
       {/* Spots */}
       <div className="form__inputContainer">
-        <div
-          className={`form__number ${
-            formik.values.pickedLevel ? "form__number--active" : ""
-          }`}>
-          {`${formik.values.pickedLevel ? "" : "7"}`}
-
-          <img
-            src={checkWhite}
-            className={`form__numberCheck ${
-              formik.values.pickedLevel ? "form__number--hide" : ""
-            }`}
-            alt=""
-          />
-        </div>
+        <FormNumber isEnabled={!!formik.values.pickedLevel} label="7" />
         <div className="form__singleInputWithLabel">
           <div className="form__label">Stopień zaawansowania</div>
           <div className="form__containerLevel">
-            <label
-              className="form__containerLevel--singletag"
-              htmlFor="pickedLevel1">
-              <input
-                className="form__radiobutton"
-                type="radio"
-                id="pickedLevel1"
-                name="pickedLevel"
+            {levels.map((level) => (
+              <Radio
+                key={level.id}
+                field="pickedLevel"
+                label={level.name}
                 onChange={(e) => {
                   formik.handleChange(e);
-                  formik.values.pickedLevel = "59AM7gZUTBkQyob0MfaTjt";
-                  levelTouched = true;
+                  formik.values.pickedLevel = level.id;
                 }}
                 onBlur={formik.handleBlur}
-                value="Początkujący"
               />
-              <span className="form__tag">Początkujący</span>
-            </label>
-            <label
-              className="form__containerLevel--singletag"
-              htmlFor="pickedLevel2">
-              <input
-                type="radio"
-                id="pickedLevel2"
-                name="pickedLevel"
-                className="form__radiobutton"
-                onChange={(e) => {
-                  formik.handleChange(e);
-                  formik.values.pickedLevel = "2P6lZZ5SHBZgngU6yU6b8c";
-                }}
-                onBlur={formik.handleBlur}
-                value="Średniozaawansowany"
-              />
-              <span className="form__tag">Średniozaawansowany</span>
-            </label>
-            <label
-              className="form__containerLevel--singletag"
-              htmlFor="pickedLevel3">
-              <input
-                type="radio"
-                id="pickedLevel3"
-                name="pickedLevel"
-                className="form__radiobutton"
-                onChange={(e) => {
-                  formik.handleChange(e);
-                  formik.values.pickedLevel = "6nPuAbaB5PTYdwq19QAk12";
-                }}
-                onBlur={formik.handleBlur}
-                value="Zaawansowany"
-              />
-              <span className="form__tag">Zaawansowany</span>
-            </label>
+            ))}
           </div>
           <div className="form__errorHandler">
             {formik.touched.spots && formik.errors.spots ? (
@@ -700,183 +347,27 @@ export const SignupForm = (props) => {
         </div>
       </div>
       {/* Tags  */}
-
       <div className="form__inputContainer">
-        <div
-          className={`form__number ${
-            formik.values.pickedLevel ? "form__number--active" : ""
-          }`}>
-          {`${formik.values.pickedLevel ? "" : "8"}`}
-
-          <img
-            src={checkWhite}
-            className={`form__numberCheck ${
-              formik.values.pickedLevel ? "form__number--hide" : ""
-            }`}
-            alt=""
-          />
-        </div>
+        <FormNumber isEnabled={!!formik.values.pickedLevel} label="8" />
         <div className="form__singleInputWithLabel">
           <div className="form__label">Określ tematykę (maks 4 tagi)</div>
           <div className="form__containerLevel">
-            <label
-              className="form__containerLevel--singletag"
-              htmlFor="ProdcutManagement">
-              <input
-                className="form__radiobutton"
-                type="checkbox"
-                id="ProdcutManagement"
-                name="ProdcutManagement"
+            {tags.map((tag) => (
+              <Radio
+                key={tag.id}
+                field={tag.name}
+                label={tag.name}
                 onChange={(e) => {
                   formik.handleChange(e);
-                  formik.values.pickedTags.includes("41R5fXzAKXi4Gc0ypkgDVI")
-                    ? formik.values.pickedTags.splice(
-                        formik.values.pickedTags.indexOf(
-                          "41R5fXzAKXi4Gc0ypkgDVI",
-                        ),
-                        1,
-                      )
-                    : formik.values.pickedTags.push("41R5fXzAKXi4Gc0ypkgDVI");
-                  levelTouched = true;
+                  if (formik.values.pickedTags.includes(tag.id)) {
+                    formik.values.pickedTags.filter(
+                      (tagId) => tagId !== tag.id
+                    );
+                  }
+                  formik.values.pickedTags.push(tag.id);
                 }}
-                onBlur={formik.handleBlur}
-                value="Prodcut Management"
               />
-              <span className="form__tag">Prodcut Management</span>
-            </label>
-            <label
-              className="form__containerLevel--singletag"
-              htmlFor="Analityka">
-              <input
-                type="checkbox"
-                id="Analityka"
-                name="Analityka"
-                className="form__radiobutton"
-                onChange={(e) => {
-                  formik.handleChange(e);
-                  formik.values.pickedLevel = "one";
-                }}
-                onBlur={formik.handleBlur}
-                value="Analityka"
-              />
-              <span className="form__tag">Analityka</span>
-            </label>
-            <label
-              className="form__containerLevel--singletag"
-              htmlFor="Branding">
-              <input
-                type="checkbox"
-                id="Branding"
-                name="Branding"
-                className="form__radiobutton"
-                onChange={(e) => {
-                  formik.handleChange(e);
-                  formik.values.pickedTags.includes("41R5fXzAKXi4Gc0ypkgDVI")
-                    ? formik.values.pickedTags.splice(
-                        formik.values.pickedTags.indexOf(
-                          "41R5fXzAKXi4Gc0ypkgDVI",
-                        ),
-                        1,
-                      )
-                    : formik.values.pickedTags.push("41R5fXzAKXi4Gc0ypkgDVI");
-                }}
-                onBlur={formik.handleBlur}
-                value="Branding"
-              />
-              <span className="form__tag">Branding</span>
-            </label>
-            <label
-              className="form__containerLevel--singletag"
-              htmlFor="ProductDesign">
-              <input
-                type="checkbox"
-                id="ProductDesign"
-                name="pickedLevel"
-                className="form__radiobutton"
-                onChange={(e) => {
-                  formik.handleChange(e);
-                  formik.values.pickedTags.includes("41R5fXzAKXi4Gc0ypkgDVI")
-                    ? formik.values.pickedTags.splice(
-                        formik.values.pickedTags.indexOf(
-                          "41R5fXzAKXi4Gc0ypkgDVI",
-                        ),
-                        1,
-                      )
-                    : formik.values.pickedTags.push("41R5fXzAKXi4Gc0ypkgDVI");
-                }}
-                onBlur={formik.handleBlur}
-                value="Product Design"
-              />
-              <span className="form__tag">Product Design</span>
-            </label>
-            <label
-              className="form__containerLevel--singletag"
-              htmlFor="ServiceDesign">
-              <input
-                type="checkbox"
-                id="ServiceDesign"
-                name="ServiceDesign"
-                className="form__radiobutton"
-                onChange={(e) => {
-                  formik.handleChange(e);
-                  formik.values.pickedTags.includes("41R5fXzAKXi4Gc0ypkgDVI")
-                    ? formik.values.pickedTags.splice(
-                        formik.values.pickedTags.indexOf(
-                          "41R5fXzAKXi4Gc0ypkgDVI",
-                        ),
-                        1,
-                      )
-                    : formik.values.pickedTags.push("41R5fXzAKXi4Gc0ypkgDVI");
-                }}
-                onBlur={formik.handleBlur}
-                value="Service design"
-              />
-              <span className="form__tag">Service design</span>
-            </label>
-            <label className="form__containerLevel--singletag" htmlFor="UX">
-              <input
-                type="checkbox"
-                id="UX"
-                name="UX"
-                className="form__radiobutton"
-                onChange={(e) => {
-                  formik.handleChange(e);
-                  formik.values.pickedTags.includes("41R5fXzAKXi4Gc0ypkgDVI")
-                    ? formik.values.pickedTags.splice(
-                        formik.values.pickedTags.indexOf(
-                          "41R5fXzAKXi4Gc0ypkgDVI",
-                        ),
-                        1,
-                      )
-                    : formik.values.pickedTags.push("41R5fXzAKXi4Gc0ypkgDVI");
-                }}
-                onBlur={formik.handleBlur}
-                value="UX"
-              />
-              <span className="form__tag">UX</span>
-            </label>
-            <label className="form__containerLevel--singletag" htmlFor="UI">
-              <input
-                type="checkbox"
-                id="UI"
-                name="UI"
-                className="form__radiobutton"
-                onChange={(e) => {
-                  formik.handleChange(e);
-                  formik.values.pickedTags.includes("41R5fXzAKXi4Gc0ypkgDVI")
-                    ? formik.values.pickedTags.splice(
-                        formik.values.pickedTags.indexOf(
-                          "41R5fXzAKXi4Gc0ypkgDVI",
-                        ),
-                        1,
-                      )
-                    : formik.values.pickedTags.push("41R5fXzAKXi4Gc0ypkgDVI");
-                }}
-                onBlur={formik.handleBlur}
-                value="UI"
-              />
-              <span className="form__tag">UI</span>
-            </label>
+            ))}
           </div>
           <div className="form__errorHandler">
             {formik.touched.spots && formik.errors.spots ? (

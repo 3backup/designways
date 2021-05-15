@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LogoHorizontal from "../../images/Logo_horizontal_white.svg";
+import LogoHorizontal from "images/Logo_horizontal_white.svg";
 
 export const LoaderScreen = () => {
     return (<main className="page">

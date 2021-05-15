@@ -1,14 +1,14 @@
-import { useEffect } from 'react'
-import { useRouter } from 'next/router'
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 type Props = {
-    to: string
-}
+  to: string;
+};
 
-export const Redirect = ({ to } : Props) => {
-    const router = useRouter()
-    useEffect(() => {
-        router.push(to)
-    }, [to])
-    return null
-}
+export const Redirect = ({ to }: Props) => {
+  const router = useRouter();
+  useEffect(() => {
+    router.push(to);
+  }, [router, to]);
+  return null;
+};

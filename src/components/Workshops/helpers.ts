@@ -1,9 +1,7 @@
-import dayjs from "dayjs";
-
-import { Workshop, WorkshopSortType } from "../../types";
+import { FormattedWorkshop, WorkshopSortType } from "../../types";
 
 export const sortEvents = (
-  events: Workshop[],
+  events: FormattedWorkshop[],
   sortType: WorkshopSortType,
   isOld: boolean
 ) => {
@@ -12,11 +10,11 @@ export const sortEvents = (
   }
   if (isOld) {
     return events
-      .sort((a, b) => dayjs(a.startDate).unix() - dayjs(b.startDate).unix())
+      .sort((a, b) => a.normalizedDateStart - b.normalizedDateStart)
       .reverse();
   }
 
   return events.sort(
-    (a, b) => dayjs(a.startDate).unix() - dayjs(b.startDate).unix()
+    (a, b) =>  a.normalizedDateStart - b.normalizedDateStart
   );
 };

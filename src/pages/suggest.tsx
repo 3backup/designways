@@ -1,16 +1,29 @@
 import React from "react";
 import { Head } from "../components/Head";
 import { Footer } from "../components/Footer";
-import { ContentAddEvent } from "../components/ContentAddEvent";
-import { HeaderAddEvent } from "../components/HeaderAddEvent";
+import { SignupFormContainer } from "../components/SignupFormContainer";
+import { getLevels, getTags } from "../util/contentfulPosts";
+import { SignupForm } from "../components/SignupForm";
 
-export default function suggest() {
+export default function suggest({ tags, levels }) {
   return (
     <>
       <Head />
-      <HeaderAddEvent />
-      <ContentAddEvent />
+      <SignupFormContainer>
+        <SignupForm tags={tags} levels={levels} />
+      </SignupFormContainer>
       <Footer />
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const [tags, levels] = await Promise.all([getTags(), getLevels()]);
+
+  return {
+    props: {
+      tags,
+      levels,
+    },
+  };
 }

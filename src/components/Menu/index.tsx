@@ -12,7 +12,10 @@ export const Menu = () => {
         height={48}
       />
       <nav className="nav__container display__flex disp">
-        <Link href="/suggest/">
+        <a
+          href="https://airtable.com/shrAwlFIeLbevMEa6"
+          rel="noreferrer"
+          target="_blank">
           <button type="button" className="nav__addEvent">
             <Image
               src="/images/plus.svg"
@@ -23,8 +26,13 @@ export const Menu = () => {
             />
             <span className="nav__titleButton">Dodaj wydarzenie</span>
           </button>
-        </Link>
+        </a>
         <ul className="nav__list display__row">
+          <li className="nav__element">
+            <a className="nav__element" href="#newsletter">
+              Newsletter
+            </a>
+          </li>
           <li className="nav__element">
             <a className="nav__element" href="mailto:hello@designways.io">
               hello@designways.io

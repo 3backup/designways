@@ -1,11 +1,15 @@
-/* eslint-disable react/prop-types */
 import React from "react";
+import type { AppProps } from "next/app";
+
 import "../styles/main.sass";
 import "../styles/filters.sass";
-import "../styles/addEvent.scss";
+import "../styles/organiser.scss";
 
-function App({ Component, pageProps }) {
+import { useRouteChange } from "../hooks/useRouteChange";
+
+const App = ({ Component, pageProps }: AppProps) => {
+  useRouteChange();
   return <Component {...pageProps} />;
-}
+};
 
 export default App;
