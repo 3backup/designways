@@ -120,7 +120,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
     <>
       <div className="container container--xl filter__main">
         <div className="tag__container">
-          <h6 className="text__h6">Wybierz tematyke</h6>
+          <h6 className="text__h6">Tagi:</h6>
           <div className="tag__tags">
             {tags.map((tag) => (
               <WorkshopTagButton
@@ -186,23 +186,24 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         </div>
       </div>
       <div className="container container--big" id="lecture">
-        {console.log(events)}
-
-        {onGoingEvents.map((event, index) => (
-          <WorkshopItem
-            key={`${event.title}${dayjs(event.startDate).unix()}${index}`}
-            post={event}
-          />
-        ))}
-
-        <div className="pastEvent text__h6"> Ubiegłe wydarzenia</div>
-        {oldEvents.map((event, index) => (
-          <WorkshopItem
-            key={`${event.title}${dayjs(event.startDate).unix()}${index}`}
-            oldEvent
-            post={event}
-          />
-        ))}
+        <div>
+          {onGoingEvents.map((event, index) => (
+            <WorkshopItem
+              key={`${event.title}${dayjs(event.startDate).unix()}${index}`}
+              post={event}
+            />
+          ))}
+        </div>
+        <div className="pastEvent text__h6">Ubiegłe wydarzenia</div>
+        <div>
+          {oldEvents.map((event, index) => (
+            <WorkshopItem
+              key={`${event.title}${dayjs(event.startDate).unix()}${index}`}
+              oldEvent
+              post={event}
+            />
+          ))}
+        </div>
       </div>
     </>
   );
