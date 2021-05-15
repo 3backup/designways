@@ -4,6 +4,7 @@ import React from "react";
 import { Workshop } from "../../types";
 import { formatDuration, formatPriceWithCurrency } from "./helpers";
 import CertificateImage from "../../images/np_certificate_1117192_000000 1.svg";
+import { EventCategory, EventTypes, pushEvent } from "../../util/analytics";
 
 type Props = {
   workshop: Workshop;
@@ -11,6 +12,15 @@ type Props = {
 };
 
 export const WorkshopItem = (props) => {
+  const sendEvent = () => {
+    pushEvent({
+      action: EventTypes.Click,
+      category: EventCategory.EventClicks,
+      label: props.post.title,
+      value: 1,
+    });
+  };
+
   return (
     <div className={props.oldEvent ? "lecture lecture--nonActive" : "lecture"}>
       <div className="lecture__half">
@@ -35,7 +45,8 @@ export const WorkshopItem = (props) => {
             href={props.post.url}
             target="_blank"
             rel="noreferrer"
-            className="lecture__join buttonDesktop">
+            className="lecture__join buttonDesktop"
+          >
             Dowiedz się więcej
           </a>
         </div>
@@ -84,7 +95,11 @@ export const WorkshopItem = (props) => {
         </div>
       </div>
       <div className="lecture__half buttonMobile">
-        <a className="lecture__join buttonMobile__cta" href={props.post.url}>
+        <a
+          className="lecture__join buttonMobile__cta"
+          onClick={sendEvent}
+          href={props.post.url}
+        >
           Dowiedz się więcej
         </a>
       </div>
