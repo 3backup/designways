@@ -1,10 +1,9 @@
 import React from "react";
-import SingleSpeaker from "./SignleSpeaker/SingleSpeaker";
-import Image from "next/image";
-import Link from "next/link";
-import Michal from "../../images/michal-reda-prowadzacy-product-discovery-pro.jpg";
-import Adam from "../../images/adam-bartkiewicz-prowadzacy-prodcut-discovery-pro.jpg";
-import Bartek from "../../images/bartosz-narzelski-prowadzacy-prodcut-discovery-pro.jpg";
+
+import SingleSpeaker from "./SingleSpeaker/SingleSpeaker";
+import Michal from "images/michal-reda-prowadzacy-product-discovery-pro.jpg";
+import Adam from "images/adam-bartkiewicz-prowadzacy-prodcut-discovery-pro.jpg";
+import Bartek from "images/bartosz-narzelski-prowadzacy-prodcut-discovery-pro.jpg";
 
 export const OrganiserSpeaker = () => {
   return (

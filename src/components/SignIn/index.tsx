@@ -1,10 +1,11 @@
 import React, { useState, FormEvent } from "react"
 import { Magic } from "magic-sdk"
 import { useRouter } from "next/router"
+
 import { MAGIC_TOKEN } from "../../constants"
-import CheckActive from "../../images/check-active.svg"
-import CheckNotActive from "../../images/check.svg"
-import LogoHorizontal from "../../images/Logo_horizontal_white.svg"
+import CheckActive from "images/check-active.svg"
+import CheckNotActive from "images/check.svg"
+import LogoHorizontal from "images/Logo_horizontal_white.svg"
 
 export const SignIn = () => {
   // form fields

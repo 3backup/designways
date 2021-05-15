@@ -7,7 +7,7 @@ import AddEvent from "../components/AddEvent";
 import { Workshops } from "../components/Workshops";
 import { getEvents, getTags, getLevels } from "../util/contentfulPosts";
 import { Workshop, WorkshopLevel, WorkshopTag } from "../types";
-import Newsletter from "../components/Newsletter";
+import { Newsletter } from "../components/Newsletter";
 
 type Props = {
   events: Workshop[];
@@ -27,7 +27,7 @@ export default function Filter({ events, tags, levels }: Props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const [events, tags, levels] = await Promise.all([
     getEvents(),
     getTags(),
@@ -39,7 +39,6 @@ export async function getStaticProps() {
       tags,
       events,
       levels,
-    },
-    revalidate: 60,
+    }
   };
 }

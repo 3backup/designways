@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import SingleTestimonial from "./SingleTestimoial/SingleTestimonial";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./testimonial.module.scss";
+
+import SingleTestimonial from "./SingleTestimoial/SingleTestimonial";
 import left from "./Left.svg";
 import right from "./Right.svg";
 
-export default class Testimonial extends Component {
+export class Testimonial extends Component {
   slider: any;
 
   constructor(props) {

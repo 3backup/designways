@@ -1,10 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import backArrow from "../../images/back-button.svg";
-import logoOrganiser from "../../images/logo-product-discovery-pro.png";
-import linkedIn from "../../images/LinkedIN.svg";
-import facebook from "../../images/Facebook_white.svg";
+
+import backArrow from "images/back-button.svg";
+import logoOrganiser from "images/logo-product-discovery-pro.png";
+import linkedIn from "images/LinkedIN.svg";
+import facebook from "images/Facebook_white.svg";
+
 export const OrganiserHeader = () => {
   return (
     <header className="organiserHeader">

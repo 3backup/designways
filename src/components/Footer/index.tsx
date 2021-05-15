@@ -1,9 +1,8 @@
 import React from "react";
-import Image from "next/image";
 
-import Logo from '../../images/Logo_horizontal_new.svg'
-import InstagramLogo from '../../images/instagram-dark.svg'
-import FacebookLogo from '../../images/facebook-dark.svg'
+import Logo from 'images/Logo_horizontal_new.svg'
+import InstagramLogo from 'images/instagram-dark.svg'
+import FacebookLogo from 'images/facebook-dark.svg'
 
 export const Footer = () => {
   return (
