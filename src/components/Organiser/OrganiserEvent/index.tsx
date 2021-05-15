@@ -1,7 +1,6 @@
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import Logo from "../../images/logo-product-discovery.png";
+
+import Logo from "images/logo-product-discovery.png";
 
 export const OrganiserEvent = () => {
   return (

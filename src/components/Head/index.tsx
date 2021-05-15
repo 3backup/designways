@@ -1,23 +1,12 @@
 import React from "react";
 import NextHead from "next/head";
+import { Analytics } from "../Analytics";
 
 export const Head = () => {
   return (
     <NextHead>
       <title>DesignWays Hub - edukacyjny hub dla designerów</title>
-      <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-6GN8QJ3EFR"></script>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-6GN8QJ3EFR');`,
-        }}
-      />
-
+      <Analytics />
       <script
         dangerouslySetInnerHTML={{
           __html: `

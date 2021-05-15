@@ -1,7 +1,6 @@
 import React from "react";
-import Image from "next/image";
 
-import Microphone from "../../images/microphone.png";
+import Microphone from "images/microphone.png";
 
 const AddEvent = () => {
   return (

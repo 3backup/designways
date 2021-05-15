@@ -1,6 +1,6 @@
 import React from "react";
-import Facebook from "../../../images/Facebook_purple.svg";
-import LinkedIn from "../../../images/LinkedIN_purple.svg";
+import Facebook from "images/Facebook_purple.svg";
+import LinkedIn from "images/LinkedIN_purple.svg";
 
 const SignleSpeaker = (props) => {
   const {

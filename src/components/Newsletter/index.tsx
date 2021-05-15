@@ -1,18 +1,14 @@
-import React, { useRef } from "react";
-import styles from "../../styles/Newsletter.module.scss";
+import React, { useState } from "react";
+import styles from "styles/Newsletter.module.scss";
 
 const tab = -1;
 
-const Newsletter = () => {
-  const subscribeBtnRef = useRef<HTMLInputElement>();
-
+export const Newsletter = () => {
+  const [isDisabled, setDisabled] = useState(true);
   const newsletterValidation = ({
     target,
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    if (subscribeBtnRef.current) {
-      subscribeBtnRef.current.disabled = target.checked ? true : false
-    }
-  };
+  }: React.ChangeEvent<HTMLInputElement>) =>
+    setDisabled(!target.checked ? true : false);
 
   return (
     <div className={styles.Newsletter__Contianer} id="newsletter">
@@ -74,7 +70,7 @@ const Newsletter = () => {
                     </fieldset>
                   </div>
                 </div>
-                <div aria-hidden="true">
+                <div aria-hidden="true" style={{ display: "none" }}>
                   <input
                     type="text"
                     name="b_4cfaa6a48ce77c6979d19881a_6ca63a52d1"
@@ -87,9 +83,8 @@ const Newsletter = () => {
                     type="submit"
                     value="Subskrybuj"
                     name="subscribe"
-                    disabled
+                    disabled={isDisabled}
                     id="mc-embedded-subscribe"
-                    ref={subscribeBtnRef}
                     className={`${styles.Newsletter__button} button`}
                   />
                 </div>
@@ -101,5 +96,3 @@ const Newsletter = () => {
     </div>
   );
 };
-
-export default Newsletter;

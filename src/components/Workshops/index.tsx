@@ -8,11 +8,11 @@ import {
   WorkshopSortType,
   WorkshopTag,
 } from "../../types";
-import { WorkshopTagButton } from "../WorkshopTagButton";
-import { SortButton } from "./components/SortButton";
-import { OrganiserNew } from "../OrganiserNew";
+
 import { sortEvents } from "./helpers";
-import { WorkshopItem } from "../WorkshopItem";
+
+import { OrganiserNew } from "../Organiser";
+import { SortButton, WorkshopItem, WorkshopTagButton } from "./components";
 
 enum PriceFilter {
   Free,
@@ -129,9 +129,6 @@ export const Workshops = ({ events, tags, levels }: Props) => {
     [filteredEventsCalculated, sortType]
   );
 
-  console.log('Old', oldEvents)
-  console.log('New', onGoingEvents)
-
   return (
     <>
       <div className="container container--xl filter__main">
@@ -203,9 +200,9 @@ export const Workshops = ({ events, tags, levels }: Props) => {
       </div>
       <div className="container container--big" id="lecture">
         <div>
-          {onGoingEvents.map((event, index) => (
+          {onGoingEvents.map((event) => (
             <WorkshopItem
-              key={`${event.title}-${index}`}
+              key={`${event.title}-${event.normalizedDateStart}`}
               workshop={event}
               isActive
             />
@@ -213,9 +210,9 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         </div>
         <div className="pastEvent text__h6">Ubiegłe wydarzenia</div>
         <div>
-          {oldEvents.map((event, index) => (
+          {oldEvents.map((event) => (
             <WorkshopItem
-              key={`${event.title}-${index}`}
+              key={`${event.title}-${event.normalizedDateStart}`}
               workshop={event}
             />
           ))}
