@@ -12,10 +12,7 @@ export const Menu = () => {
         height={48}
       />
       <nav className="nav__container display__flex disp">
-        <a
-          href="https://airtable.com/shrAwlFIeLbevMEa6"
-          rel="noreferrer"
-          target="_blank">
+        <a href="/suggest" rel="noreferrer" target="_blank">
           <button type="button" className="nav__addEvent">
             <Image
               src="/images/plus.svg"
@@ -44,7 +41,8 @@ export const Menu = () => {
               href="https://www.facebook.com/designwaysconf
           "
               rel="noreferrer"
-              target="_blank">
+              target="_blank"
+            >
               <Image
                 src="/images/facebook.svg"
                 alt="Facebook logo"
@@ -57,7 +55,8 @@ export const Menu = () => {
             <a
               target="_blank"
               href="https://www.instagram.com/designwaysconf/"
-              rel="noreferrer">
+              rel="noreferrer"
+            >
               <Image
                 src="/images/insta_icon.svg"
                 alt="Instagram logo"
