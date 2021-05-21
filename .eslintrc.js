@@ -22,14 +22,16 @@ module.exports = {
     project: "./tsconfig.json"
   },
   rules: {
+    "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "import/prefer-default-export": "off",
     "linebreak-style": "off",
+    "trailing-comma": "off",
     "no-console": [
       "error",
       {
-        allow: ["warn"]
+        allow: ["warn", "error"]
       }
     ]
   }

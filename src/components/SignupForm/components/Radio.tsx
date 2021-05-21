@@ -1,25 +1,53 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
+import { FieldArrayRenderProps } from "react-final-form-arrays";
+import { Option } from "../types";
 
 type Props = {
-  field: string;
   label: string;
+  value: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
-export const Radio = ({ field, label, ...rest }: Props) => {
+type GroupProps = FieldArrayRenderProps<Option["id"], HTMLElement> & {
+  options?: Option[];
+  isMulti?: boolean;
+};
+
+export const Radio = ({ id, label, ...rest }: Props) => (
+  <label className="form__containerLevel--singletag" htmlFor={id}>
+    <input className="form__radiobutton" type="radio" {...rest} />
+    <span className="form__tag">{label}</span>
+  </label>
+);
+
+export const RadioGroup = ({
+  isMulti = false,
+  fields,
+  options = [],
+}: GroupProps) => {
+  const toggle = (_, optionId) => {
+    if (!isMulti) {
+      if (fields.length) {
+        fields.remove(0);
+      }
+      fields.push(optionId);
+      return;
+    }
+    if ((fields.value || []).includes(optionId)) {
+      fields.remove(fields.value.indexOf(optionId));
+    } else {
+      fields.push(optionId);
+    }
+  };
   return (
-    <label
-      className="form__containerLevel--singletag"
-      htmlFor={`${field}_${label}`}
-    >
-      <input
-        className="form__radiobutton"
-        type="radio"
-        id={`${field}_${label}`}
-        name={field}
-        value={label}
-        {...rest}
-      />
-      <span className="form__tag">{label}</span>
-    </label>
+    <>
+      {options.map((option) => (
+        <Radio
+          value={option.id}
+          label={option.name}
+          checked={(fields.value || []).includes(option.id)}
+          onChange={(event) => toggle(event, option.id)}
+        />
+      ))}
+    </>
   );
 };

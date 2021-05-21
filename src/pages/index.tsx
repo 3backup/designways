@@ -4,7 +4,7 @@ import { Head } from "../components/Head";
 import { Footer } from "../components/Footer";
 import { HeaderFilter } from "../components/HeaderFilter";
 import { Workshops } from "../components/Workshops";
-import { getEvents, getTags, getLevels } from "../util/contentfulPosts";
+import { getEvents, getTags, getLevels } from "../util/contentful";
 import { Workshop, WorkshopLevel, WorkshopTag } from "../types";
 import { Newsletter } from "../components/Newsletter";
 
@@ -14,7 +14,7 @@ type Props = {
   levels: WorkshopLevel[];
 };
 
-export default function Filter({ events, tags, levels }: Props) {
+export default function Home({ events, tags, levels }: Props) {
   return (
     <>
       <Head />
@@ -38,6 +38,6 @@ export async function getServerSideProps() {
       tags,
       events,
       levels,
-    }
+    },
   };
 }

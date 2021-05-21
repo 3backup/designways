@@ -10,4 +10,5 @@ export const formatDuration = (value) => {
     const duration = value.split(":");
     return `${duration[0]} h ${duration[1]} min`;
   }
+  return "";
 };

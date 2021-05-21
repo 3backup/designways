@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import "../styles/main.sass";
 import "../styles/filters.sass";
 import "../styles/organiser.scss";
+import "../styles/addEvent.scss";
 
 import { useRouteChange } from "../hooks/useRouteChange";
 

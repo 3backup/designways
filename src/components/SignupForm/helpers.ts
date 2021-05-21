@@ -1,10 +1,10 @@
 /* eslint-disable no-restricted-syntax */
 import dayjs from "dayjs";
 
-import { ValidationsValues } from "./types";
+import { SuggestFormValues } from "./types";
 
-export const validate = (values: ValidationsValues) => {
-  const errors: Partial<ValidationsValues> = {};
+export const validate = (values: SuggestFormValues) => {
+  const errors: Partial<Record<keyof SuggestFormValues, string>> = {};
   if (values.startDate) {
     for (const value of values.startDate) {
       if (value.length === 1 && value.match(/[a-z]/i)) {
@@ -79,7 +79,7 @@ export const validate = (values: ValidationsValues) => {
   return errors;
 };
 
-export const generateEntry = (values: ValidationsValues) => {
+export const generateEntry = (values: SuggestFormValues) => {
   return {
     // create
     fields: {

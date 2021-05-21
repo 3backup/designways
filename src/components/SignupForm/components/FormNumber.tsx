@@ -2,17 +2,17 @@ import React from "react";
 import checkWhite from "../../../images/check-white.svg";
 
 type Props = {
-  isEnabled: boolean;
+  isValid: boolean;
   label: string;
 };
 
-export const FormNumber = ({ isEnabled = true, label }: Props) => {
+export const FormNumber = ({ isValid = false, label }: Props) => {
   return (
-    <div className={`form__number ${isEnabled ? "form__number--active" : ""}`}>
-      {`${isEnabled ? "" : label}`}
+    <div className={`form__number ${isValid ? "form__number--active" : ""}`}>
+      {`${isValid ? "" : label}`}
       <img
         src={checkWhite}
-        className={`form__numberCheck ${isEnabled ? "form__number--hide" : ""}`}
+        className={`form__numberCheck ${isValid ? "form__number--hide" : ""}`}
         alt=""
       />
     </div>

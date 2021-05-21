@@ -1,10 +1,10 @@
 export enum WorkshopSortType {
   ByPrice,
-  ByDate
+  ByDate,
 }
 
 export type Workshop = {
-  id: string,
+  id: string;
   certificate: boolean;
   duration: string;
   endDate: string;
@@ -56,4 +56,13 @@ export type Speaker = {
   secondParagraph: string;
   facebook: string;
   linkedin: string;
+};
+
+export type FormFile = {
+  fieldname: string;
+  originalname: string;
+  encoding: string;
+  mimetype: string;
+  buffer: ArrayBuffer;
+  size: number;
 };

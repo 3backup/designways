@@ -1,14 +1,12 @@
 import React from "react";
+import { ExtendedFile } from "../types";
 
 type Props = {
-  file: {
-    name: string;
-    preview: string;
-  };
+  file: ExtendedFile;
 };
 export const Thumb = ({ file }: Props) => {
   return (
-    <div className="form__dropzoneArea--thumbnail" key={file.name}>
+    <div className="form__dropzoneArea--thumbnail" key={file.path}>
       <img
         src={file.preview}
         className="form__dropzoneArea--thumbnailImage"

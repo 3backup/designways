@@ -14,7 +14,5 @@ export const sortEvents = (
       .reverse();
   }
 
-  return events.sort(
-    (a, b) =>  a.normalizedDateStart - b.normalizedDateStart
-  );
+  return events.sort((a, b) => a.normalizedDateStart - b.normalizedDateStart);
 };
