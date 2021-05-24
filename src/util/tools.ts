@@ -19,7 +19,7 @@ export const mockWrapper = (dumpedFn: ResourceFn) => {
   };
 };
 
-export const decorateWithCode = (data: Record<string, any>) => {
+export const decorateWithCode = (data: Record<string, unknown>) => {
   const fields = Object.keys(data).reduce(
     (acc, key) => ({
       ...acc,
