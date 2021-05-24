@@ -29,13 +29,6 @@ const getClientManager = () => {
 
 const client = getClient();
 
-type ContentfulElement<T> = {
-  sys: {
-    id: string;
-  };
-  fields: T;
-};
-
 const getResource = async <T>(resourceName: string, orderField: string) => {
   if (!client) {
     return null;
