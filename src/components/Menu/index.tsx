@@ -65,6 +65,19 @@ export const Menu = () => {
               />
             </a>
           </li>
+          <li className="nav__element">
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/company/18962434/"
+              rel="noreferrer">
+              <Image
+                src="/images/linkedin-top.svg"
+                alt="Linkedin logo"
+                width={19}
+                height={19}
+              />
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
