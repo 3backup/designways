@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Linkedin from "./LinkedIN.svg";
 
 export const Menu = () => {
   return (
@@ -70,12 +71,7 @@ export const Menu = () => {
               target="_blank"
               href="https://www.linkedin.com/company/18962434/"
               rel="noreferrer">
-              <Image
-                src="/images/linkedin-top.svg"
-                alt="Linkedin logo"
-                width={19}
-                height={19}
-              />
+              <Image src={Linkedin} alt="LinkedIn" width={19} height={19} />
             </a>
           </li>
         </ul>
