@@ -11,7 +11,6 @@ import {
 
 import { sortEvents } from "./helpers";
 
-import { OrganiserNew } from "../Organiser";
 import { SortButton, WorkshopItem, WorkshopTagButton } from "./components";
 
 enum PriceFilter {
@@ -28,7 +27,7 @@ type Props = {
 export const Workshops = ({ events, tags, levels }: Props) => {
   // aktualne sortowanie i aktualnie wybrane wydarzenia
   const [sortType, setSortType] = useState<WorkshopSortType>(
-    WorkshopSortType.ByDate
+    WorkshopSortType.ByDate,
   );
 
   const formattedWorkshops: FormattedWorkshop[] = useMemo(
@@ -38,13 +37,13 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         normalizedDateStart: dayjs(event.startDate).unix(),
         normalizedDateEnd: dayjs(event.endDate).unix(),
       })),
-    [events]
+    [events],
   );
 
   const [currentTags, setCurrentTags] = useState<WorkshopTag[]>([]);
   const [currentLevels, setCurrentLevels] = useState<WorkshopLevel[]>([]);
   const [currentPriceFilters, setCurrentPriceFilters] = useState<PriceFilter[]>(
-    []
+    [],
   );
   const dateNow = dayjs().unix();
 
@@ -52,20 +51,20 @@ export const Workshops = ({ events, tags, levels }: Props) => {
     setCurrentTags(
       currentTags.includes(tag)
         ? currentTags.filter((current) => current.name !== tag.name)
-        : [...currentTags, tag]
+        : [...currentTags, tag],
     );
   const toggleLevel = (level: WorkshopLevel) =>
     setCurrentLevels(
       currentLevels.includes(level)
         ? currentLevels.filter((current) => current.name !== level.name)
-        : [...currentLevels, level]
+        : [...currentLevels, level],
     );
 
   const togglePrice = (filter: PriceFilter) =>
     setCurrentPriceFilters(
       currentPriceFilters.includes(filter)
         ? currentPriceFilters.filter((current) => current !== filter)
-        : [...currentPriceFilters, filter]
+        : [...currentPriceFilters, filter],
     );
 
   const filteredEventsCalculated = useMemo(
@@ -74,7 +73,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         if (currentTags.length) {
           const tagsNames = currentTags.map((filter) => filter.name);
           const tagsMatched = event.tags.filter((eventTag) =>
-            tagsNames.includes(eventTag.fields.name)
+            tagsNames.includes(eventTag.fields.name),
           );
           if (!tagsMatched.length) {
             return false;
@@ -93,7 +92,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
           const eventPriceType =
             event.price > 0 ? PriceFilter.Paid : PriceFilter.Free;
           const currentPriceFiltersMatched = currentPriceFilters.includes(
-            eventPriceType
+            eventPriceType,
           );
           if (!currentPriceFiltersMatched) {
             return false;
@@ -102,31 +101,32 @@ export const Workshops = ({ events, tags, levels }: Props) => {
 
         return true;
       }),
-    [formattedWorkshops, currentLevels, currentTags, currentPriceFilters]
+    [formattedWorkshops, currentLevels, currentTags, currentPriceFilters],
   );
 
   const oldEvents = useMemo(
     () =>
       sortEvents(
         filteredEventsCalculated.filter(
-          (event) => event.normalizedDateStart < dateNow
+          (event) => event.normalizedDateStart < dateNow,
         ),
         sortType,
-        true
+        true,
       ),
-    [filteredEventsCalculated, sortType]
+    [filteredEventsCalculated, sortType],
   );
-
+  let numberOfVisableEvents = 5;
+  const oldVisableEvents = oldEvents.splice(0, numberOfVisableEvents);
   const onGoingEvents = useMemo(
     () =>
       sortEvents(
         filteredEventsCalculated.filter(
-          (event) => event.normalizedDateStart > dateNow
+          (event) => event.normalizedDateStart > dateNow,
         ),
         sortType,
-        false
+        false,
       ),
-    [filteredEventsCalculated, sortType]
+    [filteredEventsCalculated, sortType],
   );
 
   return (
@@ -179,7 +179,6 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         </div>
       </div>
 
-      <OrganiserNew />
       <div className="container container--big sortElement">
         <div className="sortElement__countEvents text__h6">
           Liczba znalezionych wydarzeń:
@@ -210,12 +209,20 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         </div>
         <div className="pastEvent text__h6">Ubiegłe wydarzenia</div>
         <div>
-          {oldEvents.map((event) => (
+          {oldVisableEvents.map((event) => (
             <WorkshopItem
               key={`${event.title}-${event.normalizedDateStart}`}
               workshop={event}
             />
           ))}
+          <button
+            onClick={() => {
+              numberOfVisableEvents += 5;
+              console.log(numberOfVisableEvents);
+            }}
+            type="button">
+            Zobacz więcej
+          </button>
         </div>
       </div>
     </>

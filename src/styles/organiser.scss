@@ -1,7 +1,7 @@
 .organiserHeader {
   width: 100%;
-  min-height: 59.5rem;
-  background: #211c51;
+  min-height: 50rem;
+  background: #7d4de5;
   &__menu {
     display: flex;
     min-height: 7.2rem;
@@ -522,11 +522,62 @@
     color: #2b2251;
   }
 }
+.OrganiserAdditional {
+  background: #efeaff;
+  height: min-content;
+  padding: 8rem 0;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 103rem;
+    margin: 0 auto;
+    @media only screen and (max-width: 1200px) {
+      max-width: 992px;
+    }
+    @media only screen and (max-width: 1024px) {
+      max-width: 94%;
+      padding: 4%;
+      flex-direction: column;
+    }
+  }
+  &__header {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    max-width: 52rem;
+    font-size: 32px;
+    margin-bottom: 6rem;
+    line-height: 160%;
+    display: flex;
+    align-items: center;
+    color: #2a2e50;
+  }
+  &__list {
+    list-style-image: url("../images/organiser-list-element.svg");
+    list-style-type: disc;
+    li {
+      padding-left: 5rem;
+    }
+  }
+  &__listElement {
+    list-style-type: none;
+    margin-bottom: 2rem;
+    background: url("../images/organiser-list-element.svg") no-repeat left top;
+    padding: 0px 0 3px 24px;
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+  }
+}
 .OrganiserDescription {
   display: flex;
-  flex-direction: row;
-  width: 118rem;
-  margin: 14rem auto 8rem auto;
+  flex-direction: column;
+  width: 103rem;
+  margin: 8rem auto 8rem auto;
   @media only screen and (max-width: 1200px) {
     max-width: 992px;
   }
@@ -535,16 +586,15 @@
     padding: 4%;
     flex-direction: column;
   }
-
   &__title {
-    width: 25%;
+    width: 100%;
     font-family: Manrope;
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
     line-height: 140%;
     display: flex;
-    text-align: right;
+    text-align: left;
     color: #2a2d50;
     @media only screen and (max-width: 1024px) {
       width: 100%;
@@ -552,8 +602,8 @@
     }
   }
   &__text {
-    width: 75%;
-    padding-left: 6rem;
+    width: 100%;
+    margin: 2rem 0;
     font-family: Manrope;
     font-style: normal;
     font-weight: 500;

@@ -7,6 +7,7 @@ import { Workshops } from "../components/Workshops";
 import { getEvents, getTags, getLevels } from "../util/contentfulPosts";
 import { Workshop, WorkshopLevel, WorkshopTag } from "../types";
 import { Newsletter } from "../components/Newsletter";
+import { OrganiserHomepage } from "../components/OrganiserHomepage";
 
 type Props = {
   events: Workshop[];
@@ -20,6 +21,7 @@ export default function Filter({ events, tags, levels }: Props) {
       <Head />
       <HeaderFilter />
       <Workshops events={events} tags={tags} levels={levels} />
+      <OrganiserHomepage />
       <Newsletter />
       <Footer />
     </>
@@ -38,6 +40,6 @@ export async function getServerSideProps() {
       tags,
       events,
       levels,
-    }
+    },
   };
 }
