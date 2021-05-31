@@ -24,8 +24,7 @@ type Props = {
   levels: WorkshopLevel[];
 };
 
-const postsPerPage = 5;
-let arrayForHoldingPosts = [];
+const PostsPerPage = 5;
 
 export const Workshops = ({ events, tags, levels }: Props) => {
   // aktualne sortowanie i aktualnie wybrane wydarzenia
@@ -119,23 +118,12 @@ export const Workshops = ({ events, tags, levels }: Props) => {
     [filteredEventsCalculated, sortType],
   );
 
-  const [postsToShow, setPostsToShow] = useState([]);
-  const [next, setNext] = useState(5);
+  const [numPostsToShow, setNumPostsToShow] = useState(PostsPerPage);
+  const postsToShow = useMemo(() => {
+    return oldEvents.slice(0, numPostsToShow);
+  }, [numPostsToShow, oldEvents]);
 
-  const loopWithSlice = (start, end) => {
-    const slicedPosts = oldEvents.slice(start, end);
-    arrayForHoldingPosts = [...arrayForHoldingPosts, ...slicedPosts];
-    setPostsToShow(arrayForHoldingPosts);
-  };
-
-  useEffect(() => {
-    loopWithSlice(0, postsPerPage);
-  }, []);
-
-  const handleShowMorePosts = () => {
-    loopWithSlice(next, next + postsPerPage);
-    setNext(next + postsPerPage);
-  };
+  const onBtnClick = () => setNumPostsToShow(numPostsToShow + PostsPerPage);
 
   const onGoingEvents = useMemo(
     () =>
@@ -237,7 +225,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
           ))}
           <button
             className="pastEvent__button"
-            onClick={handleShowMorePosts}
+            onClick={onBtnClick}
             type="button">
             Zobacz więcej
           </button>
