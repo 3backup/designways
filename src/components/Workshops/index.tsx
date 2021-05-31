@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import dayjs from "dayjs";
 import {
   FormattedWorkshop,
@@ -23,6 +23,9 @@ type Props = {
   tags: WorkshopTag[];
   levels: WorkshopLevel[];
 };
+
+const postsPerPage = 5;
+let arrayForHoldingPosts = [];
 
 export const Workshops = ({ events, tags, levels }: Props) => {
   // aktualne sortowanie i aktualnie wybrane wydarzenia
@@ -115,8 +118,25 @@ export const Workshops = ({ events, tags, levels }: Props) => {
       ),
     [filteredEventsCalculated, sortType],
   );
-  let numberOfVisableEvents = 5;
-  const oldVisableEvents = oldEvents.splice(0, numberOfVisableEvents);
+
+  const [postsToShow, setPostsToShow] = useState([]);
+  const [next, setNext] = useState(5);
+
+  const loopWithSlice = (start, end) => {
+    const slicedPosts = oldEvents.slice(start, end);
+    arrayForHoldingPosts = [...arrayForHoldingPosts, ...slicedPosts];
+    setPostsToShow(arrayForHoldingPosts);
+  };
+
+  useEffect(() => {
+    loopWithSlice(0, postsPerPage);
+  }, []);
+
+  const handleShowMorePosts = () => {
+    loopWithSlice(next, next + postsPerPage);
+    setNext(next + postsPerPage);
+  };
+
   const onGoingEvents = useMemo(
     () =>
       sortEvents(
@@ -209,17 +229,15 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         </div>
         <div className="pastEvent text__h6">Ubiegłe wydarzenia</div>
         <div>
-          {oldVisableEvents.map((event) => (
+          {postsToShow.map((event) => (
             <WorkshopItem
               key={`${event.title}-${event.normalizedDateStart}`}
               workshop={event}
             />
           ))}
           <button
-            onClick={() => {
-              numberOfVisableEvents += 5;
-              console.log(numberOfVisableEvents);
-            }}
+            className="pastEvent__button"
+            onClick={handleShowMorePosts}
             type="button">
             Zobacz więcej
           </button>
