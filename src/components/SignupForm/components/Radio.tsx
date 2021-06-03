@@ -42,6 +42,7 @@ export const RadioGroup = ({
     <>
       {options.map((option) => (
         <Radio
+          key={option.id}
           value={option.id}
           label={option.name}
           checked={(fields.value || []).includes(option.id)}

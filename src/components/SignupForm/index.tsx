@@ -34,7 +34,7 @@ export const SignupForm = ({ tags = [], levels = [] }: Props) => {
   const { sendForm } = useForm();
   const onSubmit = useCallback(
     (values: SuggestFormValues) => sendForm(values),
-    []
+    [],
   );
 
   return (
@@ -92,7 +92,7 @@ export const SignupForm = ({ tags = [], levels = [] }: Props) => {
                     label="Prowadzący"
                     isValid={!meta.touched || meta.valid}
                     error={meta.error}
-                    placeholder="np. https://"
+                    placeholder="np. John Clark"
                     {...input}
                   />
                 </>
@@ -145,7 +145,7 @@ export const SignupForm = ({ tags = [], levels = [] }: Props) => {
                     <div className="form__errorHandlerInside">
                       {errors[field]}
                     </div>
-                  ) : null
+                  ) : null,
                 )}
               </div>
             </div>

@@ -17,7 +17,7 @@ export const Dropzone = ({ onChange }: Props) => {
       const filesAccepted = (acceptedFiles.map((file) =>
         Object.assign(file, {
           preview: URL.createObjectURL(file),
-        })
+        }),
       ) as unknown) as ExtendedFile[];
       setFiles(filesAccepted);
       if (onChange) {
@@ -26,14 +26,16 @@ export const Dropzone = ({ onChange }: Props) => {
     },
   });
 
-  const thumbs = files.map((file) => <Thumb file={file} />);
+  const thumbs = files.map((file) => (
+    <Thumb key={file.lastModified} file={file} />
+  ));
 
   useEffect(
     () => () => {
       // Make sure to revoke the data uris to avoid memory leaks
       files.forEach((file) => URL.revokeObjectURL(file.preview));
     },
-    [files]
+    [files],
   );
 
   return (
@@ -43,8 +45,7 @@ export const Dropzone = ({ onChange }: Props) => {
           className={`dropzone form__dropzoneArea--clickable ${
             files.length > 0 ? "form__dropzoneArea--smaller" : ""
           }`}
-          {...getRootProps({})}
-        >
+          {...getRootProps({})}>
           <input {...getInputProps()} />
           {files.length > 0 ? <p>Zmień grafikę</p> : <p>Dodaj grafikę</p>}
 

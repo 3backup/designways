@@ -84,28 +84,28 @@ export const generateEntry = (values: SuggestFormValues) => {
     // create
     fields: {
       title: {
-        "en-US": values.title
+        "en-US": values.title,
       },
       speaker: {
-        "en-US": values.speaker
+        "en-US": values.speaker,
       },
       url: {
-        "en-US": values.url
+        "en-US": values.url,
       },
       spots: {
-        "en-US": values.spots
+        "en-US": values.spots,
       },
       startDate: {
         "en-US": dayjs(`${values.startDate}, ${values.startDateTime}`).add(
           2,
-          "hour"
-        )
+          "hour",
+        ),
       },
       endDate: {
         "en-US": dayjs(`${values.endDate}, ${values.endDateTime}`).add(
           2,
-          "hour"
-        )
+          "hour",
+        ),
       },
       // to jest tak złe ale później to naprawie
 
@@ -114,11 +114,11 @@ export const generateEntry = (values: SuggestFormValues) => {
           sys: {
             type: "Link",
             linkType: "Entry",
-            id: "59AM7gZUTBkQyob0MfaTjt"
-          }
-        }
-      }
-    }
+            id: "59AM7gZUTBkQyob0MfaTjt",
+          },
+        },
+      },
+    },
   };
 };
 
