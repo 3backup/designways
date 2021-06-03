@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import nextConnect from "next-connect";
 import multer from "multer";
 import { FormFile } from "types";
-import { sendForm, uploadImage } from "../../util/contentful";
+import { uploadImage } from "../../util/contentful";
 
 const upload = multer();
 const apiRoute = nextConnect({});
