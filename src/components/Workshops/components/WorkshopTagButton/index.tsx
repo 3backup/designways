@@ -4,6 +4,7 @@ type Props = {
   onClick: () => void;
   name: string;
   isActive: boolean;
+  isHuge: boolean;
 };
 
 export const WorkshopTagButton = ({ onClick, name, isActive }: Props) => {

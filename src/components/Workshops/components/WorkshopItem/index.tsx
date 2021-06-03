@@ -1,11 +1,14 @@
 import React, { useCallback } from "react";
 import dayjs from "dayjs";
+import CertificateImage from "images/np_certificate_1117192_000000 1.svg";
 
 import { FormattedWorkshop } from "../../../../types";
 import { formatDuration, formatPriceWithCurrency } from "./helpers";
-import { EventCategory, EventTypes, pushEvent } from "../../../../util/analytics";
-
-import CertificateImage from "images/np_certificate_1117192_000000 1.svg";
+import {
+  EventCategory,
+  EventTypes,
+  pushEvent,
+} from "../../../../util/analytics";
 
 type Props = {
   workshop: FormattedWorkshop;
@@ -44,8 +47,7 @@ export const WorkshopItem = ({ workshop, isActive = false }: Props) => {
             href={workshop.url}
             target="_blank"
             rel="noreferrer"
-            className="lecture__join buttonDesktop"
-          >
+            className="lecture__join buttonDesktop">
             Dowiedz się więcej
           </a>
         </div>
@@ -97,8 +99,7 @@ export const WorkshopItem = ({ workshop, isActive = false }: Props) => {
         <a
           className="lecture__join buttonMobile__cta"
           onClick={sendEvent}
-          href={workshop.url}
-        >
+          href={workshop.url}>
           Dowiedz się więcej
         </a>
       </div>

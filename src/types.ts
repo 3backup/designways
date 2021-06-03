@@ -47,7 +47,6 @@ export type FileSys = {
 
 export type ExtendObject<T> = {
   fields: T;
-  lastModified: number;
 };
 
 export type Speaker = {

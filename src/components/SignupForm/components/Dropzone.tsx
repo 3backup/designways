@@ -26,9 +26,7 @@ export const Dropzone = ({ onChange }: Props) => {
     },
   });
 
-  const thumbs = files.map((file) => (
-    <Thumb key={file.lastModified} file={file} />
-  ));
+  const thumbs = files.map((file) => <Thumb key={file.path} file={file} />);
 
   useEffect(
     () => () => {
