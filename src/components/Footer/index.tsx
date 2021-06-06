@@ -1,8 +1,8 @@
 import React from "react";
+import styled from "styled-components";
 import Logo from "images/Logo_horizontal_new.svg";
 import InstagramLogo from "images/instagram-dark.svg";
 import FacebookLogo from "images/facebook-dark.svg";
-import styled from "styled-components";
 
 const FooterContainer = styled.footer`
   min-height: 5rem;
@@ -56,11 +56,17 @@ const FooterRight = styled(FooterHalf)`
   font-family: Manrope;
   font-style: normal;
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: ${({ theme }) => theme.fonts.base};
   line-height: 140%;
   text-align: center;
   letter-spacing: 0.02em;
   color: ${({ theme }) => theme.colors.darkgrey};
+  & > * {
+    margin-left: 5rem;
+    @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
+      margin: 2.5rem 0;
+    }
+  }
   @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
     flex-direction: column-reverse;
     margin: 2rem;
@@ -87,6 +93,39 @@ const FooterCopyrights = styled.p`
     color: ${({ theme }) => theme.colors.secondarybackground};
   }
 `;
+const FooterTerm = styled.p`
+  a {
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #575983;
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin: 1rem 0;
+    width: 100%;
+  }
+`;
+const SocialMedia = styled.div`
+  @media (max-width: 768px) {
+    width: 80%;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  & > * {
+    margin-left: 5rem;
+    @media (max-width: 768px) {
+      margin: 0;
+    }
+  }
+`;
+
 export const Footer = () => {
   return (
     <FooterContainer>
@@ -94,29 +133,23 @@ export const Footer = () => {
         <img src={Logo} alt="logo-bottom" />
         <FooterCopyrights>
           All Rights Reserverd © 2021 DesignWays. Skontaktuj się pod:
-          <a
-            className="filterFooter__footerCopyrights"
-            href="mailto:hello@designways.io">
-            hello@deisgnways.io
-          </a>
+          <a href="mailto:hello@designways.io">hello@deisgnways.io</a>
         </FooterCopyrights>
       </FooterHalf>
       <FooterRight>
-        <p className="filterFooter__footerTerms">
-          <a
-            href="https://www.designways.io/polityka-prywatnosci.html"
-            className="filterFooter__footerTerms">
+        <FooterTerm>
+          <a href="https://www.designways.io/polityka-prywatnosci.html">
             Terms & Privacy
           </a>
-        </p>
-        <div className="filterFooter__socialMedia">
+        </FooterTerm>
+        <SocialMedia>
           <a href="https://www.facebook.com/designwaysconf">
             <img src={InstagramLogo} alt="" />
           </a>
           <a href="https://www.instagram.com/designwaysconf/">
             <img src={FacebookLogo} alt="" />
           </a>
-        </div>
+        </SocialMedia>
       </FooterRight>
     </FooterContainer>
   );
