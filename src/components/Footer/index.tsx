@@ -3,6 +3,9 @@ import styled from "styled-components";
 import Logo from "images/Logo_horizontal_new.svg";
 import InstagramLogo from "images/instagram-dark.svg";
 import FacebookLogo from "images/facebook-dark.svg";
+import LinkedInLogo from "images/linkedin-footer.svg";
+import MailLogo from "images/mail.svg";
+import { LinkSingle } from "../styles/links";
 
 const FooterContainer = styled.footer`
   min-height: 5rem;
@@ -21,15 +24,18 @@ const FooterContainer = styled.footer`
     max-width: 96%;
     width: 96%;
   }
-
   @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-    padding: 0px 2.5rem;
+    padding: ${({ theme }) => theme.space.xs};
     max-width: 96%;
     width: 96%;
     flex-direction: column-reverse;
     justify-content: center;
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.m}) {
+    max-width: 92%;
+    width: 92%;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.l}) {
     max-width: 92%;
     width: 92%;
   }
@@ -63,8 +69,9 @@ const FooterRight = styled(FooterHalf)`
   color: ${({ theme }) => theme.colors.darkgrey};
   & > * {
     margin-left: 5rem;
-    @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
-      margin: 2.5rem 0;
+    @media (max-width: ${({ theme }) => theme.breakpoints.m}) {
+      margin: 2rem 0;
+      margin-left: 0;
     }
   }
   @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
@@ -79,7 +86,7 @@ const FooterCopyrights = styled.p`
   font-weight: normal;
   font-size: ${({ theme }) => theme.fonts.label};
   margin-top: 10px;
-  line-height: 100%;
+  line-height: 150%;
   letter-spacing: 0.02em;
   color: ${({ theme }) => theme.colors.secondarybackground};
   a {
@@ -94,34 +101,44 @@ const FooterCopyrights = styled.p`
   }
 `;
 const FooterTerm = styled.p`
-  a {
-    font-family: Manrope;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 140%;
-    text-decoration: none;
-    text-align: center;
-    letter-spacing: 0.02em;
-    color: #575983;
-  }
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
     flex-direction: column;
     margin: 1rem 0;
     width: 100%;
   }
 `;
 const SocialMedia = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
     width: 80%;
     margin: 2rem auto;
     display: flex;
     justify-content: space-evenly;
+    img {
+      width: 100%;
+    }
   }
   & > * {
     margin-left: 5rem;
-    @media (max-width: 768px) {
+    @media (max-width: ${({ theme }) => theme.breakpoints.m}) {
       margin: 0;
+      margin-left: 2rem;
+    }
+    @media (max-width: ${({ theme }) => theme.breakpoints.l}) {
+      margin: 0;
+      margin-left: 2rem;
+    }
+  }
+`;
+const SocialMediaLogo = styled.a`
+  width: 2rem;
+  height: 2rem;
+  img {
+    width: 2rem;
+    height: 2rem;
+    color: red;
+    transition: 0.3s;
+    :hover {
+      transform: scale(1.1);
     }
   }
 `;
@@ -138,17 +155,24 @@ export const Footer = () => {
       </FooterHalf>
       <FooterRight>
         <FooterTerm>
-          <a href="https://www.designways.io/polityka-prywatnosci.html">
+          <LinkSingle href="https://www.designways.io/polityka-prywatnosci.html">
             Terms & Privacy
-          </a>
+          </LinkSingle>
         </FooterTerm>
         <SocialMedia>
-          <a href="https://www.facebook.com/designwaysconf">
+          <SocialMediaLogo href="https://www.facebook.com/designwaysconf">
             <img src={InstagramLogo} alt="" />
-          </a>
-          <a href="https://www.instagram.com/designwaysconf/">
+          </SocialMediaLogo>
+          <SocialMediaLogo href="https://www.instagram.com/designwaysconf/">
             <img src={FacebookLogo} alt="" />
-          </a>
+          </SocialMediaLogo>
+
+          <SocialMediaLogo href="https://www.linkedin.com/company/18962434/">
+            <img src={LinkedInLogo} alt="" />
+          </SocialMediaLogo>
+          <SocialMediaLogo href="mailto:hello@designways.io">
+            <img src={MailLogo} alt="" />
+          </SocialMediaLogo>
         </SocialMedia>
       </FooterRight>
     </FooterContainer>

@@ -11,6 +11,7 @@
     "pre-commit": "echo \"this should fail\" && exit 1"
   },
   "dependencies": {
+    "@types/styled-components": "^5.1.9",
     "contentful": "^8.2.0",
     "contentful-management": "^7.9.0",
     "dayjs": "^1.10.4",
