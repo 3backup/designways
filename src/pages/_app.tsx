@@ -61,12 +61,15 @@ html{
 const theme = {
   colors: {
     lightviolet: "#AE97F5",
+    lightvioletbg: "#EFEAFF",
     violet: "#7D4CE5",
     darkviolet: "#6B32E3",
     white: "#FFFFFF",
     lightgray: "#CED3E0",
+    gray: "#dfe0e4",
     lightpurple: "#b9bad5",
     navyblue: "#2A2D50",
+    black: "#242424",
     darkgrey: "#575983",
     secondarybackground: "#8A8CB9",
     green: "#189F0D",
