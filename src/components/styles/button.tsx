@@ -33,6 +33,7 @@ export const ButtonMenu = styled.button`
 `;
 
 export const ButtonNavyBlue = styled.input`
+  //square
   height: 6rem;
   color: ${({ theme }) => theme.colors.white};
   width: 100%;
@@ -51,6 +52,31 @@ export const ButtonNavyBlue = styled.input`
   border-radius: 12px;
   &:disabled {
     opacity: 0.7;
+  }
+`;
+
+export const ButtonNavyBlueRounded = styled.a`
+  display: block;
+  background: ${({ theme }) => theme.colors.navyblue};
+  border-radius: 45px;
+  padding: 1.3rem 2.8rem;
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: bold;
+  font-size: ${({ theme }) => theme.fonts.label};
+  line-height: 150%;
+  color: ${({ theme }) => theme.colors.white};
+  transition: ease 0.3s;
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.l}) {
+    padding: 1.3rem 1.8rem;
+  }
+  @media only screen and (max-width: ${({ theme }) => theme.breakpoints.m}) {
+    display: none;
+  }
+  &:hover {
+    color: ${({ theme }) => theme.colors.darkviolet};
+    background: #${({ theme }) => theme.colors.white};
+    border: 1px solid ${({ theme }) => theme.colors.darkviolet};
   }
 `;
 

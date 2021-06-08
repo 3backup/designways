@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useMemo, useEffect } from "react";
+import styled from "styled-components";
+
+import React, { useState, useMemo } from "react";
 import dayjs from "dayjs";
 import {
   FormattedWorkshop,

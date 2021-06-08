@@ -3,7 +3,6 @@ import type { AppProps } from "next/app";
 
 import "../styles/main.sass";
 import "../styles/filters.sass";
-import "../styles/organiser.scss";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { useRouteChange } from "../hooks/useRouteChange";
 
@@ -65,6 +64,7 @@ const theme = {
     violet: "#7D4CE5",
     darkviolet: "#6B32E3",
     white: "#FFFFFF",
+    sectionGray: "#f4f4f5",
     lightgray: "#CED3E0",
     gray: "#dfe0e4",
     lightpurple: "#b9bad5",
@@ -72,17 +72,19 @@ const theme = {
     black: "#242424",
     darkgrey: "#575983",
     secondarybackground: "#8A8CB9",
-    green: "#189F0D",
+    green: "#3fd59f",
   },
   fonts: {
     base: "1.6rem",
     titlePage: "5.8rem",
     headerSize: "4.2rem",
     sectionHeight: "3.8rem",
+    fontx32: "3.2rem",
     fontsx26: "2.6rem",
     leadeHeight: "2.4rem",
     biggerBase: "1.8rem",
     label: "1.4rem",
+    miniLabel: "1.3rem",
   },
   space: {
     xxs: "1rem",

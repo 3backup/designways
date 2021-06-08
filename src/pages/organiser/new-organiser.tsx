@@ -1,5 +1,7 @@
 import React from "react";
 import { Head } from "../../components/Head";
+import { useRouter } from "next/router";
+
 import {
   OrganiserHeader,
   OrganiserDescription,
@@ -13,8 +15,11 @@ import { Footer } from "components/Footer";
 import { productDiscoverySpeakers } from "../../constants";
 
 export default function organiser() {
+  const router = useRouter();
+  const { pid } = router.query;
   return (
     <>
+      {console.log("test")}
       <Head />
       <OrganiserHeader />
       <OrganiserDescription />
