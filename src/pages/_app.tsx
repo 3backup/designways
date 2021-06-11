@@ -2,7 +2,6 @@ import React from "react";
 import type { AppProps } from "next/app";
 
 import "../styles/main.sass";
-import "../styles/filters.sass";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { useRouteChange } from "../hooks/useRouteChange";
 

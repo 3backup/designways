@@ -13,6 +13,9 @@ const OrganiserHeaderContainer = styled.header`
   width: 100%;
   min-height: 50rem;
   background: ${({ theme }) => theme.colors.violet};
+  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
+    min-height: 60rem;
+  } ;
 `;
 const MenuContainer = styled.div`
   display: flex;

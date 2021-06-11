@@ -39,10 +39,13 @@ const HeaderSubtitle = styled.h2`
     line-height: 125%;
   }
 `;
+const HeaderFilterTop = styled(HeaderViolet)`
+  min-height: 47rem;
+`;
 
 export const HeaderFilter = () => {
   return (
-    <HeaderViolet className="violet violet__filter display__column">
+    <HeaderFilterTop>
       <Menu />
       <Container>
         <HeaderTitle>Poznaj swoją designerską ścieżkę.</HeaderTitle>
@@ -50,6 +53,6 @@ export const HeaderFilter = () => {
           Znajdź szkolenia z branży, które pozwolą Ci rozwinąć karierę.
         </HeaderSubtitle>
       </Container>
-    </HeaderViolet>
+    </HeaderFilterTop>
   );
 };

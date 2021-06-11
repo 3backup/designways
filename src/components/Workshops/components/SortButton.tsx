@@ -4,34 +4,32 @@ import styled from "styled-components";
 type Props = {
   active: boolean;
   title: string;
+  theme: any;
   onClick: () => void;
 };
-
 const SortButtonMain = styled.button`
   background-color: transparent;
   border: none;
   line-height: 150%;
   width: auto;
   padding: 0;
-  color: #7d4ce5;
+  font-size: ${({ theme }) => theme.fonts.base};
+  border-bottom: ${(props) => (props.active ? `0` : `1px`)} solid
+    ${({ theme }) => theme.colors.navyblue};
+  color: ${({ active, theme }: Props) =>
+    active ? `${theme.colors.violet}` : `${theme.colors.black}`};
   cursor: pointer;
   padding-bottom: 2px;
   font-weight: bold;
   margin: 20px 0 20px 40px;
-  @media (max-width: 768px) {
+  transition: 0.5s ease;
+  @media (max-width: ${({ theme }) => theme.breakpoints.s}) {
     margin: 20px 0;
   }
 `;
 export const SortButton = ({ title, active, onClick }: Props) => {
   return (
-    <SortButtonMain
-      type="button"
-      className={
-        active
-          ? "sortElement__sortButton  text__h6"
-          : "sortElement__sortButton sortElement__sortButton--active text__h6"
-      }
-      onClick={() => onClick()}>
+    <SortButtonMain active={active} type="button" onClick={() => onClick()}>
       {title}
     </SortButtonMain>
   );
