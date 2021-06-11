@@ -19,7 +19,6 @@ export default function organiser() {
   const { pid } = router.query;
   return (
     <>
-      {console.log("test")}
       <Head />
       <OrganiserHeader />
       <OrganiserDescription />

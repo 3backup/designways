@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import dayjs from "dayjs";
 import styled from "styled-components";
+import CertificateImage from "images/np_certificate_1117192_000000 1.svg";
 
 import { FormattedWorkshop } from "../../../../types";
 import { formatDuration, formatPriceWithCurrency } from "./helpers";
@@ -9,8 +10,6 @@ import {
   EventTypes,
   pushEvent,
 } from "../../../../util/analytics";
-
-import CertificateImage from "images/np_certificate_1117192_000000 1.svg";
 
 type Props = {
   workshop: FormattedWorkshop;

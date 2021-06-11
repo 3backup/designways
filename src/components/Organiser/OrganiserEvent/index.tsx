@@ -105,6 +105,7 @@ display: flex;
 align-items: center;
 color: ${({ theme }) => theme.colors.navyblue};
 }`;
+
 const PriceElement = styled.div`
   display: flex;
   grid-column: 2;
@@ -284,78 +285,79 @@ const ButtonMobile = styled(ButtonNavyBlueRounded)`
 `;
 export const OrganiserEvent = () => {
   return (
-    <MainEventContainer>
-      <MainEvent>
-        <LogoElement>
-          <LogoElementImg src={Logo} alt="" />
-          <RecommendedElement>Polecane</RecommendedElement>
-        </LogoElement>
-        <EventContent>
-          <TagsContainer>
-            <SingleTag>Badania / Research</SingleTag>
-            <SingleTag>Analityka</SingleTag>
-            <SingleTag>Product Design</SingleTag>
-            <SingleTag>Product Management</SingleTag>
-            <SingleTag>Service Design</SingleTag>
-            <SingleTag>UX</SingleTag>
-          </TagsContainer>
-          <PriceElement>2460,60 zł</PriceElement>
-          <TitleEvent>
-            <EventLevel>Średniozaawansowany</EventLevel>
-            <MainTitle>
-              Certyfikowane Warsztaty Product Discovery Practitioner
-            </MainTitle>
-            <Pricemobile>2460,60 zł</Pricemobile>
-          </TitleEvent>
-          <DetailsContainer>
-            <SingleDetail>
-              <SingleDetailSpan>Prowadzący</SingleDetailSpan>
-              Michał Reda, Bartosz Narzelski, Adam Bartkiewicz
-            </SingleDetail>
-            <SingleDetail>
-              <SingleDetailSpan>Liczba Miejsc</SingleDetailSpan>
-              20
-            </SingleDetail>
-            <SingleDetail>
-              <SingleDetailSpan>Lokalizacja</SingleDetailSpan>
-              Online
-            </SingleDetail>
-            <SingleDetail>
-              <SingleDetailSpan>Czas Trwania</SingleDetailSpan>
-              2dni po 7h <br></br> 9:00 - 16:00
-            </SingleDetail>
-            <SingleDetail>
-              <SingleDetailSpan>Data</SingleDetailSpan>
-              22-23.04.2021
-            </SingleDetail>
-            <SingleDetail>
-              <SingleDetailSpan>Typ</SingleDetailSpan>
-              Szkolenie / warsztat
-            </SingleDetail>
-          </DetailsContainer>
-          <ReadMoreButtonDiv>
-            <ButtonNavyBlueRounded
+    <>
+      <MainEventContainer>
+        <MainEvent>
+          <LogoElement>
+            <LogoElementImg src={Logo} alt="" />
+            <RecommendedElement>Polecane</RecommendedElement>
+          </LogoElement>
+          <EventContent>
+            <TagsContainer>
+              <SingleTag>Badania / Research</SingleTag>
+              <SingleTag>Analityka</SingleTag>
+              <SingleTag>Product Design</SingleTag>
+              <SingleTag>Product Management</SingleTag>
+              <SingleTag>Service Design</SingleTag>
+              <SingleTag>UX</SingleTag>
+            </TagsContainer>
+            <PriceElement>2460,60 zł</PriceElement>
+            <TitleEvent>
+              <EventLevel>Średniozaawansowany</EventLevel>
+              <MainTitle>
+                Certyfikowane Warsztaty Product Discovery Practitioner
+              </MainTitle>
+              <Pricemobile>2460,60 zł</Pricemobile>
+            </TitleEvent>
+            <DetailsContainer>
+              <SingleDetail>
+                <SingleDetailSpan>Prowadzący</SingleDetailSpan>
+                Michał Reda, Bartosz Narzelski, Adam Bartkiewicz
+              </SingleDetail>
+              <SingleDetail>
+                <SingleDetailSpan>Liczba Miejsc</SingleDetailSpan>
+                20
+              </SingleDetail>
+              <SingleDetail>
+                <SingleDetailSpan>Lokalizacja</SingleDetailSpan>
+                Online
+              </SingleDetail>
+              <SingleDetail>
+                <SingleDetailSpan>Czas Trwania</SingleDetailSpan>
+                2dni po 7h <br /> 9:00 - 16:00
+              </SingleDetail>
+              <SingleDetail>
+                <SingleDetailSpan>Data</SingleDetailSpan>
+                22-23.04.2021
+              </SingleDetail>
+              <SingleDetail>
+                <SingleDetailSpan>Typ</SingleDetailSpan>
+                Szkolenie / warsztat
+              </SingleDetail>
+            </DetailsContainer>
+            <ReadMoreButtonDiv>
+              <ButtonNavyBlueRounded
+                target="_blank"
+                rel="noreferrer"
+                href="https://productdiscovery.pro/warsztaty/">
+                Dowiedz się więcej
+              </ButtonNavyBlueRounded>
+            </ReadMoreButtonDiv>
+          </EventContent>
+          <ButtonMobileContainer>
+            <ButtonMobile
               target="_blank"
               rel="noreferrer"
-              href="https://productdiscovery.pro/warsztaty/"
-              c>
+              href="https://productdiscovery.pro/warsztaty/">
               Dowiedz się więcej
-            </ButtonNavyBlueRounded>
-          </ReadMoreButtonDiv>
-        </EventContent>
-        <ButtonMobileContainer>
-          <ButtonMobile
-            target="_blank"
-            rel="noreferrer"
-            href="https://productdiscovery.pro/warsztaty/">
-            Dowiedz się więcej
-          </ButtonMobile>
-        </ButtonMobileContainer>
-      </MainEvent>
-      <DiscountContainer>
-        KOD RABATOWY -300zł
-        <DicsountSpan>designhub300</DicsountSpan>
-      </DiscountContainer>
-    </MainEventContainer>
+            </ButtonMobile>
+          </ButtonMobileContainer>
+        </MainEvent>
+        <DiscountContainer>
+          KOD RABATOWY -300zł
+          <DicsountSpan>designhub300</DicsountSpan>
+        </DiscountContainer>
+      </MainEventContainer>
+    </>
   );
 };
