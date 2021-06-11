@@ -4,7 +4,6 @@ import styled from "styled-components";
 type Props = {
   active: boolean;
   title: string;
-  theme: any;
   onClick: () => void;
 };
 const SortButtonMain = styled.button`

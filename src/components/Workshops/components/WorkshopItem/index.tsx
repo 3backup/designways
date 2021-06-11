@@ -12,7 +12,7 @@ import {
 } from "../../../../util/analytics";
 
 type Props = {
-  workshop: any;
+  workshop: FormattedWorkshop;
   isActive?: Boolean;
   key: string;
 };
