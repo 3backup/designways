@@ -281,12 +281,14 @@ export const Workshops = ({ events, tags, levels }: Props) => {
           <TagTags>
             <WorkshopTagButton
               isHuge={false}
+              key="darmowe"
               isActive={currentPriceFilters.includes(PriceFilter.Free)}
               onClick={() => togglePrice(PriceFilter.Free)}
               name="Darmowe"
             />
             <WorkshopTagButton
               isHuge={false}
+              key="Płatne"
               isActive={currentPriceFilters.includes(PriceFilter.Paid)}
               onClick={() => togglePrice(PriceFilter.Paid)}
               name="Płatne"

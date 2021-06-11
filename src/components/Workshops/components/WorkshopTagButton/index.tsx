@@ -5,8 +5,8 @@ type Props = {
   onClick: () => void;
   name: string;
   isActive: boolean;
-  theme: any;
   isHuge: boolean;
+  key: string;
 };
 
 const Tag = styled.button`
@@ -44,10 +44,16 @@ export const WorkshopTagButton = ({
   onClick,
   name,
   isActive,
+  key,
   isHuge,
 }: Props) => {
   return (
-    <Tag type="button" isActive={isActive} isHuge onClick={() => onClick()}>
+    <Tag
+      key={key}
+      type="button"
+      isActive={isActive}
+      isHuge
+      onClick={() => onClick()}>
       {name}
     </Tag>
   );

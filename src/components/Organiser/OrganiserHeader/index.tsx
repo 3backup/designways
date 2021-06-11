@@ -78,7 +78,7 @@ const NavUl = styled.ul`
     display: none;
   }
 `;
-const NavLi = styled.li`
+const NavLi = styled.a`
   margin-left: 3rem;
   color: ${({ theme }) => theme.colors.white};
   font-family: Manrope;
@@ -210,9 +210,15 @@ export const OrganiserHeader = () => {
         <OrganiserTitleMain>Product Discovery Pro</OrganiserTitleMain>
         <NavContainer>
           <NavUl>
-            <NavLi href="#about">O Organizatorze</NavLi>
-            <NavLi href="#speaker">Prowadzący</NavLi>
-            <NavLi href="#testimonial">Opinie</NavLi>
+            <NavLi as="a" href="#about">
+              O Organizatorze
+            </NavLi>
+            <NavLi as="a" href="#speaker">
+              Prowadzący
+            </NavLi>
+            <NavLi as="a" href="#testimonial">
+              Opinie
+            </NavLi>
           </NavUl>
         </NavContainer>
       </MenuContainer>

@@ -12,8 +12,9 @@ import {
 } from "../../../../util/analytics";
 
 type Props = {
-  workshop: FormattedWorkshop;
+  workshop: any;
   isActive?: Boolean;
+  key: string;
 };
 
 const LectureDiv = styled.div`
@@ -31,7 +32,7 @@ const LectureDiv = styled.div`
   grid-template-rows: 1fr;
   justify-content: space-between;
   align-items: center;
-  opacity: ${(props: Props) => (props.isActive ? `1` : `0.3`)};
+  opacity: ${({ isActive = false }: Props) => (isActive ? `1` : `0.3`)};
   transition: 0.5s ease;
   :hover {
     opacity: 1;
@@ -295,7 +296,7 @@ const MobileButton = styled(ButtonDesktopReadMore)`
     width: 90%;
   }
 `;
-export const WorkshopItem = ({ workshop, isActive = false }: Props) => {
+export const WorkshopItem = ({ workshop, key, isActive }: Props) => {
   const sendEvent = useCallback(() => {
     pushEvent({
       action: EventTypes.Click,
@@ -306,7 +307,7 @@ export const WorkshopItem = ({ workshop, isActive = false }: Props) => {
   }, [workshop]);
 
   return (
-    <LectureDiv isActive={isActive}>
+    <LectureDiv key={key} isActive={isActive}>
       <LectureHalf>
         <LectureImage
           src={workshop.image.fields.file.url}
