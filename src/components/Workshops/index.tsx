@@ -140,7 +140,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
     WorkshopSortType.ByDate,
   );
 
-  const formattedWorkshops: FormattedWorkshop[] = useMemo(
+  const formattedWorkshops: any[] = useMemo(
     () =>
       events.map((event) => ({
         ...event,
@@ -331,6 +331,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
             <WorkshopItem
               key={`${event.title}-${event.normalizedDateStart}`}
               workshop={event}
+              isActive={false}
             />
           ))}
           <PastButton onClick={onBtnClick} type="button">

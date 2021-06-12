@@ -14,7 +14,6 @@ import {
 type Props = {
   workshop: FormattedWorkshop;
   isActive: boolean;
-  key: string;
 };
 
 const LectureDiv = styled.div<{ isActive: boolean }>`

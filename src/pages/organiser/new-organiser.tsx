@@ -1,21 +1,20 @@
 import React from "react";
-import { Head } from "../../components/Head";
-import { useRouter } from "next/router";
-
+import { Footer } from "components/Footer";
+import { Testimonial } from "components/Testimonial";
+import { Newsletter } from "components/Newsletter";
 import {
   OrganiserHeader,
   OrganiserDescription,
   OrganiserSpeakers,
   OrganiserAdditional,
 } from "components/Organiser";
-import { Newsletter } from "components/Newsletter";
-import { Testimonial } from "components/Testimonial";
-import { Footer } from "components/Footer";
+import { useRouter } from "next/router";
+import { Head } from "../../components/Head";
 
 import { productDiscoverySpeakers } from "../../constants";
 
 export default function organiser() {
-  const router = useRouter();
+  const outer = useRouter();
   const { pid } = router.query;
   return (
     <>
