@@ -14,7 +14,7 @@ import { Head } from "../../components/Head";
 import { productDiscoverySpeakers } from "../../constants";
 
 export default function organiser() {
-  const outer = useRouter();
+  const router = useRouter();
   const { pid } = router.query;
   return (
     <>
