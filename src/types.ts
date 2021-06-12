@@ -21,9 +21,10 @@ export type Workshop = {
 };
 
 export type FormattedWorkshop = Workshop & {
-  normalizedDateStart: number,
-  normalizedDateEnd: number
-}
+  normalizedDateStart: number;
+  normalizedDateEnd: number;
+  isActive: boolean;
+};
 
 export type WorkshopLevel = {
   name: string;
@@ -34,11 +35,11 @@ export type WorkshopTag = {
 };
 
 export type FileSys = {
-  fields : {
+  fields: {
     file: {
       url: string;
     };
-  },
+  };
   title: string;
 };
 
@@ -53,4 +54,4 @@ export type Speaker = {
   secondParagraph: string;
   facebook: string;
   linkedin: string;
-}
+};
