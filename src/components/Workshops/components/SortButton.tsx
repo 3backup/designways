@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-type Props = {
+type SortButtonProps = {
   active: boolean;
   title: string;
-  theme: any;
   onClick: () => void;
 };
-const SortButtonMain = styled.button`
+
+const SortButtonMain = styled.button<{ active: boolean }>`
   background-color: transparent;
   border: none;
   line-height: 150%;
@@ -16,7 +16,7 @@ const SortButtonMain = styled.button`
   font-size: ${({ theme }) => theme.fonts.base};
   border-bottom: ${(props) => (props.active ? `0` : `1px`)} solid
     ${({ theme }) => theme.colors.navyblue};
-  color: ${({ active, theme }: Props) =>
+  color: ${({ active, theme }) =>
     active ? `${theme.colors.violet}` : `${theme.colors.black}`};
   cursor: pointer;
   padding-bottom: 2px;
@@ -27,7 +27,8 @@ const SortButtonMain = styled.button`
     margin: 20px 0;
   }
 `;
-export const SortButton = ({ title, active, onClick }: Props) => {
+
+export const SortButton = ({ title, active, onClick }: SortButtonProps) => {
   return (
     <SortButtonMain active={active} type="button" onClick={() => onClick()}>
       {title}

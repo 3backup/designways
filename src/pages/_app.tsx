@@ -56,7 +56,7 @@ html{
 }
 `;
 
-const theme = {
+export const theme = {
   colors: {
     lightviolet: "#AE97F5",
     lightvioletbg: "#EFEAFF",
