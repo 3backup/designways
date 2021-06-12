@@ -304,13 +304,11 @@ export const Workshops = ({ events, tags, levels }: Props) => {
         </NumbersOfEvents>
         <SortButtonContainer>
           <SortButton
-            theme
             active={sortType === WorkshopSortType.ByDate}
             title="Cena: Rosnąco"
             onClick={() => setSortType(WorkshopSortType.ByPrice)}
           />
           <SortButton
-            theme
             active={sortType === WorkshopSortType.ByPrice}
             title="Data: Najbliższa"
             onClick={() => setSortType(WorkshopSortType.ByDate)}

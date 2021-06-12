@@ -9,7 +9,7 @@ type Props = {
   key: string;
 };
 
-const Tag = styled.button`
+const Tag = styled.button<{ isActive: boolean }>`
   background: ${(props) =>
     props.isActive
       ? `${props.theme.colors.navyblue}`
@@ -26,7 +26,7 @@ const Tag = styled.button`
   font-size: 14px;
   line-height: 19px;
   text-align: center;
-  color: ${(props: Props) =>
+  color: ${(props) =>
     props.isActive
       ? `${props.theme.colors.white}`
       : `${props.theme.colors.darkgrey}`};
@@ -48,12 +48,7 @@ export const WorkshopTagButton = ({
   isHuge,
 }: Props) => {
   return (
-    <Tag
-      key={key}
-      type="button"
-      isActive={isActive}
-      isHuge
-      onClick={() => onClick()}>
+    <Tag key={key} type="button" isActive={isActive} onClick={() => onClick()}>
       {name}
     </Tag>
   );

@@ -13,11 +13,11 @@ import {
 
 type Props = {
   workshop: FormattedWorkshop;
-  isActive?: Boolean;
+  isActive: boolean;
   key: string;
 };
 
-const LectureDiv = styled.div`
+const LectureDiv = styled.div<{ isActive: boolean }>`
   width: 100%;
   min-height: 50px;
   background: ${({ theme }) => theme.colors.white};
@@ -32,7 +32,7 @@ const LectureDiv = styled.div`
   grid-template-rows: 1fr;
   justify-content: space-between;
   align-items: center;
-  opacity: ${({ isActive = false }: Props) => (isActive ? `1` : `0.3`)};
+  opacity: ${(props) => (props.isActive ? `1` : `0.3`)};
   transition: 0.5s ease;
   :hover {
     opacity: 1;
@@ -296,7 +296,7 @@ const MobileButton = styled(ButtonDesktopReadMore)`
     width: 90%;
   }
 `;
-export const WorkshopItem = ({ workshop, key, isActive }: Props) => {
+export const WorkshopItem = ({ workshop, isActive }: Props) => {
   const sendEvent = useCallback(() => {
     pushEvent({
       action: EventTypes.Click,
@@ -307,7 +307,7 @@ export const WorkshopItem = ({ workshop, key, isActive }: Props) => {
   }, [workshop]);
 
   return (
-    <LectureDiv key={key} isActive={isActive}>
+    <LectureDiv isActive={isActive}>
       <LectureHalf>
         <LectureImage
           src={workshop.image.fields.file.url}
