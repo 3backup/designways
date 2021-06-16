@@ -2,11 +2,56 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styles from "./testimonial.module.scss";
-
+import styled from "styled-components";
 import { SingleTestimonial } from "./components/SingleTestimoial/SingleTestimonial";
 import left from "./Left.svg";
 import right from "./Right.svg";
+
+const CarouselSection = styled.section`
+  width: 100%;
+  overflow: hidden;
+  padding: 8rem 0;
+`;
+const CarouselHeader = styled.h3`
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: bold;
+  text-align: cetner;
+  font-size: ${({ theme }) => theme.fonts.leadeHeight};
+  line-height: 140%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+  margin-bottom: 4rem;
+  color: ${({ theme }) => theme.colors.navyblue};
+`;
+const ButtonNext = styled.button`
+  background: ${({ theme }) => theme.colors.white};
+  opacity: 1;
+  width: 11rem;
+  height: 5.5rem;
+  cursor: pointer;
+  border: 1.18605px solid ${({ theme }) => theme.colors.black};
+  box-sizing: border-box;
+  border-radius: 0px 84.1855px 84.1855px 0;
+  img {
+    margin-top: 4px;
+  }
+`;
+const ButtonPrevioius = styled.button`
+  background: ${({ theme }) => theme.colors.white};
+  width: 11rem;
+  height: 5.5rem;
+  opacity: 1;
+  cursor: pointer;
+  border: 1.18605px solid ${({ theme }) => theme.colors.black};
+  box-sizing: border-box;
+  border-radius: 84.1855px 0px 0px 84.1855px;
+  img {
+    margin-top: 4px;
+  }
+`;
 
 const sliderSettings = {
   className: "center",
@@ -36,10 +81,9 @@ export class Testimonial extends Component {
   };
 
   render() {
-   
     return (
-      <div className={styles.Carousel} id="testimonial">
-        <h3 className={styles.Carousel__header}>Opinie o organizatorze</h3>
+      <CarouselSection id="testimonial">
+        <CarouselHeader>Opinie o organizatorze</CarouselHeader>
         <Slider ref={(c) => (this.slider = c)} {...sliderSettings}>
           <div key={1}>
             <SingleTestimonial
@@ -100,22 +144,14 @@ export class Testimonial extends Component {
           </div>
         </Slider>
         <div style={{ textAlign: "center" }}>
-          <button
-            className={styles.Carousel__previous}
-            onClick={this.previous}
-            type="button"
-          >
+          <ButtonPrevioius onClick={this.previous} type="button">
             <img src={left} alt="" />
-          </button>
-          <button
-            className={styles.Carousel__next}
-            onClick={this.next}
-            type="button"
-          >
+          </ButtonPrevioius>
+          <ButtonNext onClick={this.next} type="button">
             <img src={right} alt="" />
-          </button>
+          </ButtonNext>
         </div>
-      </div>
+      </CarouselSection>
     );
   }
 }
