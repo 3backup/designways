@@ -40,6 +40,8 @@ const TagTags = styled.div`
   flex-direction: row;
 `;
 const ContainerWorkshop = styled(ContainerXl)`
+  position: relative;
+  z-index: 999;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 3fr 2fr 1fr;

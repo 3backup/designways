@@ -14,9 +14,7 @@ type Props = {
 };
 const ContainerPromoted = styled.section`
   width: 100%;
-  position: relative;
   margin-top: -13rem;
-  z-index: -9;
   padding-top: 13rem;
   padding-bottom: 2rem;
   margin-bottom: 2rem;
