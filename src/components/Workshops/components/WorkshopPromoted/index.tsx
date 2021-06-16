@@ -2,10 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { ContainerBig } from "../../../styles/container";
 import { WorkshopItem } from "../WorkshopItem";
-import { Workshop, WorkshopLevel, WorkshopTag } from "../../../../types";
+import {
+  FormattedWorkshop,
+  Workshop,
+  WorkshopLevel,
+  WorkshopTag,
+} from "../../../../types";
 
 type Props = {
   events: Workshop[];
+  workshop: FormattedWorkshop[];
 };
 const ContainerPromoted = styled.section`
   width: 100%;
