@@ -11,7 +11,6 @@ import {
 
 type Props = {
   events: Workshop[];
-  workshop: FormattedWorkshop[];
 };
 const ContainerPromoted = styled.section`
   width: 100%;

@@ -344,6 +344,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
               key={`${event.title}-${event.normalizedDateStart}`}
               workshop={event}
               isActive={false}
+              promoted={false}
             />
           ))}
           <PastButton onClick={onBtnClick} type="button">
