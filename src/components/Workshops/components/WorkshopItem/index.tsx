@@ -13,9 +13,27 @@ import {
 
 type Props = {
   workshop: FormattedWorkshop;
+  promoted: boolean;
   isActive: boolean;
 };
-
+const LectureBox = styled.div<{ promoted: boolean }>`
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  background-color: ${(props) => (props.promoted ? `#efeaff` : `transparent`)};
+`;
+const LectureDiscount = styled.div<{ promoted: boolean }>`
+  display: ${(props) => (props.promoted ? `flex` : `none`)};
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 800;
+  font-size: ${({ theme }) => theme.fonts.label};
+  line-height: 140%;
+  color: ${({ theme }) => theme.colors.violet};
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1.6rem;
+  text-transform: uppercase;
+`;
 const LectureDiv = styled.div<{ isActive: boolean }>`
   width: 100%;
   min-height: 50px;
@@ -23,7 +41,6 @@ const LectureDiv = styled.div<{ isActive: boolean }>`
   border: 1px solid ${({ theme }) => theme.colors.gray};
   box-sizing: border-box;
   border-radius: 12px;
-  margin-bottom: 20px;
   padding: 30px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -295,7 +312,7 @@ const MobileButton = styled(ButtonDesktopReadMore)`
     width: 90%;
   }
 `;
-export const WorkshopItem = ({ workshop, isActive }: Props) => {
+export const WorkshopItem = ({ workshop, isActive, promoted }: Props) => {
   const sendEvent = useCallback(() => {
     pushEvent({
       action: EventTypes.Click,
@@ -306,76 +323,83 @@ export const WorkshopItem = ({ workshop, isActive }: Props) => {
   }, [workshop]);
 
   return (
-    <LectureDiv isActive={isActive}>
-      <LectureHalf>
-        <LectureImage
-          src={workshop.image.fields.file.url}
-          alt={workshop.title}
-        />
-        <LectureDescritpion>
-          <TagsContainer>
-            {workshop.tags.map((singleTag) => (
-              <TagSingle>{singleTag.fields.name}</TagSingle>
-            ))}
-          </TagsContainer>
-          <Level>{workshop.level.fields.name}</Level>
-          <LectureTitle>{workshop.title} </LectureTitle>
-          <ButtonDesktopReadMore
-            href={workshop.url}
-            target="_blank"
-            rel="noreferrer">
+    <LectureBox promoted={promoted}>
+      <LectureDiv isActive={isActive}>
+        <LectureHalf>
+          <LectureImage
+            src={workshop.image.fields.file.url}
+            alt={workshop.title}
+          />
+          <LectureDescritpion>
+            <TagsContainer>
+              {workshop.tags.map((singleTag) => (
+                <TagSingle>{singleTag.fields.name}</TagSingle>
+              ))}
+            </TagsContainer>
+            <Level>{workshop.level.fields.name}</Level>
+            <LectureTitle>{workshop.title} </LectureTitle>
+            <ButtonDesktopReadMore
+              href={workshop.url}
+              target="_blank"
+              rel="noreferrer">
+              Dowiedz się więcej
+            </ButtonDesktopReadMore>
+          </LectureDescritpion>
+        </LectureHalf>
+        <GridInfo>
+          <BorderAndSpacing>
+            <TableSpan>Prowadzący</TableSpan>
+            {workshop.speaker}
+          </BorderAndSpacing>
+          <BorderAndSpacing>
+            <TableSpan>Data</TableSpan>
+            {dayjs(workshop.startDate).format("DD.MM.YYYY - HH:mm")}
+          </BorderAndSpacing>
+          <div>
+            <TableSpan>Czas Trwania</TableSpan>
+            {formatDuration(workshop.duration)}
+          </div>
+          <BorderAndSpacing>
+            <TableSpan>Lokalizacja</TableSpan>
+            {workshop.location}
+          </BorderAndSpacing>
+          <BorderAndSpacing>
+            <TableSpan>Typ</TableSpan>
+            {workshop.type}
+          </BorderAndSpacing>
+          <div>
+            <TableSpan>Liczba Miejsc</TableSpan>
+            {workshop.spots}
+          </div>
+          <PriceElement>
+            <div>
+              {promoted ? `TBA` : formatPriceWithCurrency(workshop.price)}
+            </div>
+            {workshop.certificate ? (
+              <Certificate>
+                <CertifiacteImage src={CertificateImage} alt="" />
+                <TooltipText className="certificate__tooltipText">
+                  Uczestnik otrzyma certyfikat uczestnictwa
+                </TooltipText>
+              </Certificate>
+            ) : (
+              ""
+            )}
+          </PriceElement>
+        </GridInfo>
+        <MobileView>
+          <MobileButton
+            as="a"
+            className="lecture__join buttonMobile__cta"
+            onClick={sendEvent}
+            href={workshop.url}>
             Dowiedz się więcej
-          </ButtonDesktopReadMore>
-        </LectureDescritpion>
-      </LectureHalf>
-      <GridInfo>
-        <BorderAndSpacing>
-          <TableSpan>Prowadzący</TableSpan>
-          {workshop.speaker}
-        </BorderAndSpacing>
-        <BorderAndSpacing>
-          <TableSpan>Data</TableSpan>
-          {dayjs(workshop.startDate).format("DD.MM.YYYY - HH:mm")}
-        </BorderAndSpacing>
-        <div>
-          <TableSpan>Czas Trwania</TableSpan>
-          {formatDuration(workshop.duration)}
-        </div>
-        <BorderAndSpacing>
-          <TableSpan>Lokalizacja</TableSpan>
-          {workshop.location}
-        </BorderAndSpacing>
-        <BorderAndSpacing>
-          <TableSpan>Typ</TableSpan>
-          {workshop.type}
-        </BorderAndSpacing>
-        <div>
-          <TableSpan>Liczba Miejsc</TableSpan>
-          {workshop.spots}
-        </div>
-        <PriceElement>
-          <div>{formatPriceWithCurrency(workshop.price)}</div>
-          {workshop.certificate ? (
-            <Certificate>
-              <CertifiacteImage src={CertificateImage} alt="" />
-              <TooltipText className="certificate__tooltipText">
-                Uczestnik otrzyma certyfikat uczestnictwa
-              </TooltipText>
-            </Certificate>
-          ) : (
-            ""
-          )}
-        </PriceElement>
-      </GridInfo>
-      <MobileView>
-        <MobileButton
-          as="a"
-          className="lecture__join buttonMobile__cta"
-          onClick={sendEvent}
-          href={workshop.url}>
-          Dowiedz się więcej
-        </MobileButton>
-      </MobileView>
-    </LectureDiv>
+          </MobileButton>
+        </MobileView>
+      </LectureDiv>
+      <LectureDiscount promoted={promoted}>
+        Kod rabatowy na wydarzenie dostępny wkrótce
+      </LectureDiscount>
+    </LectureBox>
   );
 };

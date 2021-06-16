@@ -13,7 +13,12 @@ import {
 
 import { sortEvents } from "./helpers";
 
-import { SortButton, WorkshopItem, WorkshopTagButton } from "./components";
+import {
+  SortButton,
+  WorkshopItem,
+  WorkshopTagButton,
+  WorkshopPromoted,
+} from "./components";
 
 enum PriceFilter {
   Free,
@@ -132,6 +137,7 @@ const PastEvent = styled.div`
   font-size: ${({ theme }) => theme.fonts.base};
   line-height: 150%;
   color: ${({ theme }) => theme.colors.darkgrey};
+  margin: 2rem auto;
 `;
 
 export const Workshops = ({ events, tags, levels }: Props) => {
@@ -208,11 +214,16 @@ export const Workshops = ({ events, tags, levels }: Props) => {
             return false;
           }
         }
+        if (event.promoted === true) {
+          return false;
+        }
 
         return true;
       }),
     [formattedWorkshops, currentLevels, currentTags, currentPriceFilters],
   );
+
+  const PromotedEvents = events.filter((event) => event.promoted);
 
   const oldEvents = useMemo(
     () =>
@@ -296,7 +307,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
           </TagTags>
         </TagsContainer>
       </ContainerWorkshop>
-
+      <WorkshopPromoted events={PromotedEvents} />
       <ContianerLecture>
         <NumbersOfEvents>
           Liczba znalezionych wydarzeń:{" "}
@@ -322,6 +333,7 @@ export const Workshops = ({ events, tags, levels }: Props) => {
               key={`${event.title}-${event.normalizedDateStart}`}
               workshop={event}
               isActive
+              promoted={false}
             />
           ))}
         </div>

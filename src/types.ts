@@ -18,6 +18,8 @@ export type Workshop = {
   title: string;
   type: string;
   url: string;
+  promoted: boolean;
+  promoCode: string;
 };
 
 export type FormattedWorkshop = Workshop & {

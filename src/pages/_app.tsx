@@ -60,6 +60,7 @@ export const theme = {
   colors: {
     lightviolet: "#AE97F5",
     lightvioletbg: "#EFEAFF",
+    veryLightVioletBg: "#FAF8FF",
     violet: "#7D4CE5",
     darkviolet: "#6B32E3",
     white: "#FFFFFF",
