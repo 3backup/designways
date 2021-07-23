@@ -312,6 +312,9 @@ const MobileButton = styled(ButtonDesktopReadMore)`
     width: 90%;
   }
 `;
+const CodeSpan = styled.span`
+  margin: 0 2rem;
+`;
 export const WorkshopItem = ({ workshop, isActive, promoted }: Props) => {
   const sendEvent = useCallback(() => {
     pushEvent({
@@ -324,6 +327,7 @@ export const WorkshopItem = ({ workshop, isActive, promoted }: Props) => {
 
   return (
     <LectureBox promoted={promoted}>
+      {console.log(workshop)}
       <LectureDiv isActive={isActive}>
         <LectureHalf>
           <LectureImage
@@ -373,7 +377,7 @@ export const WorkshopItem = ({ workshop, isActive, promoted }: Props) => {
           </div>
           <PriceElement>
             <div>
-              {promoted ? `TBA` : formatPriceWithCurrency(workshop.price)}
+              {promoted ? `od 209zł` : formatPriceWithCurrency(workshop.price)}
             </div>
             {workshop.certificate ? (
               <Certificate>
@@ -398,7 +402,7 @@ export const WorkshopItem = ({ workshop, isActive, promoted }: Props) => {
         </MobileView>
       </LectureDiv>
       <LectureDiscount promoted={promoted}>
-        Kod rabatowy na wydarzenie dostępny wkrótce
+        Kod rabatowy <CodeSpan> {workshop.promoCode}</CodeSpan>
       </LectureDiscount>
     </LectureBox>
   );
